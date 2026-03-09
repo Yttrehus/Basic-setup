@@ -19,3 +19,9 @@ Dokumentere og lære de fundamentale opsætninger og vaner som professionelle ud
 - Ved multi-step: list alle steps kort (max 1 sætning) → derefter ét step ad gangen
 - Claude svarer kortfattet, brugeren responderer — gentages til done
 - Ingen "skal jeg...?" — bare gør det
+
+## Workflow
+
+- PLAN.md er det levende dokument — opdater det efter hvert afsluttet step
+- Commit + push efter hver logisk ændring (afsluttet step, ny fil, vigtig rettelse)
+- State på disk, aldrig kun i chatten — alt vigtigt skal overleve en session-crash
