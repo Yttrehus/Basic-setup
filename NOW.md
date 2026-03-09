@@ -1,31 +1,30 @@
 # NOW — Hvor vi er
 
 **Sidst opdateret:** 2026-03-09
-**Status:** M2 afsluttet, M3 næste
+**Status:** M3 afsluttet, M4 næste
 
 ## Næste step
 
-M3: Terminal/Shell (WSL) — Zsh, prompt, aliases
+M4: Projekt-struktur — ~/dev/ layout, dotfiles-repo, standard per-projekt struktur
 
 ## Seneste session (2026-03-09)
 
-- Genoprettede kontekst fra crashed session (Sonnet → Opus)
-- Oprettede PLAN.md med fuld historik fra forrige session
-- Oprettede repo: github.com/Yttrehus/Basic-setup
-- CLAUDE.md fik workflow-regler
-- Fixede keybinding: Ctrl+½ → toggle terminal (oem_5)
-- Oprettede workspace-fil og NOW.md
-- Windows git konfigureret (user, email, SSH-nøgle) → Claude kan selv committe+pushe
-- PostToolUse hook: opfanger git commit fra Claude → minder om NOW.md opdatering
-- Oprettede global skill: session-state.md (NOW.md/PLAN.md workflow)
+- M3 gennemført: Zsh + Oh My Zsh + Starship + plugins + aliases
+  - Zsh sat som default shell (chsh)
+  - Oh My Zsh installeret
+  - Starship prompt installeret og aktiveret
+  - Plugins: zsh-autosuggestions, zsh-syntax-highlighting
+  - Shell-aliases i .zshrc: gs, ga, gc, gp, gd, gl, ll, .., ...
+- Rettede email-beskrivelse i PLAN.md (hotmail er personlig skrive-mail, ikke GitHub-relateret)
+- Skiftede til workspace-mode (Open Workspace from File)
 
 ## Vigtig kontekst
 
 - Claude Code Bash-tool kører i Windows, ikke WSL
 - Windows git er nu konfigureret med SSH — Claude kan commit+push selv
 - WSL git bruges til manuelle commits fra terminalen
-- PostToolUse hook i ~/.claude/settings.json opfanger Claudes git commits
-- Global skill session-state.md gælder alle projekter
+- Shell-config i WSL: ~/.zshrc (Oh My Zsh + Starship + plugins + aliases)
+- Dotfiles-strategi udskudt til M4
 
 ## Åbne tråde
 
@@ -33,3 +32,4 @@ M3: Terminal/Shell (WSL) — Zsh, prompt, aliases
 - JetBrains Mono font ikke installeret
 - Notion-struktur venter
 - Context engineering som M5
+- Dotfiles-repo (del af M4)

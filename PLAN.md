@@ -11,7 +11,7 @@ Ingen formel uddannelse. Intens egeninteresse i software engineering siden novem
 
 Ejer anparter i vens rejseselskab (vores-rejsebureau.dk). Hjælper med kunder. Har VPS med Yggdra-system (7 projekter, Qdrant søgning, TransportIntra webapp i produktion). Alt det er bygget med Claude.
 
-Emails: k.yttrehus@gmail.com (GitHub, subscriptions, AI), kristoffer.yttrehus@hotmail.com (primær). GitHub: Yttrehus.
+Emails: k.yttrehus@gmail.com (GitHub, subscriptions, AI, betalinger). kristoffer.yttrehus@hotmail.com (personlig — skriver til og fra). GitHub: Yttrehus.
 
 Har mange halvfærdige projekter på VPS, PC (C:\Users\Krist), Google Drive. Arbejdede primært fra tablet og mobil indtil han købte PC. VS Code var ikke noget han kendte — men det er præcis det han drømte om.
 
@@ -82,12 +82,23 @@ Yttre bad specifikt om: dybere forklaring af git-koncepter, GitHub/repo/commit/p
 
 ---
 
-## M3: Terminal/Shell (WSL) — ikke startet
+## M3: Terminal/Shell (WSL) ✅
 
-- [ ] Zsh + Oh My Zsh (eller bare bedre bash-config)
-- [ ] Prompt: Starship eller Powerlevel10k
-- [ ] Aliases og PATH i shell-config
-- [ ] Dotfiles-strategi
+- [x] Zsh installeret + sat som default shell (chsh)
+- [x] Oh My Zsh installeret (framework for plugins/temaer)
+- [x] Starship prompt (moderne, informativ — viser mappe, git-branch, sprog)
+- [x] Plugins: zsh-autosuggestions (historik-forslag), zsh-syntax-highlighting (farver kommandoer)
+- [x] Shell-aliases i ~/.zshrc: gs, ga, gc, gp, gd, gl, ll, .., ...
+- [ ] Dotfiles-strategi → udskudt til M4
+
+**Vigtige filer:**
+- `~/.zshrc` — shell-config (Oh My Zsh + Starship + plugins + aliases)
+- `~/.oh-my-zsh/` — Oh My Zsh framework
+- Starship binary: `/usr/local/bin/starship`
+
+**Bemærkninger:**
+- WSL sudo-password blev reset via `wsl -u root passwd yttre` (Yttre huskede ikke det originale)
+- Starship scan_timeout warning i store mapper (kosmetisk, ikke et problem)
 
 ---
 
