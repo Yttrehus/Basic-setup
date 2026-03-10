@@ -1,14 +1,15 @@
 # NOW — Hvor vi er
 
-**Sidst opdateret:** 2026-03-10 (session 3+4 aktive)
-**Status:** M4 igangværende — step 1 research DONE, step 2 ~/dev/ layout 90% done
+**Sidst opdateret:** 2026-03-10 (session 5)
+**Status:** M4 igangværende — step 2 ~/dev/ layout DONE, step 3 næste
 
 ## Næste step (start her)
 
-M4 step 2 afsluttes: fastlæg konventionen for ~/dev/ layout (sandbox/, tools/ er bekræftet intentionelle). Derefter:
-- M4 step 3: per-projekt skabelon (.editorconfig, .gitattributes, CLAUDE.md, PLAN.md, NOW.md, .gitignore)
-- M4 step 4: dotfiles-repo
+M4 step 3: per-projekt skabelon (.editorconfig, .gitattributes, CLAUDE.md, PLAN.md, NOW.md, .gitignore)
+Derefter:
+- M4 step 4: dotfiles-repo + flyt scripts/ → dotfiles/bin/
 - M4 step 5: workspace-fil skabelon
+- M4 PDCA-evaluering (Check/Act)
 
 ## Igangværende
 
@@ -20,9 +21,16 @@ M4 step 2: ~/dev/ layout — mapper er flyttet:
 - `dev/docs/` ✓ (external LLM docs, flyttet fra ~/)
 - `dev/BLUEPRINT.md` ✓ (historisk reference, flyttet fra ~/)
 - `dev/sandbox/` — tom, til eksperimenter (oprettet forrige session)
-- `dev/tools/` — tom, til CLI-værktøjer (oprettet forrige session)
+Slettet: `dev/tools/` (tom, aldrig brugt — overlap med scripts/)
 
-Mangler: fastlæg konventionen (hvad hører hvor), evt. README i ~/dev/
+## ~/dev/ konvention (fastlagt session 5)
+
+- **projects/** — aktive projekter med eget git repo, CLAUDE.md, PLAN.md, NOW.md
+- **archive/** — afsluttede/pauserede projekter (read-only reference)
+- **sandbox/** — eksperimenter, throwaway kode (ingen forventning om at overleve)
+- **scripts/** — Yggdra PC-tools (ctx, tunnel, setup) → flyttes til dotfiles/bin/ ved M4 step 4
+- **docs/external/** — tredjeparts-dokumentation
+- **BLUEPRINT.md** — historisk reference
 
 ## Beslutninger taget (denne session)
 

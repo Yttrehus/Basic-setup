@@ -2,7 +2,7 @@
 
 **Mål:** Professionelt udviklermiljø på Windows 11 med WSL, VS Code, Git og god struktur.
 **Tilgang:** Yttre gør det selv — Claude guider. Steps kort først → ét ad gangen.
-**Metode:** Byg → Evaluér → Notér → Parkér idéer (Popper-loop per modul).
+**Metode:** Byg → Evaluér → Notér → Parkér idéer (PDCA-cyklus per modul).
 
 ---
 
@@ -21,9 +21,9 @@ Detaljer i PLAN.v1.md.
 **Formål:** Organisér ~/dev/ så projekter har konsistent struktur og config-filer er versioneret.
 
 1. [x] Research: hvad gør professionelle? Mappestruktur, konventioner
-2. [ ] ~/dev/ layout og konventioner (90% — mapper flyttet, konvention mangler)
+2. [x] ~/dev/ layout og konventioner — fastlagt session 5, tools/ slettet, scripts/→dotfiles/bin/ planlagt
 3. [ ] Standard per-projekt skabelon (CLAUDE.md, PLAN.md, NOW.md, .gitignore)
-4. [ ] Dotfiles-repo — versionér .zshrc, .gitconfig, starship.toml i git
+4. [ ] Dotfiles-repo — versionér .zshrc, .gitconfig, starship.toml + flyt ~/dev/scripts/ → dotfiles/bin/ (på PATH)
 5. [ ] Workspace-fil skabelon for VS Code
 
 **Done-kriterie:** Nyt projekt kan startes med `cp -r template/ ~/dev/nyt-projekt` og have al infrastruktur klar.
@@ -85,12 +85,14 @@ Detaljer i PLAN.v1.md.
 
 ---
 
-## Popper-loop (per modul)
+## PDCA-cyklus (per modul)
 
-1. **Byg** — gennemfør steps
-2. **Evaluér** — opfyldte vi done-kriteriet? Hvad overraskede?
-3. **Notér** — kort retrospektiv med timestamp
-4. **Parkér idéer** — nye idéer i Idé-parkering, ikke i planen
+Plan-Do-Check-Act (Deming). Vores version:
+
+1. **Plan** — definér steps + done-kriterie
+2. **Do** — gennemfør steps
+3. **Check** — opfyldte vi done-kriteriet? Hvad overraskede?
+4. **Act** — notér retrospektiv, parkér nye idéer, justér planen
 
 ## Solnedgangsklausul (per ny implementation)
 
@@ -100,14 +102,16 @@ Hver ny implementation definerer *før* den bygges:
 - **Kill-tegn:** Hvad ser vi hvis det skal fjernes?
 - **Evalueringstidspunkt:** Hvornår tjekker vi?
 
+Default-respons ved uventet adfærd: **justér → omtænk → kill** (i den rækkefølge). De fleste ting der "ikke virker" virker bare anderledes end forventet — det er information, ikke en dom. Kill er sidste udvej.
+
 Eksempel (session-management, implementeret session 3-4):
 
 | Komponent | Succes | Kalibrering | Kill | Evaluér |
 |---|---|---|---|---|
-| NOW.md ved commit | Ny session starter uden forvirring | 1-2 opklarende spørgsmål | Lige så tabt som før | M4 Popper |
-| PROGRESS.md | Kontekst overlever 3+ sessioner | Vokser for hurtigt/ulæselig | Ingen læser den | M4 Popper |
-| dump-chatlog.js | Bruges som reference 1x/uge | Dumpes men læses aldrig | Aldrig kørt | M4 Popper |
-| Hook-reminder | Filer opdateres uden prompt | Ignoreres halvdelen af gangene | Mere noise end værdi | M4 Popper |
+| NOW.md ved commit | Ny session starter uden forvirring | 1-2 opklarende spørgsmål | Lige så tabt som før | M4 PDCA |
+| PROGRESS.md | Kontekst overlever 3+ sessioner | Vokser for hurtigt/ulæselig | Ingen læser den | M4 PDCA |
+| dump-chatlog.js | Bruges som reference 1x/uge | Dumpes men læses aldrig | Aldrig kørt | M4 PDCA |
+| Hook-reminder | Filer opdateres uden prompt | Ignoreres halvdelen af gangene | Mere noise end værdi | M4 PDCA |
 
 (Diskussion: chatlog session 3, T085+. Princippet er inspireret af Yggdras kill conditions men udvidet med succes/kalibrerings-kriterier.)
 
@@ -124,7 +128,7 @@ Eksempel (session-management, implementeret session 3-4):
 - Abonnement-overblik (alle services: Firecrawl, GitHub, osv.)
 - PDF Official Toolkit skill (professionel PDF-generering: fakturaer, rapporter, OCR — til bogføring/rejseselskab)
 - Professionel webscraping-setup (Firecrawl allerede installeret — optimér til research og link-analyse)
-- **Projekt-omdøbning (evaluer efter M4):** Basic Setup er ikke basic — det er hovedprojektet, et personligt udvikler-fundament. "Basic Setup" som koncept bliver et *output*: en reproducerbar pakke (installationsguide + AI-instruktioner + manifest med rationale for alle beslutninger). Manifestet forklarer *hvorfor*, ikke bare *hvad*. Chatlog-embedding i Qdrant giver fuld kontekst ("hvorfor valgte vi X?"). Beslut nyt navn og scope ved M4 Popper-evaluering. (Detaljer: PROGRESS.md, Session 4)
+- **Projekt-omdøbning (evaluer efter M4):** Basic Setup er ikke basic — det er hovedprojektet, et personligt udvikler-fundament. "Basic Setup" som koncept bliver et *output*: en reproducerbar pakke (installationsguide + AI-instruktioner + manifest med rationale for alle beslutninger). Manifestet forklarer *hvorfor*, ikke bare *hvad*. Chatlog-embedding i Qdrant giver fuld kontekst ("hvorfor valgte vi X?"). Beslut nyt navn og scope ved M4 PDCA-evaluering. (Detaljer: PROGRESS.md, Session 4)
 - **Chatlog-arkitektur (M7):** Chatlog-ID'er (T001, T002...) som analoge referencer i plan-filer. Central JSONL event log (timestamp/session_id/project/type/content) som cross-session tidslinje. Tre lag: dump-script (done) → taksonomi+auto-ref (M7) → embedding (kun ved behov). (Detaljer: PROGRESS.md, Session 4)
 - **Cross-session peer review:** To parallelle sessioner der reviewer hinandens output med Yttre som mediator. Primitiv men effektiv evalueringsmetode for planlægnings- og beslutningsfaser.
 
