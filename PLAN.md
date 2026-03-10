@@ -20,8 +20,8 @@ Detaljer i PLAN.v1.md.
 
 **Formål:** Organisér ~/dev/ så projekter har konsistent struktur og config-filer er versioneret.
 
-1. [ ] Research: hvad gør professionelle? Mappestruktur, konventioner
-2. [ ] ~/dev/ layout og konventioner
+1. [x] Research: hvad gør professionelle? Mappestruktur, konventioner
+2. [ ] ~/dev/ layout og konventioner (90% — mapper flyttet, konvention mangler)
 3. [ ] Standard per-projekt skabelon (CLAUDE.md, PLAN.md, NOW.md, .gitignore)
 4. [ ] Dotfiles-repo — versionér .zshrc, .gitconfig, starship.toml i git
 5. [ ] Workspace-fil skabelon for VS Code
@@ -91,6 +91,25 @@ Detaljer i PLAN.v1.md.
 2. **Evaluér** — opfyldte vi done-kriteriet? Hvad overraskede?
 3. **Notér** — kort retrospektiv med timestamp
 4. **Parkér idéer** — nye idéer i Idé-parkering, ikke i planen
+
+## Solnedgangsklausul (per ny implementation)
+
+Hver ny implementation definerer *før* den bygges:
+- **Succes-tegn:** Hvad ser vi hvis det virker perfekt?
+- **Kalibrerings-tegn:** Hvad ser vi hvis det skal justeres?
+- **Kill-tegn:** Hvad ser vi hvis det skal fjernes?
+- **Evalueringstidspunkt:** Hvornår tjekker vi?
+
+Eksempel (session-management, implementeret session 3-4):
+
+| Komponent | Succes | Kalibrering | Kill | Evaluér |
+|---|---|---|---|---|
+| NOW.md ved commit | Ny session starter uden forvirring | 1-2 opklarende spørgsmål | Lige så tabt som før | M4 Popper |
+| PROGRESS.md | Kontekst overlever 3+ sessioner | Vokser for hurtigt/ulæselig | Ingen læser den | M4 Popper |
+| dump-chatlog.js | Bruges som reference 1x/uge | Dumpes men læses aldrig | Aldrig kørt | M4 Popper |
+| Hook-reminder | Filer opdateres uden prompt | Ignoreres halvdelen af gangene | Mere noise end værdi | M4 Popper |
+
+(Diskussion: chatlog session 3, T085+. Princippet er inspireret af Yggdras kill conditions men udvidet med succes/kalibrerings-kriterier.)
 
 ---
 
