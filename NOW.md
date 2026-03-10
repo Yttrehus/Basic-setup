@@ -84,3 +84,5 @@ Slettet: `dev/tools/` (tom, aldrig brugt — overlap med scripts/)
 - habits/ mappe er tom — intention ukendt fra forrige session
 - .editorconfig og .gitattributes mangler (identificeret i research)
 - vscode.md reference nævner ting der ikke er installeret endnu
+- Integrationer parkeret: Gmail, Hotmail, Google (Drev/Calendar/Sheets), mobil-adgang
+- 7 parallel task briefs i ~/parallel-tasks/ — klar til Cowork

@@ -127,6 +127,10 @@ Session 3's videreførelse efter compact. Startede med at verificere at alt var 
 - `references/claude-code-organization.md` — Claude Code skills/hooks/MCP konventioner
 - `references/scripts-and-tools-layout.md` — dev workspace layout konventioner
 
+### Idé-parkering gennemgået + parallel tasks forberedt
+
+Alle 12 parkerede idéer auditeret med effort/paralleliserbarhed. 7 task briefs oprettet i ~/parallel-tasks/ til Cowork eller parallelle sessioner. Hver brief er selvstændig med baggrund, metode, forventet output, og eksplicitte bias-warnings. Integrationer (Gmail, Google, mobil-adgang) tilføjet som ny parkering. "Chatlog-arkitektur" omdøbt til "Session-drift pipeline" — dækker hele den daglige drift-loop, ikke kun chatlog. #5 (Adobe Acrobat) anbefalet fjernet (installer ved behov, ikke en parkeret idé).
+
 ---
 
 ## Session 4 — 2026-03-10 (morgen, parallel session)
