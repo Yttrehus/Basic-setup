@@ -87,6 +87,54 @@ Læste alle 22 filer i projektet. Identificerede:
 
 ---
 
+## Session 4 — 2026-03-10 (morgen, parallel session)
+
+### Kontekst-test bestod
+
+Yttre åbnede en ny session (1f70d0bd) for at teste om konteksten fra session 3 overlevede. Den nye session fik "hvor er vi?" og svarede korrekt — M4 step 2, 90% done, præcise næste steps. Den læste NOW.md, PLAN.md og MEMORY.md. Chatlog var unødvendig for at komme op til speed. PROGRESS.md + NOW.md + MEMORY.md er tilstrækkeligt til session-kontinuitet.
+
+### Projektet vokser ud af sit navn
+
+Yttre formulerede en vigtig indsigt: "Basic Setup" er ikke basic — det er hovedprojektet. Det er hans personlige udvikler-fundament, og det vokser organisk mod noget større. Han foreslog:
+
+1. **Omdøb projektet** ved M4's Popper-evaluering til noget der afspejler hvad det faktisk er
+2. **"Basic Setup" bliver et *output*** — en reproducerbar pakke man kan køre for at genopbygge miljøet. Den pakke indeholder:
+   - Installationsguide med step-by-step instrukser til brugeren
+   - AI-instruktioner så Claude kan assistere i opsætningen
+   - Et **manifest** der forklarer *hvorfor* hver beslutning er taget, ikke bare *hvad*
+   - Indexerede chatlogs så man kan spørge "hvorfor valgte vi X?" og få det faktiske svar
+
+### Chatlog-arkitektur (M7-stof, parkeret)
+
+Session 4 og session 3 (denne sessions forgænger) kørte parallelt og reviewede hinandens output. Det udviklede sig til en produktiv diskussion om chatlog-infrastruktur:
+
+**Chatlog-ID'er:** Hver besked får sekvensnummer (T001, T002...) + timestamp. Plan-filer kan referere til specifikke ranges (fx "se chatlog session 4, T042-T058") i stedet for at destillere alt ned til én bullet. Analog løsning der virker uden database.
+
+**Event log:** I stedet for Excel-kolonner (Yttres intuition var visuel: tid × session), er en central JSONL event log bedre — `timestamp | session_id | project | type | content`. Flat, appendable, filtrérbar. Samme princip som Yggdras episodes.jsonl men med cross-session view.
+
+**Tre-lags tilgang (konsensus mellem begge sessioner):**
+1. Nu: forbedret dump-script med metadata (implementeret)
+2. M7: taksonomi (beslutning/handling/diskussion) + auto-referencer i plan-filer
+3. Senere: embedding i Qdrant (kun hvis behov bevist)
+
+### Cross-session peer review
+
+En uventet opdagelse: at køre to parallelle sessioner og lade dem reviewere hinandens output virker som evalueringsværktøj. Yttre medierede — copy-pastede mellem sessionerne og sikrede at han forstod alt. Det er ikke bare to AI'er der snakker; Yttre er aktivt i loopet og godkender hver beslutning. Han nævnte eksplicit at han hader at ikke forstå det der bruges tid på — "du ved ikke om det er bureaukrati eller det bedste siden sliced bread, og det gør det ikke nemmere når LLM'er har tendens til sagligt at begrunde overkomplicerede beslutninger."
+
+Denne praksis bør overvejes igen ved fremtidige planlægnings- og beslutningsfaser.
+
+### Dump-scriptet forbedret
+
+`dump-chatlog.js` opgraderet:
+- Auto-detect nyeste session (ingen hardcoded ID)
+- Accepterer session-ID som argument for specifik session
+- Sekvensnumre: T001, T002... (referencerbare)
+- Timestamps per besked
+- Session-ID i output
+- Filnavne med dato + session-ID: `chatlog-2026-03-10-1f70d0bd.md`
+
+---
+
 ## Session 2 — 2026-03-09 (rekonstrueret fra git-historik)
 
 ### Hvad vi ved skete (fra commits og PLAN.md)

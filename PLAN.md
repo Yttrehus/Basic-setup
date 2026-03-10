@@ -105,6 +105,9 @@ Detaljer i PLAN.v1.md.
 - Abonnement-overblik (alle services: Firecrawl, GitHub, osv.)
 - PDF Official Toolkit skill (professionel PDF-generering: fakturaer, rapporter, OCR — til bogføring/rejseselskab)
 - Professionel webscraping-setup (Firecrawl allerede installeret — optimér til research og link-analyse)
+- **Projekt-omdøbning (evaluer efter M4):** Basic Setup er ikke basic — det er hovedprojektet, et personligt udvikler-fundament. "Basic Setup" som koncept bliver et *output*: en reproducerbar pakke (installationsguide + AI-instruktioner + manifest med rationale for alle beslutninger). Manifestet forklarer *hvorfor*, ikke bare *hvad*. Chatlog-embedding i Qdrant giver fuld kontekst ("hvorfor valgte vi X?"). Beslut nyt navn og scope ved M4 Popper-evaluering. (Detaljer: PROGRESS.md, Session 4)
+- **Chatlog-arkitektur (M7):** Chatlog-ID'er (T001, T002...) som analoge referencer i plan-filer. Central JSONL event log (timestamp/session_id/project/type/content) som cross-session tidslinje. Tre lag: dump-script (done) → taksonomi+auto-ref (M7) → embedding (kun ved behov). (Detaljer: PROGRESS.md, Session 4)
+- **Cross-session peer review:** To parallelle sessioner der reviewer hinandens output med Yttre som mediator. Primitiv men effektiv evalueringsmetode for planlægnings- og beslutningsfaser.
 
 ---
 

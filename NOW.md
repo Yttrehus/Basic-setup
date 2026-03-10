@@ -1,6 +1,6 @@
 # NOW — Hvor vi er
 
-**Sidst opdateret:** 2026-03-10 (session slut)
+**Sidst opdateret:** 2026-03-10 (session 3+4 aktive)
 **Status:** M4 igangværende — step 1 research DONE, step 2 ~/dev/ layout 90% done
 
 ## Næste step (start her)
