@@ -1,24 +1,19 @@
 # NOW — Hvor vi er
 
-**Sidst opdateret:** 2026-03-10 (session 7)
-**Status:** M4 igangværende — step 4 DONE, step 5 næste
+**Sidst opdateret:** 2026-03-10 (session 8)
+**Status:** M4 DONE ✅ — M5 er næste
 
 ## Næste step (start her)
 
-M4 step 5: workspace-fil skabelon for VS Code
-Derefter:
-- M4 step 6: evaluering af /checkpoint og /new-project skills
-- M4 PDCA-evaluering (Check/Act)
+M5 step 1: Taskbar og startmenu — hvad skal være der, hvad skal væk
+Se PLAN.md for fuld M5-plan (7 steps).
 
 ## Hvad sessionen producerede
 
-- **Dotfiles-repo:** ~/dev/projects/dotfiles/ — stow-managed .zshrc, .gitconfig kopi, scripts i bin/, pushed til GitHub (Yttrehus/dotfiles, privat)
-- **Software installeret:** GNU Stow (WSL), GitHub CLI (Windows, autentificeret som Yttrehus)
-- **Workspace-oprydning:** slettet cruft (5 filer + 2 mapper), oprettet chatlogs/, flyttet filer til references/
-- **dump-chatlog.js omskrevet:** grupperer per dato, fletter sessions kronologisk
-- **.gitattributes + .editorconfig tilføjet til BS** (fra template/)
-- **Skills-arkitektur revideret:** BS-specifikke skills flyttet fra global → projekt-niveau, feedback-log separeret til .claude/implementationlogs/, chatlog-search skill oprettet
-- **README.md** opdateret til aktuel struktur, references/README.md oprettet
+- **basic-setup.code-workspace** opdateret: extensions-anbefalinger, workspace-settings, opryddet excludes
+- **template/project.code-workspace** oprettet: generisk skabelon til nye projekter
+- **/new-project skill** aktiveret: opdateret med workspace-fil, flyttet til .claude/skills/
+- **M4 PDCA-evaluering** gennemført: /checkpoint virker, /new-project utestet, M4 markeret done
 
 ## .claude/ struktur (BS projekt-niveau)
 
@@ -28,23 +23,13 @@ Derefter:
     checkpoint.md
     session-state.md
     chatlog-search.md
+    new-project.md
     infrastructure.md
     notion.md
   implementationlogs/  ← brugsjournal (hvordan det gik)
-    checkpoint.md
-    chatlog-search.md
+    checkpoint.md      ← 4 entries, næste evaluering ved #10
+    chatlog-search.md  ← 1 entry, evaluering ved #5
 ```
-
-Skills starter lokalt i projektet. Promoveres til global (~/.claude/skills/) når bevist på tværs af projekter.
-
-## Beslutninger taget (denne session)
-
-- GNU Stow til WSL dotfiles, manuel kopi til Windows .gitconfig
-- gh CLI installeret — bruges til GitHub-operationer fremover
-- Workspace-root: kun state-filer + konventionsfiler, alt andet i mapper
-- Skills er projekt-lokale først, globale når bevist
-- implementationlogs/ for brugs-feedback, separeret fra skill-definitioner
-- .claude/skills/ er reelt instruktionsfiler (kontekst for Claude), ikke executable skills
 
 ## Vigtig kontekst
 
@@ -63,3 +48,5 @@ Skills starter lokalt i projektet. Promoveres til global (~/.claude/skills/) nå
 - vscode.md reference nævner ting der ikke er installeret endnu
 - Integrationer parkeret: Gmail, Hotmail, Google (Drev/Calendar/Sheets), mobil-adgang
 - 7 parallel task briefs i ~/parallel-tasks/ — klar til Cowork
+- /new-project skill aldrig testet — test ved næste reelle projekt
+- Prettier mangler .prettierrc config — kan give uventede formateringer

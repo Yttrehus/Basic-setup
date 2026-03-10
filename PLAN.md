@@ -16,7 +16,7 @@ Detaljer i PLAN.v1.md.
 
 ---
 
-## M4: Projekt-struktur — NÆSTE
+## M4: Projekt-struktur ✅
 
 **Formål:** Organisér ~/dev/ så projekter har konsistent struktur og config-filer er versioneret.
 
@@ -24,14 +24,20 @@ Detaljer i PLAN.v1.md.
 2. [x] ~/dev/ layout og konventioner — fastlagt session 5, tools/ slettet, scripts/→dotfiles/bin/ planlagt
 3. [x] Standard per-projekt skabelon (CLAUDE.md, PLAN.md, NOW.md, .gitignore, .editorconfig, .gitattributes)
 4. [x] Dotfiles-repo — versionér .zshrc, .gitconfig, starship.toml + flyt ~/dev/scripts/ → dotfiles/bin/ (på PATH)
-5. [ ] Workspace-fil skabelon for VS Code
-6. [ ] Evaluering: /checkpoint skill + /new-project skill — virker de? Justér baseret på brug i step 3-5.
+5. [x] Workspace-fil skabelon for VS Code
+6. [x] Evaluering: /checkpoint skill + /new-project skill — virker de? Justér baseret på brug i step 3-5.
 
 **Done-kriterie:** Nyt projekt kan startes med `/new-project` og have al infrastruktur klar. /checkpoint bruges friktionsfrit.
 
+**PDCA-evaluering (session 8):**
+- /checkpoint: virker friktionsfrit fra brug #3. Tidlige fejl var setup-problemer (CRLF, chatlog-sti), ikke design. Behold uændret, næste evaluering ved brug #10.
+- /new-project: skabelon komplet (7 filer), skill aktiv, men utestet. Test ved næste reelle projekt, evaluér efter 2 brug.
+- chatlog-search: 1 test-brug, for tidligt at evaluere. Evaluér efter 5 brug.
+- Done-kriterie: opfyldt med forbehold — /new-project aldrig testet i praksis.
+
 ---
 
-## M5: PC-setup (Windows)
+## M5: PC-setup (Windows) — NÆSTE
 
 **Formål:** Windows konfigureret som en professionels arbejdsstation. Fuldt professionelt.
 

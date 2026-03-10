@@ -6,8 +6,23 @@
   ],
   "settings": {
     "files.exclude": {
-      "session-history.md": true,
-      "dump-session.js": true
-    }
+      ".firecrawl": true
+    },
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "files.eol": "\n",
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true
+  },
+  "extensions": {
+    "recommendations": [
+      "esbenp.prettier-vscode",
+      "dbaeumer.vscode-eslint",
+      "eamodio.gitlens",
+      "ms-vscode-remote.remote-ssh",
+      "ms-vscode-remote.remote-wsl",
+      "ms-python.python",
+      "tomoki1207.pdf"
+    ]
   }
 }

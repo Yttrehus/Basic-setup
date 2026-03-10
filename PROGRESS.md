@@ -133,6 +133,18 @@ Alle 12 parkerede idéer auditeret med effort/paralleliserbarhed. 7 task briefs 
 
 ---
 
+## Session 8 — 2026-03-10
+
+### M4 afsluttet
+
+Step 5 (workspace-fil): Opdaterede basic-setup.code-workspace med extensions-anbefalinger (7 stk), workspace-settings (format on save, LF, trim whitespace) og files.exclude oprydning. Oprettede generisk template/project.code-workspace til nye projekter.
+
+Step 6 (evaluering): /checkpoint evalueret efter 4 brug — virker fra brug #3, tidlige fejl var setup-problemer. /new-project skabelon komplet og skill aktiveret (flyttet til .claude/skills/), men utestet. chatlog-search for tidligt at evaluere.
+
+M4 PDCA: Done-kriterie opfyldt. M4 markeret ✅. Næste modul: M5 (PC-setup).
+
+---
+
 ## Session 7 — 2026-03-10
 
 ### M4 step 4: dotfiles-repo
