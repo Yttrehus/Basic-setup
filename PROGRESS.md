@@ -87,6 +87,48 @@ Læste alle 22 filer i projektet. Identificerede:
 
 ---
 
+## Session 5 — 2026-03-10 (fortsættelse af session 3)
+
+### Kontekst
+
+Session 3's videreførelse efter compact. Startede med at verificere at alt var gemt, derefter M4 step 2 completion.
+
+### Hvad skete der
+
+**Chatlog-vedligeholdelse:** Opdagede at compact sletter fra JSONL — beskeder efter dump kan gå tabt. Dumpede chatlog igen (122→134→152 beskeder over sessionen).
+
+**~/dev/ layout afsluttet (M4 step 2 DONE):**
+- Auditerede alle mapper i ~/dev/
+- `tools/` slettet (tom, overlap med scripts/)
+- Konvention fastlagt: projects/ (aktive, git repo), archive/ (done/paused), sandbox/ (throwaway), scripts/ (→dotfiles/bin/ ved step 4), docs/ (external)
+
+**Taksonomi-diskussion:** Yttre stillede spørgsmålstegn ved forskellen på scripts/tools/skills/MCP. Første svar var forsimplet — Yttre fangede det ("jeg troede det var AI der brugte tools?"). Rettede til præcis taksonomi: skills inform, hooks enforce, MCP integrates. Research bekræftede at vokabularet stabiliserer men ikke er standardiseret.
+
+**Research (3 parallelle agenter):**
+- Claude Code community: skills/hooks/MCP organisation, emerging conventions
+- Dev workspace: ~/bin/ vs scripts/ vs tools/ — konsensus er bin/ på PATH for personlige scripts
+- AI-augmented workflows: AGENTS.md som vendor-neutral standard (Claude læser det ikke endnu)
+
+**Nomenklatur-rettelse:** "Popper-loop" var opfundet af Claude i session 2. Erstattet med PDCA-cyklus (Plan-Do-Check-Act, Deming — 70+ år, akademisk etableret). Yttre påpegede vigtigheden af professionel nomenklatur.
+
+**Solnedgangsklausul raffineret:** Kill er sidste udvej. Default-respons: justér → omtænk → kill. De fleste ting der "ikke virker" virker bare anderledes end forventet.
+
+**Plan for step 3-5 + PDCA:** Hver step har nu sine egne solnedgangsklausuler. Step 3 evaluerer hver skabelon-fil individuelt (.editorconfig kill-tegn: kun VS Code bruges).
+
+### Beslutninger
+
+- PDCA-cyklus erstatter Popper-loop
+- ~/dev/tools/ slettet
+- scripts/ → dotfiles/bin/ planlagt til M4 step 4
+- Plan v3 initieres efter M4 PDCA-evaluering
+
+### Nye reference-filer
+
+- `references/claude-code-organization.md` — Claude Code skills/hooks/MCP konventioner
+- `references/scripts-and-tools-layout.md` — dev workspace layout konventioner
+
+---
+
 ## Session 4 — 2026-03-10 (morgen, parallel session)
 
 ### Kontekst-test bestod
