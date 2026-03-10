@@ -1,6 +1,9 @@
-session-history.md
-dump-session.js
-dump-chatlog.js
-chatlog-*.md
+# Chatlogs (generated, not source)
+chatlogs/chatlog-*.md
+chatlogs/dump-chatlog.js
+
+# Claude Code local
 .claude/settings.local.json
+
+# Firecrawl cache
 .firecrawl/

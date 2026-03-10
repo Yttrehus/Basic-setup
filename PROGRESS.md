@@ -148,6 +148,10 @@ gh CLI installeret (winget) og autentificeret som Yttrehus. Dotfiles-repo pushed
 - GNU Stow (WSL, apt)
 - GitHub CLI (Windows, winget) — autentificeret med browser-flow
 
+### Workspace-oprydning
+
+Slettet cruft: read-session.js, dump-session.js, session-history.md, chatlog-session4.tmp, habits/ (tom). dump-chatlog.js omskrevet til at gruppere per dato og flette sessions kronologisk — én chatlog-YYYY-MM-DD.md per dag. Oprettet chatlogs/ mappe. Flyttet PLAN.v1.md og git-concepts.md til references/. Oprettet references/README.md med indeks. Opdateret root README.md til aktuel struktur. Root er nu rent: kun state-filer, konventionsfiler, og mapper.
+
 ---
 
 ## Session 6 — 2026-03-10 (fortsættelse)
