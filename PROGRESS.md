@@ -133,6 +133,28 @@ Alle 12 parkerede idéer auditeret med effort/paralleliserbarhed. 7 task briefs 
 
 ---
 
+## Session 6 — 2026-03-10 (fortsættelse)
+
+### M4 step 3: per-projekt skabelon
+
+Oprettede `template/` med 6 filer: .editorconfig, .gitattributes, .gitignore, CLAUDE.md, PLAN.md, NOW.md. Testet ved at kopiere til sandbox, oprette et Python-projekt, og verificere at alle config-filer virker (indent, line endings, gitignore). Krydscheck mod Basic Setup afslørede at BS selv mangler .editorconfig og .gitattributes — venter med at tilføje til BS er færdig evalueret.
+
+Feedback-loop indbygget: PLAN.md template har en "skabelon-feedback" sektion der besvares ved PDCA-evaluering. Mønstret: 1 projekt ændrer noget → notér. 2+ projekter ændrer det samme → opdatér skabelonen. En fil aldrig åbnet i 3+ projekter → overvej fjernelse.
+
+### Skills oprettet
+
+**`/new-project` (udkast, parkeret til step 5):** Bootstrapper et nyt projekt fra template/ med udfyldte placeholders. Feedback-loopet er indbygget — hvert projekt evaluerer skabelonen.
+
+**`/checkpoint` (installeret, aktiv):** Samler den daglige drift-loop i ét kald: opdatér NOW.md + PROGRESS.md + PLAN.md, dump chatlog, commit + push. Selvvurdering: Claude skriver feedback efter hver brug, obligatorisk evaluering efter 5 brug. Erstatter det manuelle "commit, push, dump chatlog, opdater now.md, progress.md" som Yttre har bedt om ved hver session-pause.
+
+### Beslutninger
+
+- /checkpoint skill installeret nu — bruges resten af M4 for at samle erfaring
+- /new-project parkeret til step 5 — kræver workspace-fil integration
+- Step 6 tilføjet til PLAN.md: evaluering af begge skills efter step 5
+
+---
+
 ## Session 4 — 2026-03-10 (morgen, parallel session)
 
 ### Kontekst-test bestod

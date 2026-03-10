@@ -22,11 +22,12 @@ Detaljer i PLAN.v1.md.
 
 1. [x] Research: hvad gør professionelle? Mappestruktur, konventioner
 2. [x] ~/dev/ layout og konventioner — fastlagt session 5, tools/ slettet, scripts/→dotfiles/bin/ planlagt
-3. [ ] Standard per-projekt skabelon (CLAUDE.md, PLAN.md, NOW.md, .gitignore)
+3. [ ] Standard per-projekt skabelon (CLAUDE.md, PLAN.md, NOW.md, .gitignore, .editorconfig, .gitattributes)
 4. [ ] Dotfiles-repo — versionér .zshrc, .gitconfig, starship.toml + flyt ~/dev/scripts/ → dotfiles/bin/ (på PATH)
 5. [ ] Workspace-fil skabelon for VS Code
+6. [ ] Evaluering: /checkpoint skill + /new-project skill — virker de? Justér baseret på brug i step 3-5.
 
-**Done-kriterie:** Nyt projekt kan startes med `cp -r template/ ~/dev/nyt-projekt` og have al infrastruktur klar.
+**Done-kriterie:** Nyt projekt kan startes med `/new-project` og have al infrastruktur klar. /checkpoint bruges friktionsfrit.
 
 ---
 

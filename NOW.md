@@ -1,27 +1,24 @@
 # NOW — Hvor vi er
 
-**Sidst opdateret:** 2026-03-10 (session 5)
-**Status:** M4 igangværende — step 2 ~/dev/ layout DONE, step 3 næste
+**Sidst opdateret:** 2026-03-10 (session 6)
+**Status:** M4 igangværende — step 3 per-projekt skabelon DONE, step 4 næste
 
 ## Næste step (start her)
 
-M4 step 3: per-projekt skabelon (.editorconfig, .gitattributes, CLAUDE.md, PLAN.md, NOW.md, .gitignore)
+M4 step 4: dotfiles-repo + flyt scripts/ → dotfiles/bin/
 Derefter:
-- M4 step 4: dotfiles-repo + flyt scripts/ → dotfiles/bin/
 - M4 step 5: workspace-fil skabelon
+- M4 step 6: evaluering af /checkpoint og /new-project skills
 - M4 PDCA-evaluering (Check/Act)
 
 ## Igangværende
 
-M4 step 2: ~/dev/ layout — mapper er flyttet:
-- `dev/projects/Basic Setup/` ✓
-- `dev/archive/Old stuff/` ✓
-- `dev/archive/research archive/` ✓
-- `dev/scripts/` ✓ (ctx, tunnel, setup — Yggdra PC-tools, flyttet fra ~/)
-- `dev/docs/` ✓ (external LLM docs, flyttet fra ~/)
-- `dev/BLUEPRINT.md` ✓ (historisk reference, flyttet fra ~/)
-- `dev/sandbox/` — tom, til eksperimenter (oprettet forrige session)
-Slettet: `dev/tools/` (tom, aldrig brugt — overlap med scripts/)
+M4 step 3: per-projekt skabelon — DONE:
+- template/ oprettet med 6 filer: .editorconfig, .gitattributes, .gitignore, CLAUDE.md, PLAN.md, NOW.md
+- Testet i sandbox (git init, .gitattributes virker, .gitignore fanger .env, .editorconfig sætter indent)
+- Feedback-loop indbygget: PLAN.md har skabelon-feedback sektion
+- /new-project skill udkast oprettet (parkeret til step 5)
+- /checkpoint skill implementeret og installeret
 
 ## ~/dev/ konvention (fastlagt session 5)
 
@@ -82,7 +79,7 @@ Slettet: `dev/tools/` (tom, aldrig brugt — overlap med scripts/)
 - Poppler PATH-verifikation efter restart
 - Session-management hook til PC (M7-scope)
 - habits/ mappe er tom — intention ukendt fra forrige session
-- .editorconfig og .gitattributes mangler (identificeret i research)
+- .editorconfig og .gitattributes mangler i Basic Setup selv (template har dem, BS endnu ikke)
 - vscode.md reference nævner ting der ikke er installeret endnu
 - Integrationer parkeret: Gmail, Hotmail, Google (Drev/Calendar/Sheets), mobil-adgang
 - 7 parallel task briefs i ~/parallel-tasks/ — klar til Cowork
