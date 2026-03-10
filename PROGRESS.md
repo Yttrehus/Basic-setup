@@ -133,6 +133,23 @@ Alle 12 parkerede idéer auditeret med effort/paralleliserbarhed. 7 task briefs 
 
 ---
 
+## Session 7 — 2026-03-10
+
+### M4 step 4: dotfiles-repo
+
+Oprettede `~/dev/projects/dotfiles/` med GNU Stow til WSL-dotfiles. Diskuterede tre tilgange (bare git repo, GNU Stow, simpel kopi) — valgte Stow for .zshrc (symlink, ændringer virker straks) og manuel kopi for Windows .gitconfig (ændres sjældent).
+
+Konkret: .zshrc stow-symlinket fra dotfiles/zsh/ → /home/yttre/, .gitconfig kopieret ind i dotfiles/git/, alle 6 scripts fra ~/dev/scripts/ flyttet til dotfiles/bin/ og sat på PATH via .zshrc. ~/dev/scripts/ slettet. README.md med opsætningsinstruktion.
+
+gh CLI installeret (winget) og autentificeret som Yttrehus. Dotfiles-repo pushed til GitHub som privat repo.
+
+### Installeret software
+
+- GNU Stow (WSL, apt)
+- GitHub CLI (Windows, winget) — autentificeret med browser-flow
+
+---
+
 ## Session 6 — 2026-03-10 (fortsættelse)
 
 ### M4 step 3: per-projekt skabelon
