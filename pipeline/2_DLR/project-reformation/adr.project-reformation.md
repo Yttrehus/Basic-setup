@@ -12,7 +12,7 @@
 Project Reformation opstod d. 11/3-2026 under session 9. Det startede ikke som ét projekt men som en kaskade af frustrationer: auto-chatlog var halvfærdig, checkpoint opdaterede NOW.md men glemte PLAN.md, implementation journals eksisterede men var tynde og kontekstløse, og nye idéer druknede i et system der ikke havde infrastruktur til at håndtere dem. Yttre gik fra forstanden over at kontekst forsvandt mellem sessioner — ikke fordi ideerne var dårlige, men fordi der ikke var et stillads der fangede dem. Samtalen eskalerede fra "kan chatloggen opdatere sig selv?" til "hele projektstyringen mangler en livscyklus." En parallel samtale med Google AI Mode validerede idéen om en 4-stage pipeline (PoC → DLR → SIP → BMS) med levende ADR-dokumenter. Det blev klart at Basic Setup ikke bare var "opsætning af et udviklermiljø" — det var ved at blive et framework for hvordan Yttre arbejder med AI.
 
 ## 2. Current State
-DLR-fase, fase 0-3 komplet ✅. Mappestruktur revideret i session 12, 13 briefs oprettet. Næste: fase 4 (ADR'er for eksisterende moduler).
+DLR-fase, fase 0-4 komplet ✅. Mappestruktur revideret i session 12, 13 briefs oprettet, 2 ADR'er skrevet retroaktivt. Næste: fase 5 (CONTEXT.md — bør have sin egen session).
 
 Framework er fuldt designet: pipeline (Backlog→PoC→DLR→SIP→BMS), ADR-template (12 sektioner), governance-README'er (5 stk), brief-format for backlog, triage af 18 idéer. Filnavn-konvention: `adr.[emne].md`. Implementation-sektion merged ind i ADR (ikke separat fil). Fil-audit tilføjet som forudsætning før noget flyttes.
 
@@ -105,14 +105,14 @@ Opret briefs i `pipeline/0_backlog/` fra idé-parkering + ~/parallel-tasks/ outp
 1. [x] Opret 13 brief-filer med opsummering → origin story → rå input
 2. [x] Map alle 7 ~/parallel-tasks/ outputs til specifikke briefs (revision nødvendig)
 3. [x] Fjern idé-parkering fra PLAN.md, erstat med pointer til `pipeline/0_backlog/`
-4. [ ] Commit: "reformation fase 3: briefs oprettet"
+4. [x] Commit: "reformation fase 3: briefs oprettet"
 
-### Fase 4: ADR'er for eksisterende moduler
+### Fase 4: ADR'er for eksisterende moduler ✅
 Navnekonvention: `adr.[emne].md`
 
-1. [ ] `pipeline/3_SIP/auto-chatlog/adr.auto-chatlog.md`
-2. [ ] `pipeline/1_PoC/projekt-omdobning/adr.projekt-omdobning.md`
-3. [ ] Verificér: ADR-template følges (12 sektioner)
+1. [x] `pipeline/3_SIP/auto-chatlog/adr.auto-chatlog.md`
+2. [x] `pipeline/1_PoC/projekt-omdobning/adr.projekt-omdobning.md`
+3. [x] Verificér: ADR-template følges (12 sektioner)
 4. [ ] Commit: "reformation fase 4: ADR'er oprettet"
 
 ### Fase 5: CONTEXT.md
