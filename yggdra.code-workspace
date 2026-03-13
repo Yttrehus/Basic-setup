@@ -12,6 +12,8 @@
     "files.exclude": {
       ".firecrawl": true,
     },
+    "editor.fontFamily": "'JetBrains Mono', Consolas, monospace",
+    "editor.fontLigatures": true,
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "files.eol": "\n",

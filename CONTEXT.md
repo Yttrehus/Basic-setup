@@ -1,15 +1,18 @@
 # Yggdra
 
 ## Metadata
-- **Status:** Reformation done. M5 step 11-17 er næste.
-- **Sidst opdateret:** 2026-03-13 (session 14, aften)
+- **Status:** M5 næsten færdig (step 12+15 kræver fysisk adgang). Backlog er næste.
+- **Sidst opdateret:** 2026-03-14 (session 15)
 
 ## Hvad er det
 Personligt udvikler-fundament. Startede som "Basic Setup" (Windows-opsætning), vokset til framework for hvordan Yttre arbejder med AI og kode.
 
 ## Hvor er vi
 
-### Seneste session (14 — 2026-03-13)
+### Seneste session (15 — 2026-03-14)
+M5 step 11/13/14/17 gennemført: Downloads ryddet (225→2 filer), .wslconfig oprettet (8GB/4CPU), JetBrains Mono + ligaturer, quick reference. Chatlog-engine token-scanning tilføjet (heuristisk + subagent-verifikation, redact-patterns.json). M6/M7/M8 flyttet fra plan til backlog-briefs. Parallel tasks absorberet i briefs. Backlog-briefs evalueret og opdateret. "Basic Setup" referencer fjernet. architecture.R&D CONTEXT.md oprettet. Google AI samtale flyttet til architecture.R&D. Archive ryddet. Lektie: `rm` i bash bypasser papirkurven.
+
+### Session 14 (2026-03-13)
 Chatlog-engine v3: gap-sektioner, subagent-abstracts, danske datoer, secret-redaction. Sessions fra 5 projektmapper samlet i én (~2500 beskeder, 30 sessions). Checkpoint og chatlog-search integreret i auto-chatlog-projektet. Skills audit: forældede stier rettet, checkpoint/chatlog-search forenklet til pointere. Archive ryddet: journals, manuelle chatlogs, dump-scripts slettet (alt i git). Template opdateret: NOW.md+PLAN.md → CONTEXT.md. architecture.R&D fået CONTEXT.md.
 
 ### Session 13 (2026-03-13)
@@ -23,7 +26,7 @@ Yggdra/
 ├── CONTEXT.md, PROGRESS.md, CLAUDE.md, README.md
 ├── chatlog.md              ← genereret af auto-chatlog engine
 ├── projects/
-│   ├── 0_backlog/          ← 13 idé-briefs
+│   ├── 0_backlog/          ← 15 idé-briefs (inkl. M6/M7/M8)
 │   ├── 1_archive/          ← afsluttede projekter (reformation, omdøbning, architecture.R&D)
 │   ├── auto-chatlog/       ← chatlog-engine + checkpoint + chatlog-search
 │   ├── manuals/            ← git, vscode, terminal, git-concepts
@@ -39,20 +42,22 @@ Yggdra/
 - **M4:** Projektstruktur (~/dev/ layout, template, /new-project, /checkpoint, dotfiles-repo)
 
 ### Venter
-- **M5 step 11-17:** Filsystem, X1 Carbon, .wslconfig, fonts, Dev Drive, Poppler, quick reference
-- **M6:** Terminal-automatisering (workspace åbner med rigtige terminaler)
-- **M7:** Context engineering (selvstændigt projekt, se `projects/backlog/brief.context-engineering.md`)
-- **M8:** Skabeloner (nyt projekt på under 5 min)
+- **M5 step 12, 15:** X1 Carbon (BIOS, fysisk adgang), Dev Drive (GUI/admin)
 
 ## Hvad mangler
-- [x] Reformation fase 6: oprydning ✅
-- [x] Reformation fase 7: omdøb til Yggdra ✅
-- [ ] M5 step 11-17
-- [ ] M6, M7/CE, M8
+- [x] Reformation ✅
+- [x] M5 step 11 — Downloads oprydning (225→2 filer) ✅
+- [x] M5 step 13 — .wslconfig (8GB RAM, 4 CPU) ✅
+- [x] M5 step 14 — JetBrains Mono + Mermaid Preview ✅
+- [x] M5 step 16 — Poppler verificeret ✅
+- [x] M5 step 17 — Quick reference ✅
+- [ ] M5 step 12 — X1 Carbon (BIOS, Lenovo Vantage, 400 MHz bug — kræver fysisk adgang)
+- [ ] M5 step 15 — Dev Drive (evaluer om det giver mening, kræver GUI/admin)
+- M6, M7, M8 → backlog-briefs i `projects/0_backlog/`
 
 ## Beslutninger
 
-**Rækkefølge:** Reformation done → M5 rest → M6 → M7/CE → M8
+**Rækkefølge:** M5 rest (12, 15 — begge kræver dig) → backlog-projekter efter prioritet
 
 **Metodik:**
 - PDCA-cyklus per modul (Plan-Do-Check-Act, Deming)
@@ -68,15 +73,14 @@ Yggdra/
 - Hvert projekt har sin egen CONTEXT.md (samme format, rekursivt design)
 
 ## Åbne tråde
-- Poppler PATH-verifikation efter restart
 - Prettier mangler .prettierrc
 - /new-project utestet i praksis
 - chatlog-search: for tidligt at evaluere
-- Checkpoint-skill: integreret i auto-chatlog ✅
 
 ## Changelog
 Komprimeret overblik. Fuld detalje i PROGRESS.md.
 
+- **Session 15** (2026-03-14): M5 step 11/13/14/17 done, M6-M8→backlog, token-scanning, parallel tasks absorberet, archive ryddet. → PROGRESS.md#session-15
 - **Session 14** (2026-03-13): Chatlog-engine v3, sessions samlet, checkpoint+chatlog-search integreret i auto-chatlog, archive ryddet, template opdateret, reformation fase 6 afsluttet. → PROGRESS.md#session-14
 - **Session 13** (2026-03-13): projects/ struktur, ADR→CONTEXT.md, chatlog v2 krav, hukommelsesarkitektur, Claude Memory i workspace. → PROGRESS.md#session-13
 - **Session 12** (2026-03-12): Manifest v1-v3 implementeret, 13 briefs, 2 ADR'er retroaktivt. → PROGRESS.md#session-12
