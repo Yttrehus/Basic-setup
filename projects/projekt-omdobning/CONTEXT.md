@@ -1,11 +1,9 @@
-# ADR: Projekt-omdøbning
-<!-- Filnavn: adr.projekt-omdobning.md -->
+# Projekt-omdøbning
 
 ## 0. Metadata
-- **Stage:** PoC
 - **Status:** Active (venter på reformation fase 7)
 - **Oprettet:** 2026-03-12
-- **Sidst opdateret:** 2026-03-12
+- **Sidst opdateret:** 2026-03-13 (session 13)
 - **Ejer:** Yttre
 
 ## 1. Origin Story
@@ -31,11 +29,11 @@ Repo hedder "Yggdra" overalt: GitHub, lokal mappe, workspace-fil, alle CLAUDE.md
 - Føles det rigtigt at navigere til ~/dev/projects/Yggdra/?
 
 ## 7. Exit Criteria
-- **Promotion til BMS:** Omdøbningen er gennemført, alle referencer opdateret, intet bryder.
+- **Done:** Omdøbningen er gennemført, alle referencer opdateret, intet bryder.
 - **Sunset:** Hvis omdøbningen viser sig at skabe flere problemer end den løser (sti-afhængigheder overalt), kan den droppes.
 
 ## 8. Implementation
-Se reformation ADR fase 7:
+Se reformation CONTEXT.md fase 7:
 1. [ ] Omdøb repo: Basic Setup → Yggdra (GitHub + lokal)
 2. [ ] Opdatér alle interne referencer
 3. [ ] Commit: "reformation fase 7: Basic Setup → Yggdra"
@@ -43,10 +41,11 @@ Se reformation ADR fase 7:
 ## 9. Changelog
 - 2026-03-10 (session 4): Idéen formuleret under M4 PDCA. "Basic Setup er ikke basic."
 - 2026-03-12 (session 10): Beslutning cementeret. Repo omdøbes til Yggdra.
-- 2026-03-12 (session 12): ADR skrevet retroaktivt som del af reformation fase 4.
+- 2026-03-12 (session 12): CONTEXT.md skrevet retroaktivt.
+- 2026-03-13 (session 13): ADR → CONTEXT.md, stier opdateret.
 
 ## 10. Backlog
 - "Basic Setup" som reproducerbar pakke (installationsguide + manifest) — fremtidigt projekt
 
-## 11. Original ADR
-Denne ADR er skrevet retroaktivt. Ingen original ADR eksisterer — beslutningen voksede organisk fra session 4 til session 10.
+## 11. Original Design
+Denne CONTEXT.md er skrevet retroaktivt. Ingen original dokumentation eksisterer — beslutningen voksede organisk fra session 4 til session 10.

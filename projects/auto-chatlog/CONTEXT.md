@@ -1,18 +1,16 @@
-# ADR: Auto-chatlog
-<!-- Filnavn: adr.auto-chatlog.md -->
+# Auto-chatlog
 
 ## 0. Metadata
-- **Stage:** SIP
 - **Status:** Active
 - **Oprettet:** 2026-03-11
-- **Sidst opdateret:** 2026-03-12
+- **Sidst opdateret:** 2026-03-13 (session 13)
 - **Ejer:** Yttre + Claude
 
 ## 1. Origin Story
 Auto-chatlog opstod 11/3-2026 under session 9. Yttre observerede at Claude Codes .jsonl sessionsfiler vokser kontinuerligt men aldrig omdannes til læsbar chatlog automatisk. De manuelle chatlog-dumps (dump-chatlog.js + chatlogs/-mappen) krævede at Claude blev bedt om det eksplicit — og outputtet var en flad sekvens uden tidsopdeling eller navigation. Den første prototype blev bygget direkte i session 9, men Claude gik i bygge-mode for tidligt. Yttre kalibrerede: "spørg før du bygger." Tre design-iterationer fulgte: navigationslinks, referater, retskrivning — alt parkeret som fremtidige forbedringer. Format først, automatisering bagefter.
 
 ## 2. Current State
-SIP-stadie. chatlog-engine.js fungerer og parser 1000+ beskeder fra 6+ sessions. Producerer to filer: live.md (dagens samtale) og archive.md (tidligere datoer med index + 2-timers tidsblokke). Kører manuelt — ingen automatisk trigger endnu. Nøgleord-extraction er frekvensbaseret og utilstrækkelig (generiske ord). Det gamle chatlogs/-system er pensioneret til pipeline/4_ARC/chatlogs/.
+chatlog-engine.js fungerer og parser 1000+ beskeder fra 6+ sessions. Producerer to filer: live.md (dagens samtale) og archive.md (tidligere datoer med index + 2-timers tidsblokke). Kører manuelt — ingen automatisk trigger endnu. Nøgleord-extraction er frekvensbaseret og utilstrækkelig (generiske ord). Det gamle chatlogs/-system er pensioneret til projects/archive/chatlogs/.
 
 ## 3. Problem Statement
 - **Hvad:** Claude Code sessionsfiler (.jsonl) er maskinlæsbare men ikke menneskelæsbare. Der er ingen automatisk omdannelse til chatlog. Manuelle dumps glemmes, og outputtet mangler tidsopdeling og navigation.
@@ -35,8 +33,8 @@ live.md opdateres automatisk (file-watcher eller hook-trigger). archive.md indek
 - Erstatter det reelt de manuelle chatlog-dumps?
 
 ## 7. Exit Criteria
-- **Promotion til BMS:** Kører automatisk (hook eller file-watcher). Nøgleord-extraction er meningsfuld. Brugt friktionsfrit i 5+ sessioner. Gammel chatlogs/-mappe ikke savnet.
-- **Demotion til DLR:** Fundamental arkitekturfejl (f.eks. JSONL-format ændres og parser bryder).
+- **Done:** Kører automatisk (hook eller file-watcher). Nøgleord-extraction er meningsfuld. Brugt friktionsfrit i 5+ sessioner. Gammel chatlogs/-mappe ikke savnet.
+- **Demotion:** Fundamental arkitekturfejl (f.eks. JSONL-format ændres og parser bryder).
 - **Sunset:** Hvis chatloggen aldrig konsulteres i 10 sessioner, er den cruft.
 
 ## 8. Implementation
@@ -52,7 +50,7 @@ live.md opdateres automatisk (file-watcher eller hook-trigger). archive.md indek
 
 ### Fase 2: Automatisering
 - [ ] File-watcher mode (--watch flag, designet men ikke bygget)
-- [ ] Eller: PostToolUse hook ved git commit (se brief.session-drift-pipeline.md)
+- [ ] Eller: PostToolUse hook ved git commit (se projects/backlog/brief.session-drift-pipeline.md)
 
 ### Fase 3: Intelligens
 - [ ] LLM-baseret nøgleord/referat (lokal LLM, Ollama — se brief i backlog)
@@ -61,19 +59,19 @@ live.md opdateres automatisk (file-watcher eller hook-trigger). archive.md indek
 - [ ] Session-ID markering ved parallelle sessions
 
 ## 9. Changelog
-- 2026-03-11 (session 9, ~09:30): Prototype bygget i chatlog-test/. 494 beskeder parset. UTC-tid → dansk tid fikset. Kronologisk rækkefølge fikset. 2-timers tidsblokke tilføjet.
+- 2026-03-11 (session 9, ~09:30): Prototype bygget. 494 beskeder parset. UTC→dansk tid fikset. Kronologisk rækkefølge fikset. 2-timers tidsblokke tilføjet.
 - 2026-03-11 (session 9, ~10:00): Nøgleord-extraction testet — frekvensbaseret, utilstrækkelig. LLM-baseret løsning parkeret.
-- 2026-03-11 (session 11): Flytning til SIP/auto-chatlog/. Gammel chatlogs/ pensioneret til _ARC/.
-- 2026-03-12 (session 11): 1098 beskeder fra 6 sessions. Datoskift d.11→d.12 håndteret korrekt.
-- 2026-03-12 (session 12): Pipeline restrukturering → pipeline/3_SIP/auto-chatlog/.
+- 2026-03-11 (session 11): Flytning til egen projektmappe. Gammel chatlogs/ pensioneret til archive/.
+- 2026-03-12 (session 12): 1098 beskeder fra 6 sessions. Datoskift håndteret korrekt.
+- 2026-03-13 (session 13): Strukturændring: projects/auto-chatlog/. ADR → CONTEXT.md.
 
 ## 10. Backlog
 - Navigationslinks mellem tidsblokke
-- Lokal LLM til opsummering/nøgleord (se brief.mcp-skills-kompendium.md)
+- Lokal LLM til opsummering/nøgleord
 - File-watcher eller hook-baseret automatisering
 - Inkrementel opdatering (ikke brute-force rebuild)
 - Session-ID markering ved parallelle sessions
 - Retskrivning af bruger-input
 
-## 11. Original ADR
-Denne ADR er skrevet retroaktivt i session 12 som del af reformation fase 4. Ingen original ADR eksisterer — auto-chatlog startede som en ad-hoc prototype i session 9.
+## 11. Original Design
+Denne CONTEXT.md er skrevet retroaktivt i session 12 som del af reformation fase 4. Ingen original dokumentation eksisterede — auto-chatlog startede som en ad-hoc prototype i session 9.
