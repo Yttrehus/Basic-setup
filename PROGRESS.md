@@ -4,6 +4,69 @@ Fortællende dagbog. Formålet er at en ny Claude-session kan læse dette og for
 
 ---
 
+## Session 13 — 2026-03-13
+
+### Kontekst
+
+Fortsættelse af reformation. Session 12 havde implementeret manifest v1-v3 med pipeline/-struktur. Denne session simplificerede radikalt.
+
+### Hvad skete der
+
+**Fil-audit diskussion:** Startede med at gennemgå manifest fra session 12. Yttre stillede spørgsmål til .firecrawl/ (git-tracked?), references/-mappen, og automation.md. Hver diskussion afslørede at den eksisterende struktur var for kompleks.
+
+**Tre iterationer af mappestruktur:**
+1. `pipeline/` med numeriske præfikser (0_backlog → 4_ARC) — fra session 12
+2. `Development/` med stage-mapper — Yttre ville have pipeline ud af BMS-roden
+3. `projects/` flad — Yttre indså at ADR er bare en mini-CONTEXT.md, og pipeline-stages i mappenavne er overengineering
+
+**ADR → CONTEXT.md:** Yttre sagde "ADR er i bund og grund blot en mini-context.md" — det udløste den største simplificering. Ét format overalt. Stage-navne (PoC/DLR/SIP/BMS) erstattet af plain dansk status ("I gang — parser fungerer, mangler automatisering").
+
+**Manifest v4 implementeret:** Alle filer flyttet til `projects/`. Gamle mapper slettet. CLAUDE.md og NOW.md opdateret. Tre CONTEXT.md-filer opdateret med nye stier og terminologi.
+
+**CONTEXT.md template:** Diskuterede opbygning. Landede på 6 sektioner: Metadata, Hvad er det, Hvor er vi, Hvad mangler, Beslutninger, Changelog. Skalerer fra brief (kun Metadata + Hvad er det) til komplekst projekt (alle sektioner + ekstra efter behov).
+
+**Rod-CONTEXT.md udkast:** Destillerede NOW.md + PLAN.md + PROGRESS.md til ét dokument med graduated summary. ~100 linjer vs 380+ i de tre separate filer.
+
+### Beslutninger
+
+- `projects/` i roden — flad, ét projekt = én mappe
+- ADR-terminologi droppet — CONTEXT.md overalt
+- Pipeline-stage navne droppet — status i plain dansk
+- Manuals og research ind under projects/ (de er projekter)
+- CONTEXT.md template: 6 sektioner, skalerbar
+- Governance READMEs unødvendige — stage er metadata
+
+### Evaluering
+
+Sessionen viste et mønster: Yttre starter med en kompleks idé (ISO-standarder, pipeline-stages, governance-manualer) og simplificerer progressivt til det essentielle. "Simpelt = exact fit" i praksis. Tre iterationer var nødvendige, men resultatet er markant simplere end udgangspunktet.
+
+---
+
+## Session 12 — 2026-03-12
+
+### Kontekst
+
+Implementeringssession for Project Reformation fase 1-4. Første session der lavede konkrete filflytninger.
+
+### Hvad skete der
+
+**Fase 1-2 (mappestruktur):** Pipeline-mapper oprettet under `pipeline/` med numeriske præfikser (0_backlog → 4_ARC). template/ absorberet i .claude/template/. Alle filer flyttet: references/ opløst, chatlogs/ pensioneret, implementation journals arkiveret. Rod reduceret fra 10 synlige mapper til 3.
+
+**Fase 3 (backlog-briefs):** 13 briefs oprettet fra idé-parkering + parallel-tasks outputs. Alle 7 parallel-tasks outputs (~/parallel-tasks/) mappet til specifikke briefs. PLAN.md idé-parkering erstattet med pointer.
+
+**Fase 4 (ADR'er):** 2 retroaktive ADR'er skrevet: auto-chatlog (SIP) og projekt-omdøbning (PoC). Begge følger 12-sektions template.
+
+**Afkrydsningsfejl:** Step 4.4 (commit) blev udført men ikke afkrydset i ADR'en. Yttre påpegede det. Memory-regel gemt: "afkryds steps med det samme."
+
+### Beslutninger
+
+- Pipeline under `pipeline/` overmappe, ikke i roden
+- Numeriske præfikser for kronologisk sortering
+- Research er et projekt (research-architecture), ikke bare en mappe
+- automation.md → backlog-brief
+
+---
+
 ## Session 11 — 2026-03-12
 
 ### Kontekst

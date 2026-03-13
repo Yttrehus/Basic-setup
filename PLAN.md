@@ -12,7 +12,7 @@
 ### M2: VS Code ✅
 ### M3: Terminal/Shell ✅
 
-Detaljer i PLAN.v1.md.
+Detaljer i projects/archive/PLAN.v1.md.
 
 ---
 
@@ -61,7 +61,7 @@ Detaljer i PLAN.v1.md.
 
 **Done-kriterie:** Skrivebord, taskbar og filsystem organiseret. Privacy hardened. PowerToys konfigureret. Alle tools installeret. Reference-filer opdateret.
 
-**Research-filer:** research/_ARC/windows-setup-research.md, research/_ARC/x1-carbon-gen13-dev-setup.md
+**Research-filer:** projects/research/archive/windows-setup-research.md, projects/research/archive/x1-carbon-gen13-dev-setup.md
 
 ---
 
@@ -79,15 +79,7 @@ Detaljer i PLAN.v1.md.
 
 ## M7: Context engineering
 
-**Formål:** Systematisér hvordan Claude Code bruges effektivt. Samler indsigter fra alle moduler.
-
-1. [ ] CLAUDE.md best practices (under 200 linjer, progressive disclosure)
-2. [ ] Compaction-strategi (hvornår, hvordan, hooks)
-3. [ ] Skills-arkitektur (hvad er et skill, hvornår laves et nyt)
-4. [ ] Session-management (NOW.md, plan-filer, hooks)
-5. [ ] Subagent-strategi
-
-**Done-kriterie:** CLAUDE.md template + context engineering reference-fil. Compaction-hook kører automatisk.
+Trukket ud som selvstændigt projekt. Se `projects/backlog/brief.context-engineering.md`.
 
 ---
 
@@ -95,7 +87,7 @@ Detaljer i PLAN.v1.md.
 
 **Formål:** Nye projekter starter med det fundament vi har bygget. Syntese af alt.
 
-1. [ ] Projekt-skabelon (CLAUDE.md, PLAN.md, NOW.md, .gitignore, workspace-fil)
+1. [ ] Projekt-skabelon (CONTEXT.md, CLAUDE.md, .gitignore, workspace-fil)
 2. [ ] Checkliste for nyt projekt
 3. [ ] Reference-samling
 4. [ ] Scope-definition template (hvad er projektet, hvad er det IKKE)
@@ -121,24 +113,13 @@ Hver ny implementation definerer *før* den bygges:
 - **Kill-tegn:** Hvad ser vi hvis det skal fjernes?
 - **Evalueringstidspunkt:** Hvornår tjekker vi?
 
-Default-respons ved uventet adfærd: **justér → omtænk → kill** (i den rækkefølge). De fleste ting der "ikke virker" virker bare anderledes end forventet — det er information, ikke en dom. Kill er sidste udvej.
-
-Eksempel (session-management, implementeret session 3-4):
-
-| Komponent | Succes | Kalibrering | Kill | Evaluér |
-|---|---|---|---|---|
-| NOW.md ved commit | Ny session starter uden forvirring | 1-2 opklarende spørgsmål | Lige så tabt som før | M4 PDCA |
-| PROGRESS.md | Kontekst overlever 3+ sessioner | Vokser for hurtigt/ulæselig | Ingen læser den | M4 PDCA |
-| dump-chatlog.js | Bruges som reference 1x/uge | Dumpes men læses aldrig | Aldrig kørt | M4 PDCA |
-| Hook-reminder | Filer opdateres uden prompt | Ignoreres halvdelen af gangene | Mere noise end værdi | M4 PDCA |
-
-(Diskussion: chatlog session 3, T085+. Princippet er inspireret af Yggdras kill conditions men udvidet med succes/kalibrerings-kriterier.)
+Default-respons ved uventet adfærd: **justér → omtænk → kill** (i den rækkefølge).
 
 ---
 
-## Idé-parkering → pipeline/0_backlog/
+## Idé-parkering → projects/backlog/
 
-Alle idéer er nu briefs i `pipeline/0_backlog/`. Se brief-filer der. Migreret i session 12 (reformation fase 3).
+Alle idéer er nu briefs i `projects/backlog/`. Se brief-filer der. Migreret i session 12 (reformation fase 3).
 
 Ikke-migreret: Adobe Acrobat Pro (for tynd til brief — tilføjes ved behov).
 
@@ -146,12 +127,12 @@ Ikke-migreret: Adobe Acrobat Pro (for tynd til brief — tilføjes ved behov).
 
 ## Scope-grænse
 
-Basic Setup er opsætning af professionelt udviklermiljø. Alt der vokser ud over dette (research, visualisering, TI-appen) bliver separate projekter med egen CLAUDE.md, PLAN.md, og repo.
+Basic Setup er opsætning af professionelt udviklermiljø. Alt der vokser ud over dette bliver separate projekter i `projects/`.
 
 ---
 
 ## Rækkefølge
 
-M5 (færdiggør) → Project Reformation til BMS → M6 → M7/CE → M8
+Reformation done → M5 (færdiggør) → M6 → M7/CE → M8
 
-**Project Reformation status:** Fase 1-3 DONE. Næste: fase 4 (ADR'er). Se `pipeline/2_DLR/project-reformation/adr.project-reformation.md` sektion 8.
+**Project Reformation status:** Fase 5 i gang (CONTEXT.md). Se `projects/project-reformation/CONTEXT.md`.
