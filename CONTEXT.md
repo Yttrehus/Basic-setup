@@ -1,11 +1,11 @@
-# Yggdra (Basic Setup)
+# Yggdra
 
 ## Metadata
-- **Status:** Reformation fase 6 næsten done. Fase 7 (omdøb repo) venter. M5 step 11-17 derefter.
+- **Status:** Reformation done. M5 step 11-17 er næste.
 - **Sidst opdateret:** 2026-03-13 (session 14, aften)
 
 ## Hvad er det
-Personligt udvikler-fundament. Startede som Windows-opsætning (Git, VS Code, terminal, projektstruktur, PC-setup), vokset til framework for hvordan Yttre arbejder med AI og kode. Omdøbes til Yggdra ved reformation fase 7.
+Personligt udvikler-fundament. Startede som "Basic Setup" (Windows-opsætning), vokset til framework for hvordan Yttre arbejder med AI og kode.
 
 ## Hvor er vi
 
@@ -19,7 +19,7 @@ Chatlog v2 krav defineret: én fil (chatlog.md), komplet sessionsdata inkl. tæn
 
 ### Struktur
 ```
-Basic Setup/
+Yggdra/
 ├── CONTEXT.md              ← dette dokument (erstatter NOW.md + PLAN.md)
 ├── PROGRESS.md             ← fuld narrativ, læses efter behov
 ├── CLAUDE.md, README.md
@@ -49,8 +49,8 @@ Basic Setup/
 - **M8:** Skabeloner (nyt projekt på under 5 min)
 
 ## Hvad mangler
-- [x] Reformation fase 6: oprydning — checkpoint/chatlog-search integreret, archive ryddet, template opdateret, skills rettet ✅
-- [ ] Reformation fase 7: omdøb repo til Yggdra
+- [x] Reformation fase 6: oprydning ✅
+- [x] Reformation fase 7: omdøb til Yggdra ✅
 - [ ] M5 step 11-17
 - [ ] M6, M7/CE, M8
 

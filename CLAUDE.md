@@ -1,6 +1,6 @@
-# Basic Setup (→ Yggdra)
+# Yggdra
 
-Personligt udvikler-fundament. Startede som Windows-opsætning, vokset til framework for hvordan Yttre arbejder med AI og kode.
+Personligt udvikler-fundament. Startede som "Basic Setup" (Windows-opsætning), vokset til framework for hvordan Yttre arbejder med AI og kode.
 
 @CONTEXT.md
 
