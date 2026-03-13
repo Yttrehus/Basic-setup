@@ -7,6 +7,7 @@
 | [2026-03-09](#2026-03-09) | 28 | flyt, dev, archive, file, explorer |
 | [2026-03-10](#2026-03-10) | 858 | dev, step, setup, session, projects |
 | [2026-03-11](#2026-03-11) | 202 | eller, adr, checkpoint, chatlog, tænker |
+| [2026-03-12](#2026-03-12) | 264 | plan, være, progress, adr, eller |
 
 ---
 
@@ -14772,6 +14773,4085 @@ Nej — checkpoint-skillen er **ikke** bearbejdet mod de fejl vi diskuterede. De
 Det er en brief til `_backlog/skill-arkitektur.md` — præcis det problem vi identificerede: skills er instrukser uden gates. Checkpoint-skillen er det første test-case. Men at ændre skillen *nu* uden det nye framework på plads ville være at lappe et hul i et system vi er ved at erstatte.
 
 Den rigtige rækkefølge: implementér mappestrukturen → opret skill-arkitektur brief → bearbejd checkpoint-skillen som del af det nye system.
+
+---
+
+## 2026-03-12
+
+**Sessions:** b5d674f7, fbf0deec, ecede3ac, 30521697 · **264 beskeder**
+
+| Tidsrum | Beskeder | Nøgleord |
+|---------|----------|----------|
+| [10:00–12:00](#2026-03-12-10) | 27 | plan, ligger, eller, være |
+| [12:00–14:00](#2026-03-12-12) | 29 | plan, progress, adr, context |
+| [14:00–16:00](#2026-03-12-14) | 50 | adr, være, context, session |
+| [16:00–18:00](#2026-03-12-16) | 30 | research, vps, bedre, backlog |
+| [20:00–22:00](#2026-03-12-20) | 57 | git, reformation, basic, setup |
+| [22:00–24:00](#2026-03-12-22) | 71 | hvorfor, evt, bms, development |
+
+### 10:00–12:00 <a id="2026-03-12-10"></a>
+
+#### CLAUDE — 10:24
+
+**Status:** M5 step 1-10 DONE. Du er midt i **Project Reformation** — framework er designet, triage udført.
+
+**Næste step:** Implementér mappestrukturen (den store flytning):
+
+1. Opret `_backlog/`, `PoC/`, `DLR/`, `SIP/`, `_ARC/` med README.md i hver
+2. Flyt `project-reformation/` → `DLR/project-reformation/`
+3. Flyt `auto-chatlog/` → `SIP/auto-chatlog/`
+4. Opret backlog-briefs (13 stk) med cowork-output som rå input
+5. Opret ADR.md for auto-chatlog, session-drift-pipeline, file-watcher, projekt-omdøbning, skill-arkitektur
+6. Flyt implementation journals → `_ARC/`, PLAN.v1.md → `_ARC/`
+7. ADR-INDEX.md i roden
+8. Derefter: M5 step 11-17
+
+Pipeline: **Backlog → PoC → DLR → SIP → BMS** (roden er BMS). Klar til at starte?
+
+---
+
+#### CLAUDE — 10:30
+
+Lad mig kigge på chatlog-filerne for at sammenligne.
+
+---
+
+#### CLAUDE — 10:30
+
+Lad mig kigge på den gamle chatlog for at sammenligne formater.
+
+---
+
+#### CLAUDE — 10:31
+
+Her er min vurdering.
+
+---
+
+## PLAN.md
+
+**Formål:** Hvad der skal gøres og i hvilken rækkefølge.
+
+**Virker godt:**
+- Klar modulstruktur med done-kriterier
+- Idé-parkering fanger alt der ikke er scope-relevant nu
+- PDCA + solnedgangsklausul giver evaluerings-framework
+- Afsluttede moduler er kollapset — holder det læsbart
+
+**Problem:** Idé-parkeringen er vokset til ~40% af filen. Det er ikke længere "parkerede idéer" — det er detaljerede design-noter, arkitektur-overvejelser, og halve projektbeskrivelser (session-drift pipeline er 8 linjer tæt tekst). Det gør PLAN.md svær at scanne hurtigt. Hele idé-parkeringen er reelt backlog-briefs der burde bo i `_backlog/` — hvilket er præcis det reformationen planlægger.
+
+**Vurdering:** Fungerer som plan. Vokser i bredden snarere end dybden, hvilket er det rigtige. Reformationen løser det største problem (idé-parkering).
+
+---
+
+## NOW.md
+
+**Formål:** Hvor vi er lige nu. En ny session starter her.
+
+**Virker godt:**
+- "Næste step (start her)" er præcis hvad en ny session behøver
+- Fil-status med stage-tags giver overblik
+- "Åbne tråde" fanger løse ender
+
+**Problem:** Den er for lang. 101 linjer. En ny session skal parse "Hvad sessionen producerede" (30 linjer detaljer), "Planlagt rækkefølge" (8 items), og "Åbne tråde" (10 items) for at komme i gang. Meget af det hører i PROGRESS.md — "Hvad sessionen producerede" er per definition *retrospektiv kontekst*, ikke *current state*. NOW.md burde være ~30 linjer: status, næste step, vigtig kontekst, åbne tråde. Resten er PROGRESS-stof.
+
+**Vurdering:** Funktionelt — men har tendens til at blive en mini-PROGRESS i stedet for en ren state-markør.
+
+---
+
+## PROGRESS.md
+
+**Formål:** Narrativ kontekst — *hvorfor* vi er hvor vi er.
+
+**Virker godt:**
+- Fortæller historien bag beslutningerne — uvurderligt
+- Session 3 og 4 er særligt stærke: de forklarer kontekst-tabsproblemer, VPS-research, og taksonomi-rettelser
+- "Hvad overraskede" og "Hvad gik galt" er ærlig retrospektiv
+
+**Problem:** Sessionerne er ikke kronologiske (9 kommer før 8). Det er forvirrende. Derudover er session 6 og 7 markant mere komprimerede end 3 og 4 — inkonsistent detaljeniveau. Session 9 er solid, men 338 linjer total begynder at gøre filen tung. Der er ingen mekanisme til at arkivere gamle sessioner (fx flytte session 1-5 til PROGRESS-archive.md).
+
+**Vurdering:** Det vigtigste dokument for kontekst-overlevelse. Fungerer. Bør have en arkiveringsstrategi før det bliver for langt.
+
+---
+
+## chatlogs/ vs auto-chatlog/
+
+**chatlogs/ (gammel):**
+- `dump-chatlog.js` — manuelt kald, én fil per dato
+- Format: `T001 [YTTRE] 09:31:38 (session-id)` — sekvensnumre, session-tags, rå tekst
+- 3 output-filer (9., 10., 11. marts)
+- **Styrke:** Sekvensnumre (T001) gør det refererbart. Session-ID per besked.
+- **Svaghed:** Manuelt. Glemmer man at dumpe, er den forældet.
+
+**auto-chatlog/ (ny):**
+- `chatlog-engine.js` — designet til automatisering (--watch planlagt)
+- Format: `### YTTRE — 09:31` — renere, ingen sekvensnumre, ingen session-ID per besked
+- To output-filer: `live.md` (i dag) + `archive.md` (alt historisk med indeks)
+- **Styrke:** live/archive-split, 2-timers blokke med nøgleord, indeks-tabel
+- **Svaghed:** Mangler sekvensnumre (kan ikke refereres fra PROGRESS/NOW). Mangler session-ID per besked. Mangler --watch (kører stadig manuelt). live.md er 50K+ tokens — ubrugelig for Claude at læse.
+
+**Duplikatproblem:** Begge beskeder fra parallelle sessioner optræder dobbelt i den gamle chatlog (T001 og T002 er identiske men fra forskellige sessions). Det sker fordi du kørte to sessioner med samme prompt. Det er et parsing-problem — ikke et arkitekturproblem.
+
+**Min anbefaling:**
+1. **Behold auto-chatlog som arkitektur** — live/archive-splittet er det rigtige design
+2. **Bring sekvensnumre og session-ID per besked tilbage** fra den gamle chatlog — de er for nyttige til at miste
+3. **Slet chatlogs/** når auto-chatlog er komplet — to parallelle systemer er forvirrende
+4. **live.md er for stor** — den skal have samme truncation/indexering som archive, eller den er ubrugelig som kontekst for en ny session
+5. **--watch er nøglen** — uden det er auto-chatlog bare dump-chatlog.js med et andet output-format
+
+---
+
+## Samlet billede
+
+De tre state-filer (PLAN, NOW, PROGRESS) fungerer som system. Problemet er at NOW.md har tendens til at absorbere PROGRESS-stof, og PLAN.md har tendens til at absorbere backlog-stof. Reformationen (pipeline + `_backlog/`) løser PLAN-problemet. NOW.md kræver disciplin — eller en template der tvinger korte sektioner.
+
+Chatlog-situationen er et halvt skift: den nye arkitektur er bedre, men den mangler features fra den gamle, og ingen af dem kører automatisk endnu.
+
+Spørgsmål til dig: vil du have jeg foreslår konkrete ændringer, eller var det her en ren audit?
+
+---
+
+#### CLAUDE — 10:33
+
+## CLAUDE.md — Analyse
+
+Der er to: **global** (`~/CLAUDE.md`) og **projekt** (`Basic Setup/CLAUDE.md`). Claude læser begge automatisk — global først, derefter projekt.
+
+---
+
+### Global CLAUDE.md (~/CLAUDE.md) — 92 linjer
+
+**Formål:** Fortæl Claude hvem du er, hvordan den skal opføre sig, og hvad der findes på maskinen.
+
+**Virker godt:**
+- Kommunikationsreglerne er skarpe og konkrete — "aldrig assume noget ikke eksisterer", "ingen capitulation"
+- Aktuel kontekst peger direkte på NOW.md/PLAN.md/PROGRESS.md — progressiv disclosure fungerer
+- PC-miljø og VPS-adgang er kompakt men komplet
+- Metodik-sektionen destillerer 9 sessioners læring til 6 bullet points
+
+**Problemer:**
+
+1. **"Aktuel kontekst" er forældet.** Den siger "M1-M3 done, M4 i gang" — men M4 er done og M5 er i gang. Det er præcis den type drift der sker når CLAUDE.md indeholder state. CLAUDE.md bør aldrig have state — den bør *pege* på state (NOW.md). Fjern "M1-M3 done, M4 i gang" og behold kun pegen.
+
+2. **`~/dev/scripts/` eksisterer ikke længere.** Det blev slettet i session 7, indholdet flyttet til `dotfiles/bin/`. CLAUDE.md refererer stadig til det. Samme med "7 stk" skills — antallet kan ændre sig.
+
+3. **VPS-sektionen er stor** (~20 linjer) i en fil der er ment som global instruks. Spørgsmålet er: har *hver* session brug for VPS-stier og Qdrant-tunnel? Hvis ikke, bør det flyttes til en reference-fil og kun peges til.
+
+4. **Duplikering med projekt-CLAUDE.md.** "Hedder Yttre", "ingen formel uddannelse", "perfektionist", "lærer ved at gøre" — alt dette står begge steder. Global siger det, projekt gentager det. Princippet bør være: global definerer *hvem du er*, projekt definerer *hvad dette projekt er*.
+
+---
+
+### Projekt CLAUDE.md (Basic Setup/CLAUDE.md) — 32 linjer
+
+**Formål:** Projekt-specifikke instruktioner for dette workspace.
+
+**Virker godt:**
+- Kort. 32 linjer er tæt på ideelt.
+- Workflow-reglerne er konkrete og handlingsrettede
+- "State på disk, aldrig kun i chatten" er en perfekt regel
+
+**Problemer:**
+
+1. **Kontekst-sektionen er ren duplikering.** "Ingen formel uddannelse", "Hedder Yttre" — det står allerede i global. Projekt-CLAUDE.md bør kun sige hvad der er *anderledes* for dette projekt.
+
+2. **Formålet er forældet.** "Dokumentere og lære de fundamentale opsætninger" — det var sandt i M1. Nu er projektet et personligt udvikler-fundament med pipeline-arkitektur, ADR-templates, og chatlog-engine. Formålet bør afspejle hvad projektet faktisk er blevet.
+
+3. **Ingen reference til reformationen.** Projekt-CLAUDE.md nævner ikke pipeline (Backlog/PoC/DLR/SIP/BMS), ADR-struktur, eller hvor ting bor. En ny session der kun læser CLAUDE.md vil ikke vide at `_backlog/` eller `DLR/` eksisterer (når de er oprettet).
+
+4. **"PLAN.md er det levende dokument"** — men NOW.md er det dokument sessioner faktisk starter med. PLAN.md er roadmap. Formuleringen bør justeres.
+
+---
+
+### Samlet vurdering af hele systemet
+
+| Fil | Formål | Status |
+|-----|--------|--------|
+| Global CLAUDE.md | Hvem er Yttre, hvordan opfører Claude sig | Fungerer, men har state-drift og forældet info |
+| Projekt CLAUDE.md | Hvad er dette projekt, workflow-regler | For kort — mangler pipeline-kontekst. Duplikerer global |
+| PLAN.md | Hvad skal gøres | Fungerer, idé-parkering er for stor (reformationen løser det) |
+| NOW.md | Hvor er vi nu | Fungerer, men absorberer PROGRESS-stof |
+| PROGRESS.md | Hvorfor ser det ud som det gør | Det stærkeste dokument. Bør have arkiveringsstrategi |
+
+**Det reelle mønster:** Alle filer har samme tendens — de *vokser* fordi ny information tilføjes, men gammel information fjernes sjældent. CLAUDE.md har forældede stier. NOW.md har retrospektive detaljer. PLAN.md har mini-projektbeskrivelser i parkeringen. PROGRESS.md har inkonsistent detaljeniveau.
+
+Det er ikke et designproblem — systemet er godt designet. Det er et vedligeholdelsesproblem. Reformationen løser en del af det (idé-parkering → `_backlog/`). Men CLAUDE.md-filerne bør også have en PDCA-evaluering: er de stadig korrekte? Afspejler de virkeligheden?
+
+---
+
+#### YTTRE — 10:39
+
+så hvilke ændringer vil du foreslå (ide parkingen er flyttet over i backlog, men ligger stadig i plan.md (den burde blot referere blacklog. eller hvad ? ) jeg synes jo det er relevant at claude.md ved hvilke idéer og projekter der ligger i hhv backlog, poc, dlr og sip. men ikke for meget, kontext vinduet skal beskyttes mod rod. jeg kan huske jeg foreslog at plan.md startede som v1. v1 burde være i plan.md INDTIL plan.md v2 blev indført. når vi indføre plan.dm v3 så er alt hvad der kommer før v3 v2 (bemærk, det er kun det som er udført fra v2 der bliver. hvis noget ikke er udført skubbes det ned i v3. der skal dog være et arkiv hvor den komplette origianal af v1 og v2, kan findes. det har jeg nævnt før men det blev aldirg til noget
+
+---
+
+#### CLAUDE — 10:40
+
+OK. PLAN.v1.md ligger i references/. Her er mine konkrete forslag:
+
+---
+
+### 1. PLAN.md versionering
+
+**Princip:** PLAN.md er altid den *aktuelle* plan. Når en ny version indføres:
+- Alt udført fra nuværende version bliver historik (arkiveres som komplet original)
+- Alt uudført skubbes ned i den nye version
+- PLAN.md hedder altid bare PLAN.md — versionsnummeret står indeni
+
+**Konkret nu:**
+- `references/PLAN.v1.md` → `_ARC/PLAN.v1.md` (komplet original, frosset)
+- Når v3 indføres: gem nuværende PLAN.md som `_ARC/PLAN.v2.md` (frosset kopi), skriv ny PLAN.md med uudførte items + ny struktur
+
+Det var planen i reformationen allerede — `_ARC/` er det rigtige sted for frosne originaler.
+
+---
+
+### 2. PLAN.md: idé-parkering → reference til _backlog/
+
+Erstat hele idé-parkeringen (de ~60 linjer) med:
+
+```markdown
+## Idéer og fremtidige projekter
+
+Se `_backlog/` for alle parkerede idéer med briefs.
+Aktive research-projekter i `DLR/`, prototyper i `PoC/`, sandbox-tests i `SIP/`.
+```
+
+3-4 linjer i stedet for 60. Detaljerne bor hvor de hører til.
+
+---
+
+### 3. CLAUDE.md (projekt) — opdatering
+
+Nuværende formål er forældet. Forslag:
+
+```markdown
+# Basic Setup
+
+Personligt udvikler-fundament. Startede som Windows-opsætning, vokset til 
+framework for hvordan Yttre arbejder med AI og kode.
+
+## Pipeline
+
+Projekter følger: _backlog/ → PoC/ → DLR/ → SIP/ → roden (BMS)
+Hver mappe har README.md med governance. ADR bor med det den beskriver.
+
+## State-filer
+
+- NOW.md — hvor vi er (start her)
+- PLAN.md — hvad der skal gøres (moduler + rækkefølge)
+- PROGRESS.md — hvorfor det ser ud som det gør (narrativ)
+
+## Workflow
+
+- PLAN.md opdateres efter hvert afsluttet step
+- NOW.md opdateres automatisk ved pauser, beslutninger, session-slut
+- Commit + push efter hver logisk ændring
+- State på disk — alt vigtigt overlever en session-crash
+- Spørg før du bygger. Diskussion færdig → bekræftelse → kode.
+```
+
+Fjernet: duplikering fra global (navn, uddannelse, perfektionisme). Tilføjet: pipeline-reference, state-fil forklaring. Beholdt: workflow-regler.
+
+---
+
+### 4. Global CLAUDE.md — fix drift
+
+Tre rettelser:
+- **Aktuel kontekst:** fjern "M1-M3 done, M4 i gang" — erstat med bare "Læs NOW.md for aktuel status"
+- **`~/dev/scripts/`** → slet linjen (eksisterer ikke, flyttet til dotfiles/bin/)
+- **Skills "7 stk"** → fjern antal, bare sig "skills/" (antal ændrer sig)
+
+---
+
+### 5. NOW.md — stram op
+
+Flyt "Hvad sessionen producerede" til PROGRESS.md ved session-slut. NOW.md beholder kun:
+- Status (1 linje)
+- Næste step (nummereret liste)
+- Vigtig kontekst (max 5 bullets)
+- Åbne tråde (liste)
+
+Mål: ~30 linjer. Reglen: hvis det forklarer *hvad der skete*, hører det i PROGRESS. Hvis det forklarer *hvad der skal ske*, hører det i NOW.
+
+---
+
+### 6. PROGRESS.md — arkiveringsstrategi
+
+Når PLAN v3 indføres, flyt session 1-7 (alt pre-v3) til `_ARC/PROGRESS-v2.md`. PROGRESS.md starter frisk med en linje der peger bagud:
+
+```markdown
+Tidligere sessioner (1-7): se _ARC/PROGRESS-v2.md
+```
+
+---
+
+Vil du have jeg implementerer noget af det, eller vil du tygge på det først?
+
+---
+
+#### YTTRE — 10:44
+
+hvad er formålet med progress og hvad betyder det når ældre "afsnit" af progress arkiveres? hvis sessionen læser progress, now og plan.md, men der er mere kontekts at hente i arkiverne risikere vi for lidt kontekts? hvor tæt kan man komme på følelsen af at en ny session føles som en fortsættelse af forrige session? burde vi kigge på hvad proffesionelle brugere gør? anthopic plejer at have god og løbende opdatere viden - er der andre kilder? hvad tænker du om dette skriv?
+
+---
+
+#### CLAUDE — 10:44
+
+Gode spørgsmål. Lad mig tænke højt.
+
+**PROGRESS.md's formål** er at en ny session kan forstå *hvorfor* tingene ser ud som de gør — ikke bare *hvad* der er gjort. NOW.md siger "vi er her", PLAN.md siger "vi skal derhen", PROGRESS.md siger "her er hvordan vi kom hertil og hvad vi lærte undervejs."
+
+**Arkiveringproblemet:** Du har ret i at arkivering = gemt kontekst = potentielt tabt kontekst. Hvis session 3's kontekst-tab-problem er forklaret i PROGRESS.md, og den sektion flyttes til `_ARC/`, så mister en ny session den indsigt. Spørgsmålet er: *hvornår stopper noget med at være relevant kontekst og bliver historik?*
+
+Svaret er ikke binært. Session 3's *konkrete problem* (NOW.md var ikke opdateret) er løst — det er historik. Men *princippet* det afslørede (state på disk, hooks der håndhæver) er stadig levende. Det princip bor nu i CLAUDE.md og Metodik-sektionen. Så konteksten *er* bevaret — bare destilleret ned til sin essens og flyttet til det rigtige sted.
+
+Det er egentlig mønsteret: **PROGRESS er en tragt.** Rå oplevelse → destilleret indsigt → princip i CLAUDE.md/PLAN.md. Når destilleringen er sket, kan det rå materiale arkiveres uden tab.
+
+**Men** — det kræver at destilleringen faktisk sker. Det er den ikke altid gjort. Og det er her risikoen er.
+
+**Hvor tæt kan man komme?** Ærligt: ikke 100%. En ny session starter med ~200 linjer CLAUDE.md + NOW.md + PLAN.md + PROGRESS.md + MEMORY.md. Det er måske 20% af hvad den forrige session vidste. Resten var i kontekstvinduet — nuancer, tone, halvfærdige tanker, din frustration over noget specifikt. Det forsvinder.
+
+Det man *kan* gøre er at minimere de første 5 beskeders "genopvarmning." Det er realistisk. Nul genopvarmning er ikke.
+
+---
+
+**Hvad angår kilder** — ja, jeg tror det er værd at researche. Anthropic har skrevet specifikt om context engineering, og der er community-erfaringer fra folk der bruger Claude Code professionelt. Lad mig kigge.
+
+---
+
+#### CLAUDE — 10:48
+
+Du har ret — live.md indeholder d. 11's samtale, og det er nu d. 12. Lad mig køre engine'en så den splitter korrekt.
+
+---
+
+#### CLAUDE — 10:49
+
+God research. Lad mig læse hvad den eksterne agent fandt.
+
+---
+
+#### CLAUDE — 10:49
+
+Virker. D. 11's 200 beskeder er nu i archive.md, og live.md har kun d. 12's 10 beskeder (denne session).
+
+Men — det er fordi engine'en rebuilder alt fra scratch hver gang. Den *ser* ikke at datoen skiftede og kører en pipeline. Den parser bare alle .jsonl filer og splitter på `today vs not-today`. Funktionelt korrekt, men det er brute-force, ikke inkrementelt. Det er fint for nu.
+
+---
+
+#### CLAUDE — 10:50
+
+Solid research. Her er svaret på dine spørgsmål med det nye materiale.
+
+---
+
+### PROGRESS.md — formål og arkivering
+
+Researchen bekræfter at **living artifacts > samtalehistorik**. Anthropic selv bruger `claude-progress.txt` — kronologisk log som nye sessioner læser. Det er præcis NOW.md.
+
+PROGRESS.md's rolle er anderledes: det er *destilleringsapparatet*. Rå oplevelse kommer ind, indsigter kommer ud og lander i CLAUDE.md, PLAN.md, eller MEMORY.md. Når destilleringen er sket, kan det rå materiale arkiveres.
+
+**Arkivering er trygt NÅR:**
+- Principperne er trukket ud og bor i CLAUDE.md (fx "state på disk" — det var session 3's læring)
+- Beslutningerne er dokumenteret i ADR'er (fx pipeline-design fra session 9)
+- Fejlmønstrene er fanget i MEMORY.md feedback-entries
+
+**Arkivering er risikabelt NÅR:**
+- Der er indsigter der aldrig blev destilleret
+- Konteksten bag en beslutning kun findes i PROGRESS og ikke i ADR
+
+Så svaret er: **arkivér, men destillér først.** Det er en bevidst handling, ikke bare "flyt filen."
+
+---
+
+### Hvor tæt kan man komme?
+
+Researchen siger **~80% kontinuitet** er realistisk med hybrid memory (CLAUDE.md + daterede noter + git state). 100% er ikke muligt — nuancer, tone, halvfærdige tanker forsvinder.
+
+Men der er et konkret trick vi ikke bruger: **`claude --continue`** genoptager seneste session med fuld kontekst. Det er den tætteste vej til "fortsættelse." Problemet er at det kun virker for *den seneste* session, og kontekstvinduet fyldes stadig op.
+
+Anthropic's to-fase arkitektur er relevant:
+1. **Initializer** — etablerer fundament (læs NOW.md, git state, verificér environment)
+2. **Working session** — incremental progress med clear artifacts
+
+Vi gør allerede det meste af dette. Det vi mangler er en **eksplicit instruktion i CLAUDE.md** der siger "Læs NOW.md ved session start." Uden den er det frivilligt.
+
+---
+
+### Nye værktøjer vi ikke bruger endnu
+
+Researchen afslørede tre ting:
+
+1. **`@import` syntax** — CLAUDE.md kan importere andre filer:
+   ```markdown
+   @docs/pipeline-governance.md
+   @NOW.md
+   ```
+   Det er præcis progressive disclosure uden at fylde CLAUDE.md.
+
+2. **`.claude/rules/`** med path-scoping — regler der kun aktiveres for specifikke filer:
+   ```yaml
+   ---
+   paths:
+     - "DLR/**"
+   ---
+   Alle DLR-projekter skal have ADR.md
+   ```
+
+3. **Compaction-instruktion** — man kan fortælle Claude hvad der skal bevares ved compaction:
+   ```markdown
+   When compacting, preserve: current task state, modified files, active decisions
+   ```
+   Det reducerer informationstab ved auto-compaction markant.
+
+---
+
+### Context rot — det reelle problem
+
+Researchen identificerer fire typer context rot:
+
+| Type | Vores eksempel |
+|------|----------------|
+| **Poisoning** (forældet info) | `~/dev/scripts/` i CLAUDE.md (eksisterer ikke) |
+| **Distraction** (irrelevant info) | 60 linjer idé-parkering i PLAN.md |
+| **Confusion** (lignende info blandes) | To chatlog-systemer (chatlogs/ + auto-chatlog/) |
+| **Clash** (modstridende info) | "M4 i gang" i global CLAUDE.md vs M4 ✅ i PLAN.md |
+
+Vi har alle fire. Løsningen er den samme som for kode: **regelmæssig pruning.** Behandl CLAUDE.md og state-filer som kode der skal reviewes.
+
+---
+
+### Hvad det betyder for forslagene
+
+Mine 6 forslag fra tidligere holder, men researchen tilføjer:
+
+**7. @import i CLAUDE.md** — i stedet for at skrive pipeline-info direkte i CLAUDE.md, importér det:
+```markdown
+## Pipeline
+@project-reformation/README-governance-summary.md
+```
+
+**8. Compaction-instruktion** — tilføj til projekt-CLAUDE.md:
+```markdown
+When compacting, always preserve: current task, modified files, open decisions, pipeline stage of active work
+```
+
+**9. Session-start instruktion** — tilføj til global CLAUDE.md:
+```markdown
+Ved session start: Læs NOW.md først. Den fortæller dig hvor vi er og hvad næste step er.
+```
+
+**10. Context rot audit** — gør det til en del af PDCA Check-fasen: "Er CLAUDE.md, NOW.md, og MEMORY.md stadig korrekte?"
+
+---
+
+Researchen bekræfter at dit system er arkitekturelt rigtigt — NOW/PLAN/PROGRESS er præcis det mønster professionelle bruger. Problemet er vedligeholdelse, ikke design. Og der er lavthængende frugter (`@import`, compaction-instruktion, session-start instruktion) vi kan plukke uden at redesigne noget.
+
+Vil du tygge videre, eller skal vi begynde at implementere?
+
+---
+
+#### CLAUDE — 11:01
+
+**chatlog-search** er en skill der søger i gamle chatlogs — den blev brugt én gang d. 10/3 for at finde en diskussion om Stow. Journalen logger om chatloggen faktisk er nyttig som kilde.
+
+**auto-chatlog.md** er tom — aldrig udfyldt.
+
+**checkpoint.md** har 5 solide entries fra d. 10/3.
+
+Alle tre mangler entries fra d. 11 og 12. Lad mig tilføje:
+
+---
+
+#### CLAUDE — 11:02
+
+Ja, alle tre er opdateret nu:
+
+- **checkpoint.md** — tilføjet entry #6 (d.11) og #7 (d.12) der dokumenterer det systemiske hul med manglende PLAN.md-opdatering, manglende commit+push, og at skillen blev brugt som ord ikke som pipeline
+- **auto-chatlog.md** — udfyldt fra tom til 5 entries der dækker hele forløbet: første kørsel, nøgleord-problem, live-forsinkelse, datoskift, og parkerede features
+- **chatlog-search.md** — ingen nye entries (skillen er ikke brugt siden d. 10)
+
+---
+
+#### CLAUDE — 11:32
+
+Godt spørgsmål. Lad mig læse NOW.md, PLAN.md og PROGRESS.md for at vurdere hvad der er "nu" vs "reformation."
+
+---
+
+#### CLAUDE — 11:32
+
+Her er min vurdering, sorteret i tre spande:
+
+---
+
+### 1. Gør NU (ingen konflikt med reformationen, tabes hvis det venter)
+
+| Ændring | Hvorfor nu | Effort |
+|---------|-----------|--------|
+| `@NOW.md` import i projekt-CLAUDE.md | Sikrer session-start læser NOW.md automatisk. Virker uanset reformation | 1 linje |
+| Compaction-instruktion i CLAUDE.md | Reducerer informationstab ved auto-compaction. Uafhængig af struktur | 2 linjer |
+| Fjern context rot i CLAUDE.md | Global CLAUDE.md siger "M4 i gang" — det er forkert. Hygiejne | 5 min |
+| Fjern idé-parkering fra PLAN.md, erstat med pointer | Idéerne flyttes til backlog ved reformation. Men *lige nu* fylder de 60 linjer context distraction | 2 min |
+
+### 2. Beslut NU, implementér under reformationen
+
+| Beslutning | Hvorfor beslutte nu | Risiko ved at vente |
+|-----------|-------------------|-------------------|
+| PLAN versionering (v2 → _ARC/, v3 aktiv) | Reformationen *er* v3. Uden beslutningen nu, ved næste session ikke hvad v3 indeholder vs videreføres | Glemmes, ad hoc i stedet |
+| PROGRESS arkiveringspolitik ("destillér først, arkivér dernæst") | Definerer hvornår sessioner flyttes til _ARC/ | Session 3-5 arkiveres uden destillering |
+| Hvad CLAUDE.md ved om pipeline | Skal den kende alle backlog-items? Kun stages med aktive projekter? | CLAUDE.md vokser ukontrolleret |
+
+### 3. Vent til reformation
+
+| Ændring | Hvorfor vente |
+|---------|--------------|
+| Opret _backlog/, DLR/, SIP/, _ARC/ | Det ER reformationen. Gør det én gang, rigtigt |
+| Flyt filer til ny struktur | Kræver mapperne eksisterer |
+| ADR-INDEX.md | Kræver ADR'er er skrevet |
+| Briefs fra idé-parkering | Kræver _backlog/ og brief-format bekræftet |
+| PROGRESS.md omstrukturering | Hænger sammen med arkiveringspolitik |
+
+---
+
+### Risikoen du nævner: beslutninger uden hjem
+
+Du har ret. Denne session laver meta-beslutninger (compaction-strategi, versioneringspolitik, arkiveringspolitik) der ikke har en ADR, et projekt, eller en brief. De lever kun i chatten og — hvis vi er disciplinerede — i NOW.md.
+
+**Forslag:** Skriv en kort "reformation-decisions.md" i `project-reformation/` nu. Ikke en ADR, ikke et formelt dokument — bare en liste af beslutninger taget *om* reformationen, med dato. Så har næste session ét sted at kigge. Det koster 5 minutter og eliminerer risikoen for at beslutninger fra denne session glemmes.
+
+Alternativet er at stole på NOW.md + PROGRESS.md, men de er skrevet som narrativ, ikke som beslutningsliste. En beslutning begravet i afsnit 3 af session 9's progress er svær at finde.
+
+---
+
+Vil du have mig til at lave spand 1 (de 4 hurtige ændringer) + reformation-decisions.md nu?
+
+---
+
+#### CLAUDE — 11:34
+
+Ja, det er præcis hvad changelog i ADR.md er til. Lad mig læse den.
+
+---
+
+#### CLAUDE — 11:35
+
+Ja — changelog er præcis det rigtige sted. Det er dagbogsstil, dateret, og bor i ADR'en for det projekt beslutningerne handler om.
+
+Spand 1-ændringerne (CLAUDE.md, PLAN.md) *er* reformation-beslutninger — de handler om hvordan state-filer fungerer. Changelog-entry'en fanger hvad vi besluttede og hvorfor.
+
+Så: jeg skriver en ny changelog-entry i ADR.md med beslutningerne fra denne session, og laver derefter de 4 hurtige ændringer. Giver det mening?
+
+---
+
+#### YTTRE — 11:40
+
+men hvis project reformation bliver det kommende BMS (BMS eller rodmappen skal selvfølgelig ikke hedde reformation, men heller ikke basic setup, hvad tænker du om navn) så burde det project jo også indeholde plan, progress og now.md dokumenter og struktur osm vi har snakket om her? det som ligger i rodmappen nu (og som burde være der, skal vil også ligge i reformation mappen? skal der også ligge en implementationsplan? eller høre den ind under v3? skal der være en arkiv mappe i roden hvor tidligere plan.,md version ligger. eller er det det vi kalder for ARC, men hvor er readme for arc. mange spørgsmål rodet sammen her, men hvad tænker du
+
+---
+
+#### CLAUDE — 11:40
+
+Mange spørgsmål, men de hænger sammen. Lad mig skille dem ad.
+
+**Kerneproblemet:** project-reformation/ er et DLR-projekt der, når det promoveres til BMS, *opløser sig selv* ind i roden. Reformationens output ER den nye rodstruktur. Mappen forsvinder.
+
+Det betyder:
+
+**Reformation behøver IKKE eget NOW/PLAN/PROGRESS.** Det er det aktuelle arbejde i rodprojektet. Reformationens state er allerede i rodens NOW.md ("næste: implementér mappestruktur"). At give reformation sine egne state-filer ville skabe to parallelle sandheder.
+
+**Reformation behøver en implementeringsliste.** Den eksisterer allerede — ADR.md sektion 8 (backlog) + NOW.md's "næste step" liste. Det er tilstrækkeligt. En separat implementeringsplan ville bare duplikere.
+
+**PLAN.md v3 = post-reformation.** Rækkefølgen er:
+1. Arkivér PLAN.md v2 → `_ARC/PLAN.v2.md` (PLAN.v1.md ligger allerede i references/, den flyttes også til _ARC/)
+2. Skriv PLAN.md v3 som afspejler den nye virkelighed (pipeline-stages, ikke bare moduler)
+3. Reformation-implementeringen er *broen* mellem v2 og v3
+
+**_ARC/ er arkivet.** Det mangler en README — den skrives sammen med de andre README'er under reformationen. _ARC/ indeholder:
+- Komplette originaler (PLAN.v1.md, PLAN.v2.md)
+- Arkiverede PROGRESS-sektioner (efter destillering)
+- Implementation journals (erstattet af ADR)
+- Deprecated filer
+
+---
+
+**Navnespørgsmålet.** Du har ret i at hverken "Basic Setup" eller "Reformation" duer som permanent navn. Projektet er dit personlige udviklerfundament — metodik, værktøjer, AI-workflow, alt samlet.
+
+Nogle bud:
+
+| Navn | Fordel | Ulempe |
+|------|--------|--------|
+| **Fundament** | Præcist dansk, det ER fundamentet | Generisk |
+| **Værksted** | Visuelt, det er hvor tingene bygges | Mere "sted" end "system" |
+| **Stilladset** | Du bruger allerede metaforen i ADR'en | Stillads fjernes når bygningen er færdig — men det er det *ikke* |
+| **Rodnet** | Yggdrasil-tema (rodnettet under træet) | Kræver forklaring |
+| **Grund** | Kort, dansk, "grunden det hele står på" | Måske for kort |
+
+Men det er din beslutning — det er dit projekt og dit navn. Hvad resonerer?
+
+---
+
+#### YTTRE — 11:44
+
+yggdra? mit navn er kristoffer Yttrehus, kalde navn Yttre, en periode på gymnasiet blev jeg kaldt for Yggdrasil. men Yggdrasil er 3 stavelser Yggdra er to og lyder identisk med Yttre. Det er et system der bliver forlængelsen af mig og kompensere for alt det min menneskelige hjerne gerne vil men ikke evner at have i hjernen (struktur)
+
+---
+
+#### CLAUDE — 11:44
+
+Yggdra *er* allerede dit system. Din globale CLAUDE.md åbner med:
+
+> **Yggdra** — Personligt AI-system. PC (her) + VPS (72.62.61.51) via SSH.
+
+VPS-repoet hedder `/root/Yggdra/`. Det du bygger her på PC'en er ikke et separat projekt — det er den lokale rod af det samme træ.
+
+"Basic Setup" var et arbejdsnavn for et opsætningsprojekt. Men det du faktisk bygger er Yggdras PC-fundament: metodik, pipeline, state-management, skills, værktøjer. Det *er* Yggdra.
+
+Så spørgsmålet er ikke "skal det hedde Yggdra?" — det hedder allerede Yggdra. Spørgsmålet er om repoet skal omdøbes fra `Basic Setup` til `Yggdra`.
+
+Og det giver mening. Ét system, ét navn. VPS og PC er to noder i samme organisme.
+
+---
+
+#### YTTRE — 11:56
+
+så hvad gøres nu her før reformationen (burde du måske læse de 20 timers beskeder i hovedsessionen (den jeg har skrevet mest i) i tilfælde af du med din nuværende kontekst har overset noget essentielt.
+
+---
+
+#### CLAUDE — 11:56
+
+Ja, lad mig læse chatloggen. Det er den rigtige rækkefølge — forstå hvad der er sagt før jeg foreslår handling.
+
+---
+
+#### CLAUDE — 11:56
+
+Det er kun denne sessions chatlog. Lad mig finde hovedsessionens chatlog.
+
+---
+
+#### CLAUDE — 11:57
+
+Godt. Jeg har nu læst hele chatloggen (T001-T158, 20+ timers samtale). Her er hvad jeg ser:
+
+---
+
+### Hvad chatloggen tilføjer som min analyse manglede
+
+**1. Backlog er allerede designet.** Session 9 nåede langt: brief-format, opsummering→origin story→rå input, "klar til"-felt, `_backlog/` som mappe. Det er ikke en åben diskussion — det er besluttet.
+
+**2. Triagen er udført.** 13 briefs → _backlog/, 2 → PoC, 3 → DLR, 1 → SIP. Plus 7 parallel-task outputs fra ~/parallel-tasks/ der mapper direkte til backlog-filer.
+
+**3. "Spørg før du bygger" har en history.** Claude gik i bygge-mode (T016-T019) før designet var færdigt. Yttre korrigerede (T020). Det er ikke bare en regel — det er en hændelse der udløste reglen.
+
+**4. Stage vs Status er besluttet.** To dimensioner: Stage (Backlog/PoC/DLR/SIP/BMS) og Status (Active/Deprecated/Archived). Det er allerede i ADR-templaten.
+
+**5. Roden ER BMS.** Eksplicit beslutning (T112). Etablerede ting flyttes ikke ind i en BMS-mappe.
+
+**6. ADR-templaten har 11 sektioner.** Origin Story øverst, Original ADR nederst — gennemitereret 5+ gange i samtalen.
+
+**7. Checkpoint-skillen fejlede systematisk.** 3 ufuldstændige checkpoints i session 9 før det fulde gennemløb (T146). Det udløste en brief om skill-arkitektur (instrukser uden verifikation).
+
+---
+
+### Hvad det ændrer ved "hvad gøres nu vs reformation"
+
+Min tidligere spand 1 (hurtige ændringer) er for *lille*. Session 9 var allerede langt foran. Det der faktisk er "nu":
+
+**Det eneste der mangler før reformationen kan implementeres er:**
+
+1. **Context rot fix** — CLAUDE.md (begge) har forældet info. Det er hygiejne, 5 min, uafhængigt af alt andet
+2. **Changelog-entry i reformation ADR.md** — fang denne sessions beslutninger (navn → Yggdra, context engineering research, PLAN versionering, PROGRESS arkiveringspolitik)
+3. **@import NOW.md + compaction-instruktion** i projekt-CLAUDE.md — lavthængende frugt fra researchen
+
+**Alt andet ER reformationen.** Mappeoprettelse, fil-flytning, briefs, ADR-INDEX — det er punkt 1-8 i NOW.md's "næste step"-liste. Det var designet og besluttet i session 9. Det venter bare på at blive gjort.
+
+Skal jeg lave punkt 1-3 nu?
+
+---
+
+### 12:00–14:00 <a id="2026-03-12-12"></a>
+
+#### YTTRE — 12:09
+
+hvad med plan.md v3 hvad bliver dens opbygning. og mht til context engineering kan jeg se det er et punkt i den nuværende plan, men det er jo et projekt i sig selv, der burde ligge i den fremtidige poc eller dlr. burde lad os gør de 3 ting du foreslår, inklusiv plan.md gennemgang?
+
+---
+
+#### CLAUDE — 12:09
+
+Ja. Lad mig starte med at tænke over PLAN.md v3 inden jeg rører noget.
+
+**PLAN.md v3 — opbygning:**
+
+v2 er modulbaseret (M1-M8). Men virkeligheden har ændret sig:
+- M1-M4 er done og bliver historik
+- M5 er halvfærdig (step 11-17)
+- M6 (terminal-automatisering) er et lille modul
+- M7 (context engineering) er vokset til et selvstændigt projekt — det hører i DLR eller PoC, ikke som et modul i PLAN.md
+- M8 (skabeloner) overlapper med reformation
+
+Så v3 bør afspejle den nye virkelighed: **pipeline-strukturen er planen.** Ikke moduler, men stages med projekter.
+
+Udkast:
+
+```
+PLAN.md v3:
+
+## Status (NOW-sektion integreret)
+- Aktuel status, næste step
+
+## Aktive moduler (BMS-rækkefølge)
+- M5 step 11-17 (det der mangler for at afslutte)
+- M6 (terminal-automatisering)
+
+## Pipeline-overblik
+- _backlog/: 13 briefs (→ link)
+- PoC/: projekt-omdøbning, skill-arkitektur
+- DLR/: reformation, session-drift, file-watcher
+- SIP/: auto-chatlog
+
+## Afsluttet
+- M1-M4 (→ _ARC/PLAN.v2.md for detaljer)
+
+## Metodik
+- PDCA, solnedgangsklausul (beholdes fra v2)
+```
+
+**Mht context engineering:** Du har ret — det er vokset ud af "et step i M7" til noget der fortjener sin egen ADR og sin egen plads i pipelinen. Researchen vi lavede i dag (references/context-engineering-research.md) er allerede DLR-materiale. Det bør have en brief eller ADR, ikke bare et M7-step.
+
+---
+
+Nu laver jeg de 3 ting. Starter med at læse begge CLAUDE.md filer (allerede i kontekst), så ændrer.
+
+---
+
+#### CLAUDE — 12:10
+
+Nu laver jeg alle 3. Starter med ændringerne:
+
+**1. Global CLAUDE.md — fix context rot:**
+
+---
+
+#### CLAUDE — 12:10
+
+**2. Projekt CLAUDE.md — opdatering:**
+
+---
+
+#### CLAUDE — 12:10
+
+**3. Changelog-entry i reformation ADR.md:**
+
+---
+
+#### CLAUDE — 12:11
+
+Nu tilføjer jeg context engineering til backlog-listen:
+
+---
+
+#### CLAUDE — 12:11
+
+Done. Her er hvad der er gjort:
+
+**1. Global CLAUDE.md — 3 fixes:**
+- "M1-M3 done, M4 i gang" → fjernet, peger nu bare til NOW.md
+- `~/dev/scripts/` → slettet (eksisterer ikke, flyttet til dotfiles/bin/ i session 7)
+- `skills/ (7 stk)` → `skills/` (antal fjernet)
+- "Basic Setup" markeret med "under omdøbning til Yggdra"
+- `claude-audit/` og `BLUEPRINT.md` referencer fjernet (cruft)
+
+**2. Projekt CLAUDE.md — omskrevet:**
+- Formål opdateret (ikke længere "lær grundlæggende opsætninger")
+- Pipeline-reference tilføjet
+- `@NOW.md` import tilføjet (ny session læser automatisk NOW.md)
+- Compaction-instruktion tilføjet
+- "Spørg før du bygger" tilføjet (var diskuteret i session 9 men aldrig skrevet ind)
+- Duplikering med global fjernet (navn, uddannelse)
+
+**3. Reformation ADR.md — changelog + backlog:**
+- Session 10 entry med alle beslutninger (omdøbning, context engineering, PLAN v3, arkiveringspolitik)
+- 5 nye backlog-items (context engineering projekt, omdøbning, PLAN v3 design, arkiveringspolitik)
+
+---
+
+**Mht PLAN.md v3:** Den bygges under reformationen, men strukturen er:
+
+| Sektion | Indhold |
+|---------|---------|
+| **Status** | NOW-info integreret (1-3 linjer) |
+| **Aktive moduler** | M5 step 11-17, M6 — det der faktisk mangler |
+| **Pipeline-overblik** | Hvad der er i _backlog/, PoC/, DLR/, SIP/ (kort, med links) |
+| **Afsluttet** | M1-M4 → én linje med link til _ARC/PLAN.v2.md |
+| **Metodik** | PDCA + solnedgangsklausul (beholdes) |
+
+**Mht context engineering:** Det trækkes ud af M7 og bliver sit eget projekt — sandsynligvis DLR, da vi allerede har researchen. Det får sin egen ADR ved reformationen.
+
+---
+
+#### YTTRE — 12:12
+
+så min idé med v1 indtil indførelsen af v2 indtil indførelsen af v3 med et lille skriv der forklarer skiftet fra en version til en anden er ikke et holdbart forslag ?
+
+---
+
+#### CLAUDE — 12:13
+
+Jo, det er holdbart. Jeg droppede det ikke — det er allerede i ADR backlog (linje 62): "afsluttede moduler → _ARC/PLAN.v2.md".
+
+Men lad mig være præcis om hvad dit forslag faktisk er, for jeg tror ikke jeg har gengivet det korrekt nok:
+
+**Dit forslag:**
+1. PLAN.md er altid den levende plan, uden versionsnummer i filnavnet
+2. Når v3 indføres: gem nuværende PLAN.md som `_ARC/PLAN.v2.md` (frosset, komplet original)
+3. I _ARC/ ved hver arkiveret version: et kort skriv der forklarer *hvad udløste versionsskiftet* og *hvad der ændrede sig* — ikke bare en dump, men kontekst
+4. PLAN.v1.md (allerede i references/) flyttes til _ARC/ med samme skriv
+
+Det skriv er reelt en mini-ADR for selve versionsskiftet. Noget i stil med:
+
+```
+# PLAN.v2.md — Arkiveret 2026-03-12
+
+## Hvad udløste skiftet til v3
+Project Reformation ændrede projektets struktur fra modulbaseret 
+(M1-M8) til pipeline-baseret (Backlog→PoC→DLR→SIP→BMS). 
+Modulerne M1-M4 var afsluttede, M7 var vokset ud af sin plads,
+og idé-parkeringen var blevet for tung.
+
+## Hvad der blev videreført til v3
+- M5 step 11-17 (uafsluttet)
+- M6 (uafsluttet)
+- Metodik (PDCA, solnedgangsklausul)
+
+## Hvad der blev droppet/omstruktureret
+- M7 → selvstændigt DLR-projekt
+- M8 → overlapper med reformation
+- Idé-parkering → _backlog/ briefs
+```
+
+Så ja — det holder. Og det koster ingenting ekstra, fordi skrivet skrives én gang ved versionsskiftet.
+
+Vil du have mig til at skrive det ind i ADR backlog som en mere konkret specifikation, eller er det nok som det står?
+
+---
+
+#### YTTRE — 12:16
+
+så den fremtidige v3 vil så hvordan ud (kan du opridse det for mig)
+
+---
+
+#### CLAUDE — 12:16
+
+Her er PLAN.md v3 udkast:
+
+```markdown
+# Yggdra — Plan v3
+
+**Mål:** Personligt AI-system og udvikler-fundament.
+**Status:** Se NOW-sektion nedenfor.
+**Metode:** PDCA-cyklus per projekt. Pipeline: Backlog → PoC → DLR → SIP → BMS.
+
+---
+
+## NOW
+
+[Integreret fra NOW.md — 5-10 linjer max]
+- Aktuel status (1 linje)
+- Næste step (nummereret)
+- Åbne tråde (kort liste)
+
+---
+
+## Aktive moduler
+
+### M5: PC-setup — step 11-17
+11. [ ] Filsystem
+12. [ ] X1 Carbon BIOS
+13. [ ] .wslconfig
+14. [ ] Fonts + extensions
+15. [ ] Dev Drive
+16. [ ] Poppler PATH
+17. [ ] Quick reference
+
+### M6: Terminal-automatisering
+1. [ ] Definér terminaler per workspace
+2. [ ] tasks.json med runOn
+3. [ ] Test og tilpas
+
+---
+
+## Pipeline-overblik
+
+### _backlog/ (13 briefs)
+research-vidensbank, visualisering, notion-spejling, 
+voice-integration, mcp-kompendium, abonnement-overblik, 
+pdf-toolkit, webscraping, cross-session-review, 
+integrationer, plan-konsolidering, lokal-llm, 
+[+ nye briefs tilføjes løbende]
+
+### PoC/
+- projekt-omdøbning → Yggdra
+- skill-arkitektur (instrukser uden verifikation)
+
+### DLR/
+- **project-reformation** (denne omstrukturering)
+- session-drift-pipeline
+- file-watcher
+- context-engineering (udtrukket fra M7)
+
+### SIP/
+- auto-chatlog (chatlog-engine.js)
+
+---
+
+## Afsluttet
+
+M1 (Git), M2 (VS Code), M3 (Terminal), M4 (Projektstruktur), 
+M5 step 1-10. Detaljer: _ARC/PLAN.v2.md
+
+---
+
+## Metodik
+
+### PDCA-cyklus
+Plan → Do → Check → Act (per projekt/modul)
+
+### Solnedgangsklausul
+Succes-tegn, kalibrerings-tegn, kill-tegn, evalueringstidspunkt.
+Default: justér → omtænk → kill.
+
+### Versionering
+PLAN.md er altid den aktuelle plan. Ved versionsskift:
+- Nuværende version fryses som _ARC/PLAN.vN.md (komplet original)
+- Kort skriv forklarer hvad der udløste skiftet og hvad der ændrede sig
+- Uafsluttede items videreføres til ny version
+- Afsluttede items refereres via arkivet
+```
+
+**Hvad der er anderledes fra v2:**
+
+| v2 | v3 |
+|----|----|
+| 8 moduler som rygrad | Pipeline-overblik som rygrad |
+| NOW.md separat fil | NOW integreret som sektion |
+| Idé-parkering (60 linjer) | Peger til _backlog/ |
+| M7 context engineering som modul | Selvstændigt DLR-projekt |
+| M8 skabeloner som modul | Overlapper med reformation, droppet |
+| Ingen versioneringspolitik | Eksplicit versioneringspolitik |
+
+**Åbent spørgsmål:** PROGRESS.md — beholder vi den som separat fil, eller integrerer vi den også? Session 9 diskuterede sammensmeltning men parkerede det. Min anbefaling: behold den separat i v3, evaluér efter 5 sessioner. Sammensmeltning er et eksperiment i _backlog/ (plan-konsolidering.md).
+
+---
+
+#### YTTRE — 12:22
+
+så hvordan kan man se plan.md's evulution. min første ide var at have den originale v1 i plan.md, når så vi indførte v2 beholdes alt det der allerede er lavet i plan.md mens det der ikke er nået endnu blev overskrevet af v2 med en beskrivelse af årsagen og indholdet af ændringerne
+
+---
+
+#### CLAUDE — 12:22
+
+Jeg forstår nu. PLAN.md selv viser evolutionen — lagdelt, som geologiske lag. Nyeste øverst, ældste nederst.
+
+```
+PLAN.md:
+
+  ┌─────────────────────────────┐
+  │  v3 (aktiv, levende)        │  ← det du arbejder med nu
+  │  Pipeline-overblik, M5/M6  │
+  ├─────────────────────────────┤
+  │  v2 → v3 overgang           │  ← hvad udløste skiftet, hvad ændrede sig
+  ├─────────────────────────────┤
+  │  v2 (afsluttet indhold)     │  ← M4 done, M5 step 1-10 done
+  │  KUN det der blev udført    │     som det så ud da det blev lavet
+  ├─────────────────────────────┤
+  │  v1 → v2 overgang           │  ← hvad udløste skiftet
+  ├─────────────────────────────┤
+  │  v1 (afsluttet indhold)     │  ← M1-M3 done, som det så ud
+  │  KUN det der blev udført    │
+  └─────────────────────────────┘
+```
+
+**Det der gør det smart:** Du scroller ned og ser rejsen. v1 viser at du startede med Git og terminal. v2 viser at projektstruktur og PC-setup kom til. v3 viser at det blev et pipeline-system. Alt i ét dokument.
+
+**Det uafsluttede fra v2 er IKKE i v2-sektionen** — det er enten videreført til v3 (M5 step 11-17, M6) eller droppet med forklaring (M7 → DLR, M8 → overlapper med reformation).
+
+**_ARC/PLAN.v1.md og _ARC/PLAN.v2.md** er de komplette originaler — inklusiv det der *ikke* blev udført. Dem kigger du i hvis du vil se "hvad var den fulde plan dengang, også det vi droppede?"
+
+Så der er to views:
+- **PLAN.md** = hvad blev gjort + hvad gøres nu (den levende historie)
+- **_ARC/PLAN.vN.md** = hvad var den fulde plan dengang (frosset snapshot)
+
+Det er holdbart. Og det løser dit problem: evolutionen er synlig uden at åbne andre filer, mens de komplette originaler er tilgængelige hvis man vil grave.
+
+---
+
+#### YTTRE — 12:59
+
+så hvis du f.eks. kigger på v1 og den nuværende plan.md (v2) står der nærmest intet ift hvad der blev udført i v1. der burde i plan.md måske også være integreret et progress. (sidst i plan.md har vi progress.md integreret hvor sidste kapipitel hedder progress/progression, med nyeste entries først og ældste nederst. det giver mening i mit hoved, men det er dit hoved og mit hoved der skal arbejde sammen, bliver det for meget kontext? men altså om vi har et claude.md hvorefter now.md læses derefter, plan.md og derefter progress.md er vel mere rodet en claude.md og plan.md (hvori ikke kun plan.md er, men now og progress). burde den hedde plan eller er der et professionelt/oficielt anerkendt udtryk ? er det i bund og grund ikke kontext? hvad tænker du ?
+
+---
+
+#### CLAUDE — 12:59
+
+Du har en pointe. Lad mig tænke rent:
+
+**Problemet med 4 separate filer:** Claude læser CLAUDE.md → NOW.md → PLAN.md → PROGRESS.md. Det er 4 filer med overlap. NOW.md siger "vi er her", PLAN.md siger "vi skal derhen", PROGRESS.md siger "sådan kom vi hertil." Men grænsen er uklar — NOW.md absorberer PROGRESS-stof, PLAN.md absorberer idéer. Det er allerede rodet, bare fordelt over flere filer.
+
+**Ét dokument i stedet:** CLAUDE.md (hvem er du, regler) + ét state-dokument (alt andet). Det er renere. Claude læser to filer, ikke fire.
+
+**Mht kontekstvinduet:** Det er det samme antal tokens uanset om det er 1 fil eller 4. Men i én fil kan sektionerne referere hinanden naturligt uden krydsreferencer. Og der er kun ét sted at opdatere.
+
+**Hvad det hedder:**
+
+Det du beskriver er ikke bare en "plan" — det er projektets levende state-dokument. Professionelle termer:
+
+- **Project Brief** — men det er et snapshot, ikke levende
+- **Project Log / Logbog** — tættere, men signalerer kun historik
+- **Project Context** — præcist. Det ER kontekst. Alt en ny session behøver
+- **STATUS.md** — simpelt, brugt i mange open source-projekter
+- **CONTEXT.md** — det du allerede bruger på VPS'en (hvert VPS-projekt har CONTEXT.md)
+
+Du bruger allerede CONTEXT.md på VPS. Og du sagde det selv: "er det i bund og grund ikke kontekst?"
+
+**CONTEXT.md** — fordi det er præcis det det er. Og det matcher VPS-konventionen.
+
+Strukturen:
+
+```
+CONTEXT.md:
+
+## NOW
+[5-10 linjer: status, næste step, åbne tråde]
+
+## PLAN (v3)
+[Pipeline-overblik, aktive moduler, metodik]
+
+## PROGRESS
+[Nyeste først, ældste nederst. Destillerede sessioner.]
+
+---
+## v2 → v3
+[Hvad udløste skiftet, hvad ændrede sig]
+
+## PLAN v2 (afsluttet)
+[Kun det der blev udført, som det så ud]
+
+---
+## v1 → v2  
+[Overgangsnotat]
+
+## PLAN v1 (afsluttet)
+[Kun det der blev udført]
+```
+
+**Og CLAUDE.md peger til det:**
+```markdown
+@CONTEXT.md
+```
+
+Én import, ét dokument, al state.
+
+**Risikoen:** Filen vokser. Men det gør 4 separate filer også — bare skjult. Og med arkiveringspolitikken (destillér, flyt gamle sessioner til _ARC/) holdes størrelsen i skak.
+
+**Mht VPS-alignment:** VPS har CONTEXT.md + NOW.md per projekt. PC'en ville have CONTEXT.md alene. Det er ikke identisk, men princippet er det samme — ét sted for al projektkontekst.
+
+Hvad tænker du — CONTEXT.md?
+
+---
+
+#### YTTRE — 13:10
+
+enig. og du har ret, det vokser. hvis du kigger på progress.md nu, så er den bare voksende, vi burde lave en regel hvor den integrede progress har seneste progress kommer ind øverst i progress afsnittet nedskrevet fuldt detaljeret (hvilket i sin essens er den fulde kontext som er destilleret ned i afsnittet now.md (som er noget af det første i vores nye context.md), og det der stod der før rykkes ned og bliver samtidig destilleret med x antal procent, næste gang den opdateres rykkes den nuværende fuldt detaljerede progress rykket ned til 2.plades, den nuværende 2. plads rykkes ned til 3. pladsen hvor ydeligere x antal procent destilleres. hver ting der står i destillationen har tydelige referencer punkter til tid og dato (evt session) så den fulde kontekst kan findes i både chatloggen men også i arkivet hvor alle de fulde og detaljerede progress input er gemt, altså alle 1.plads udgaverne der engang var det seneste indput. på den måde må man gerne være gavmild med 1. pladsens brug af tokens, jo mere komplet jo bedre. når en progress rammer f.eks. 10 pldsen står der1, max 3 sætninger om hvad der skete, men med nøgleinfo nok til at finde den oprindelige kontext i arkivet og chatlog. det var et udkast og tænker uden selvkritik, men det lyder gerne i min menneskelige hjerne. hvad tænker du ?
+
+---
+
+#### CLAUDE — 13:11
+
+Det er et smukt system. Det er reelt en **kontekst-tragt med progressiv komprimering** — præcis det Anthropic selv beskriver som best practice for context engineering, men med en mekanisk struktur der gør det automatiserbart.
+
+Lad mig gengive det præcist:
+
+```
+CONTEXT.md → Progress-sektionen:
+
+Plads 1: FULD DETALJE (nyeste session)
+         Alt hvad der skete, alle beslutninger, alle nuancer.
+         Gavmild med tokens. Det er den levende kontekst.
+
+Plads 2: ~75% komprimeret (forrige session)
+         Hovedbeslutninger, nøgleresultater. Detaljer skåret.
+         Ref: "session 10, 2026-03-12 → _ARC/ + chatlog"
+
+Plads 3: ~50% komprimeret
+         Kernebudskaber. 1 afsnit per session.
+         Ref: dato + session-id
+
+...
+
+Plads 10: 1-3 sætninger
+          "Session 3 (2026-03-10): Konteksttab-problem opdaget.
+           Yggdra-research. ~/dev/ layout. → _ARC/PROGRESS-v2.md"
+
+Plads 11+: Ud af CONTEXT.md → kun i _ARC/
+```
+
+**Hvad der gør det smart:**
+
+1. **Kontekstvinduet er beskyttet.** De ældste sessioner fylder næsten ingenting. De nyeste fylder mest — fordi de ER mest relevante
+2. **Intet går tabt.** Plads 1's fulde version gemmes altid i _ARC/ når den rykker til plads 2. Chatlog-referencen er der altid
+3. **Det er mekanisk.** "Ryk ned, destillér x%" er en instruktion en AI kan følge. Det kan skrives ind i checkpoint-skillen
+4. **Det ligner hukommelse.** Nyeste = skarpest. Ældste = vagt men til stede. Præcis som en menneskelig hjerne, men med perfekte referencer til det fulde arkiv
+
+**Min eneste tilføjelse:** Destilleringsprocenten bør ikke være fast men baseret på relevans. Session 3's konteksttab-princip er stadig relevant i session 20 — det bør ikke destilleres ned til 1 sætning bare fordi det er gammelt. Løsning: principper der er trukket ud og lever i CLAUDE.md/Metodik tæller ikke som progress — de er *destilleret færdigt* og fjernes fra progress-sektionen helt.
+
+Reglen bliver: **Hvis en indsigt er destilleret til CLAUDE.md, fjernes den fra progress. Hvis den kun er kontekst (hvad skete, hvornår, hvorfor), komprimeres den progressivt.**
+
+Det skal i ADR changelog. Skal jeg skrive det ind?
+
+---
+
+#### YTTRE — 13:18
+
+nu gav jeg bare eksempler, der er ikke noget specifikt omkring at det SKAL være 10. plads. men lad os sige at alt efter 10. plads max havde 1 sætning, eller blot korte stiksætninger: 11. plads d. 12/3: plan.md umstrukturering til context.md, projekt reformations implementation påbegyndes. (ord som "1. pladsen" og "3. pladsen", var blot ord jeg brugte pga mangelfuld ordforråd, det lyder ikke profressionelt. jeg prsæsenterede bare konceptet så du skal ikke prøve at følge et halvbagt koncept jeg kommer med, men du skal gøre det skarpere da du har bedst forudsætninger for at vide hvad der pragmatisk fungerer for systemet. (hvad skal ADR'en hedde for det vi laver nu context ADR.md? ADR context.md.? hvad tænker du. brug gerne tid på at vurdere hvilken viden ville være nyttig for dig (enten her eller online)
+
+---
+
+#### CLAUDE — 13:19
+
+Lad mig tænke ordentligt over det.
+
+**Konceptet har et navn:** Det du beskriver er **graduated summary** eller **tiered digest** — brugt i log rotation (sysadmin), git reflog (fuld detalje → one-liners over tid), og nyhedsarkiver (dagens artikel → ugens opsummering → månedens headline).
+
+Det behøver ikke labels ("plads 1", "depth 2"). Det er bare en sektion der naturligt komprimerer nedefter:
+
+```markdown
+## Progress
+
+### Session 10 — 2026-03-12
+[Fuld detalje. Alt hvad der skete, alle beslutninger, alle nuancer.
+ Ref: chatlog d. 12/3, session b5d674f7]
+
+### Session 9 — 2026-03-11
+Context engineering research (8 kilder). Repo → Yggdra. PLAN v3 
+diskuteret: pipeline-baseret. M7 udtrukket som selvstændigt projekt.
+CLAUDE.md opdateret. Ref: chatlog d. 11/3 T001-T158, _ARC/progress/session-9.md
+
+### Session 8 — 2026-03-10
+M4 afsluttet. /checkpoint evalueret (virker fra brug #3). 
+/new-project skabelon klar, utestet. Ref: _ARC/progress/session-8.md
+
+### Session 7 — 2026-03-10
+Dotfiles-repo (Stow). Skills flyttet til projekt-niveau. 
+Cruft slettet. Ref: _ARC/progress/session-7.md
+
+### Ældre sessioner
+- S6 (10/3): M4 step 3, skabelon-test, /checkpoint skill oprettet
+- S5 (10/3): ~/dev/ layout, taksonomi, PDCA erstattede Popper-loop
+- S4 (10/3): Kontekst-test bestod, projekt-omdøbning idé, chatlog-arkitektur
+- S3 (10/3): Konteksttab opdaget, VPS-research, yggdra-gold destilleret
+- S1-2: Git/VS Code/Terminal setup, PLAN v2 designet
+```
+
+Ingen "plads"-labels. Det bare *er* — nyeste er detaljeret, ældste er komprimeret. Reglen for checkpoint-skillen: "skriv fuld detalje for denne session, komprimér forrige session med ~50%, komprimér ældre med ~25%."
+
+---
+
+**ADR-navnet:** Det der beskrives er konsolideringen af NOW+PLAN+PROGRESS → CONTEXT.md. Det er en arkitekturbeslutning om projektets state-dokument.
+
+Forslag:
+- **ADR: CONTEXT.md** — direkte, hvad det er
+- **ADR: Unified Project Context** — mere beskrivende
+- **ADR: State Document Architecture** — teknisk korrekt
+
+Jeg ville vælge **ADR: CONTEXT.md** — simpelt, ingen tvivl om hvad det handler om. ADR-filen hedder så `CONTEXT-ADR.md` eller bare `ADR.md` i en `DLR/context-document/` mappe.
+
+Men det er et spørgsmål om dette er et selvstændigt DLR-projekt eller en del af Project Reformation. Det hænger uløseligt sammen — CONTEXT.md er *en del af* reformationen, ikke noget der eksisterer uafhængigt af den. Så det hører i reformation-ADR'ens backlog som et design-beslutning, ikke som en separat ADR.
+
+Med mindre du ser det anderledes?
+
+---
+
+#### YTTRE — 13:26
+
+ja implementationen kommer med implementationen af projekt reformation. skal det bo i den mappe løst eller skal vi allerede se på om det giver mening at have undermapper (som naturligvis opløses idet reformen træder i kraft) samtidig med det bør implementations-manualen/planen/whatever ligge i mappen løst så vi ved helt præcist hvad, hvordan og i hvilken rækkefølge specifikt bør gøres. så vidt jeg forstår så kan kolon ikke være i filnavne, men kan godt lide at ADR fremgår i navnet. ADR.context.md? eller context.ADR.md? er det et problem at bruge store bogstaver? kan se konventionen nogle steder er lowercase til alt?
+
+---
+
+#### CLAUDE — 13:27
+
+Godt spørgsmål. Lad mig svare på filnavns-delen først, det er hurtigt:
+
+**Kolon:** Nej, ikke i Windows filnavne. Punktum er fint.
+
+**Store bogstaver:** Ikke et problem, men konventionen i de fleste projekter er:
+- `README.md`, `CLAUDE.md`, `PLAN.md` — CAPS for rod-dokumenter der er "specielle"
+- `lowercase.md` for alt andet
+
+ADR er et rod-koncept i dit system, så caps giver mening. Men du har allerede sat konventionen: `ADR.md` i project-reformation/. Hold den.
+
+**Filnavn for context-dokumentets ADR:** Det bor i project-reformation/ fordi det *er* en del af reformationen. Filen hedder bare `ADR.md` — den allerede eksisterende. CONTEXT.md-designet er en beslutning *inden for* reformationen, ikke et separat projekt.
+
+---
+
+**Mht undermapper i project-reformation/:**
+
+Lige nu ligger der 7 filer løst:
+```
+project-reformation/
+  ADR.md
+  ADR-template.md
+  README-Backlog.md
+  README-PoC.md
+  README-DLR.md
+  README-SIP.md
+  README-BMS.md
+```
+
+Det er overskueligt. Men der kommer mere: CONTEXT.md-udkast, implementeringsplan, måske et CONTEXT-template. Undermapper giver mening for to ting:
+
+```
+project-reformation/
+  ADR.md                    ← levende ADR (den der allerede er)
+  IMPLEMENTATION.md         ← rækkefølge, checkliste, hvad/hvordan
+  templates/
+    ADR-template.md
+    context-template.md     ← CONTEXT.md skabelon (til nye projekter)
+  governance/
+    README-Backlog.md
+    README-PoC.md
+    README-DLR.md
+    README-SIP.md
+    README-BMS.md
+    README-ARC.md
+```
+
+Eller endnu simplere — ingen undermapper, bare præfiks:
+
+```
+project-reformation/
+  ADR.md
+  IMPLEMENTATION.md
+  template-ADR.md
+  template-CONTEXT.md
+  governance-Backlog.md
+  governance-PoC.md
+  governance-DLR.md
+  governance-SIP.md
+  governance-BMS.md
+  governance-ARC.md
+```
+
+Undermapper er renere men opløses ved reformation. Præfiks er fladere men kræver omdøbning. Jeg hælder til **undermapper** — de gør intent tydeligt, og at de opløses er fint. Det er midlertidigt stillads.
+
+**IMPLEMENTATION.md** er det du efterspørger: hvad gøres, i hvilken rækkefølge, med checkliste. Det er ikke en ADR (beslutningshistorik) men en **implementeringsplan** — step-by-step for selve reformationen.
+
+Skal jeg skrive IMPLEMENTATION.md med den konkrete rækkefølge?
+
+---
+
+#### YTTRE — 13:30
+
+ja, og overvej om der burde være et hook (eller lignende) der påminder om at udfylde det tilhørende ADR dokument når ændringer laves i den mappe/md.fil/projekt/område som ADR'en er ansvarlig for. udfordringen kan være at vi overkomplicere og drukner i regler vi sender glemmer årsagen til og vi cruft (cancer for os).
+
+---
+
+#### CLAUDE — 13:31
+
+Du har fat i præcis den rigtige bekymring. Lad mig svare på hook-spørgsmålet ærligt, og så skrive IMPLEMENTATION.md.
+
+**Hook til ADR-påmindelse:** Ja, det *kan* laves. Men:
+
+- Vi har allerede `check-git-commit.sh` der minder om NOW.md — og checkpoint-skillen ignorerede det alligevel 3 gange i session 9
+- En hook er en påmindelse, ikke en gate. Claude kan ignorere den
+- Hver ny hook er en regel der skal vedligeholdes, huskes, og forklares til nye sessioner
+
+**Dit eget cruft-argument er stærkere end hook-idéen.** Hooks der minder om ting er svage — de virker de første 5 gange, derefter er de baggrundsstøj. Det er præcis det MANUAL.md på VPS'en advarer mod.
+
+**Bedre løsning:** Skriv det ind i checkpoint-skillen som et eksplicit step: "Tjek om du har ændret filer der har en tilhørende ADR. Opdatér ADR changelog." Det er ikke en hook — det er en del af checkpoint-checklisten. Én ting, ét sted.
+
+Hvis *det* heller ikke virker (som checkpoint allerede har vist), så er svaret ikke mere automatisering — det er at simplificere ADR'en så den er lettere at opdatere. Solnedgangsklausulen fanger det: "Hvis ADR'er konsekvent ikke opdateres → for tungt → simplificér."
+
+Lad os parkere hooks og skrive IMPLEMENTATION.md.
+
+---
+
+#### CLAUDE — 13:31
+
+Og undermapperne:
+
+---
+
+#### CLAUDE — 13:32
+
+Rent. Strukturen er nu:
+
+```
+project-reformation/
+  ADR.md                      ← levende ADR
+  IMPLEMENTATION.md           ← step-by-step checkliste (7 faser)
+  templates/
+    ADR-template.md           ← skabelon for nye ADR'er
+  governance/
+    README-Backlog.md         ← → _backlog/README.md ved implementering
+    README-PoC.md             ← → PoC/README.md
+    README-DLR.md             ← → DLR/README.md
+    README-SIP.md             ← → SIP/README.md
+    README-BMS.md             ← → roden (BMS er roden)
+```
+
+IMPLEMENTATION.md har 7 faser. Fase 1-4 er mekanisk (opret, flyt, skriv briefs, ADR'er). Fase 5 (CONTEXT.md) er den store — bør have sin egen session. Fase 6-7 er oprydning + omdøbning.
+
+Mht hook-spørgsmålet: parkeret. Checkpoint-skillen får et ekstra step i stedet. Hvis det ikke virker, er ADR'en for tung — ikke hook-systemet for svagt.
+
+---
+
+#### CLAUDE — 13:34
+
+Du har ret. Checkpoint som manuelt prompt er en krykke — ikke et system. Et system fanger ting uden at du beder om det.
+
+Det du beskriver er forskellen mellem:
+- **Pull:** Du beder om checkpoint → ting gemmes (nuværende)
+- **Push:** Systemet reagerer automatisk på hvad der sker → ting gemmes (ideelt)
+
+VPS'en har push: `save_checkpoint.py` kører ved Stop/PreCompact automatisk. PC'en har pull: du siger "checkpoint" og håber Claude følger alle 5 trin.
+
+**Det realistiske svar for PC lige nu:** Claude Code har hooks der kan trigge ved tool-events (PreToolUse, PostToolUse, Stop, PreCompact). De kører shell-scripts. Det der mangler er et script der ved Stop eller PreCompact:
+1. Opdaterer CONTEXT.md (NOW-sektionen)
+2. Komprimerer forrige progress-entry
+3. Opdaterer relevante ADR changelogs
+4. Committer
+
+Step 1-2 er mekanisk. Step 3 kræver at scriptet ved *hvilke* ADR'er der er relevante — det er det svære. Step 4 er trivielt.
+
+**Men:** Det er præcis det VPS'en gør med Groq. Et script der læser transcriptet, destillerer det, og opdaterer de rigtige filer. PC'en har ikke det endnu — og at bygge det er et projekt i sig selv (session-drift-pipeline i DLR).
+
+Så svaret er: **ja, du har ret, og det er det session-drift-pipeline projektet skal løse.** Ikke ved at tilføje flere regler Claude skal huske, men ved at bygge et system der kører automatisk. Indtil det er bygget er checkpoint-prompten en bevidst midlertidig løsning — ikke det endelige design.
+
+Hvad er din kommentar til IMPLEMENTATION.md?
+
+---
+
+#### CLAUDE — 13:45
+
+Tre gode pointer. Lad mig tage dem i rækkefølge.
+
+**1. ADR filnavne:**
+
+Du har ret — 15 filer der alle hedder `ADR.md` er ubrugelige at søge i. Konventionen bør være: `emne.adr.md` — emnet først (det du leder efter), typen dernæst (filtrerbar).
+
+```
+project-reformation.adr.md
+auto-chatlog.adr.md
+checkpoint.adr.md
+context-document.adr.md
+```
+
+Søg på `*.adr.md` → alle ADR'er. Søg på `checkpoint*` → finder ADR'en direkte. Det bør rettes i IMPLEMENTATION.md og i den eksisterende `ADR.md`.
+
+**2. Checkpoint journal:** Ja — push-system idéen hører i checkpoint's fremtidige ADR, ikke bare i samtalen.
+
+**3. Simulering af implementationen:**
+
+Du har ret i at det er et intent doc. Lad mig køre simuleringen i hovedet:
+
+**Fase 2 — fil-flytning — hvad mangler:**
+
+`references/` er slet ikke adresseret. Lad mig kigge hvad der ligger der.
+
+---
+
+#### CLAUDE — 13:45
+
+Her er simuleringen. Jeg kører mentalt igennem IMPLEMENTATION.md og finder hullerne:
+
+---
+
+**references/ — blanding af 5 forskellige ting:**
+
+| Fil | Type | Hører til |
+|-----|------|-----------|
+| PLAN.v1.md | Arkiv | → _ARC/ |
+| git-concepts.md | Læremateriale fra M1 | → _ARC/ (historisk) |
+| git.md | Opslagsværk | → BMS (references/) |
+| terminal.md | Opslagsværk | → BMS |
+| vscode.md | Opslagsværk (delvist forældet) | → BMS, men bør opdateres |
+| automation.md | Opslagsværk | → BMS |
+| project-structure.md | Research-output M4 | → BMS (stadig relevant) |
+| yggdra-gold.md | Destillat | → BMS |
+| windows-setup-research.md | Research-output M5 | → BMS |
+| x1-carbon-gen13-dev-setup.md | Research-output M5 | → BMS |
+| claude-code-organization.md | Research-output M4 | → BMS |
+| scripts-and-tools-layout.md | Research-output M4 | → BMS |
+| google-ai-samtale-rd-framework.md | Samtale-log | → _ARC/ (kontekst er i ADR nu) |
+| context-engineering-research.md | Research-output session 10 | → BMS |
+| README.md | Index | → BMS |
+
+references/ er reelt BMS og forbliver. Men 3 filer hører i _ARC/. **Det mangler i IMPLEMENTATION.md.**
+
+**Andre huller i simuleringen:**
+
+1. **`chatlog-test/` vs `auto-chatlog/`** — IMPLEMENTATION.md nævner `auto-chatlog/` men der er ingen `chatlog-test/` i roden længere. Dog refererer chatloggen til den. Er den allerede omdøbt? Bør verificeres.
+
+2. **`chatlogs/` (gammel)** — IMPLEMENTATION.md siger intet om hvornår den gamle chatlog pensioneres. Den kører parallelt med SIP/auto-chatlog, men hvornår stoppes den?
+
+3. **`~/parallel-tasks/`** — 7 brief-outputs der skal tragteres ind i _backlog/. IMPLEMENTATION.md fase 3 nævner det men upræcist ("hvor relevant"). Det bør være eksplicit: alle 7 outputs mappes til specifikke briefs.
+
+4. **`.claude/implementation journals/`** — 3 filer med historik. IMPLEMENTATION.md siger "flyt til _ARC/" men checkpoint.md har push-system diskussionen fra lige nu. Den bør læses og relevante indsigter trækkes ind i checkpoint's fremtidige ADR *inden* den arkiveres.
+
+5. **`template/`** — 8 filer. Uberørt af reformation. Men bør CONTEXT.md-skabelonen tilføjes her? Og ADR-templaten? Hvornår flyttes `project-reformation/templates/ADR-template.md` til `template/`?
+
+6. **MEMORY.md** — Skal opdateres efter reformationen. Ikke nævnt.
+
+7. **`.gitignore`** — Skal den opdateres for nye mapper?
+
+8. **`basic-setup.code-workspace`** — Skal omdøbes til `yggdra.code-workspace` i fase 7, men det er ikke nævnt.
+
+---
+
+**Svaret på dit egentlige spørgsmål:** IMPLEMENTATION.md er et intent doc. Det er *ikke* en manual du kan følge blindt. Hullerne beviser det.
+
+For at gøre det til en manual mangler:
+- **Komplet fil-audit** (hvad ligger hvor, hvad sker med det)
+- **Verifikationstrin** per fase (ikke bare "verificér" men *hvad* verificeres)
+- **Edge cases** (hvad med filer der ikke passer? hvad med referencer mellem filer der brydes ved flytning?)
+
+Skal jeg omskrive den med de manglende ting, eller vil du tygge på det først?
+
+---
+
+#### CLAUDE — 13:58
+
+Du misbruger ikke ADR-konceptet. Men du strækker det. Lad mig være ærlig:
+
+**ADR = Architecture Decision Record.** Det dokumenterer *beslutninger* — ikke indhold. En ADR for references/ ville sige "vi besluttede at opslagsværker bor i references/, research-output arkiveres efter brug." Den dokumenterer ikke selve research-indholdet.
+
+Det du egentlig efterspørger er **vedligeholdelse** — en mekanisme der fanger forældet indhold. ADR er overkill til det. En README.md i references/ med "sidst auditeret: [dato]" og en linje i checkpoint-skillen ("er references/ stadig aktuelt?") løser det billigere.
+
+**IMPLEMENTATION.md og ADR:**
+
+Du har fat i noget. IMPLEMENTATION.md er ikke et selvstændigt dokument — det er reformationens *handlingsplan*. Det hører i ADR'en. Professionelt er en ADR ikke bare "Architecture Decision Record" — det er et levende dokument der rummer alt om en beslutning, inklusiv implementeringsplanen.
+
+Så IMPLEMENTATION.md bør være en sektion i `project-reformation.adr.md`, ikke en separat fil. Eller — og det er måske bedre — ADR'en peger til den: "Implementeringsplan: se IMPLEMENTATION.md". Fordi ADR'en allerede er 80+ linjer, og at tilføje 100 linjer implementeringsplan gør den ulæselig.
+
+Min anbefaling: **behold IMPLEMENTATION.md som separat fil, men gør relationen eksplicit.** ADR'en siger "implementeringsplan: IMPLEMENTATION.md". IMPLEMENTATION.md siger "dette implementerer project-reformation.adr.md".
+
+**Mht den fulde audit:** Ja, den bør laves. Men ikke i denne session — kontekstvinduet er ved at være presset, og en audit kræver at vi læser hver fil og beslutter dens skæbne. Det bør være fase 0.5 i IMPLEMENTATION.md: "komplet fil-audit med destination per fil."
+
+Skal jeg opdatere ADR-filnavnet og tilføje audit-fasen til IMPLEMENTATION.md, og så opdatere NOW.md + commit? Eller vil du have mere diskussion først?
+
+---
+
+### 14:00–16:00 <a id="2026-03-12-14"></a>
+
+#### YTTRE — 14:15
+
+som vedligholelse over mapper hvor opslagsværk, research output og andre former for output.mder ligger synes jeg måske i stedet for readme burde det være en mini context.md inklusiv inholdsfortegnelse over indhold, hvornår det sidst blev opdateret, oprindelses årsag og hvad det er blevet brugt på. så en hybrid mellem context md. adr og index og readme. bør vi forbedre en prompt der giver en ny session den context den skal bruge til at gøre sit arbejde. planmd, now, og progress opdateres herfra og den er klar til at arbejde med deltaljeret nok context til at udføre audit. ift implementation.md burde det så være et seperat dokument der følger et projekt på samme måde som adr eller skal det fremover være praksis at den er merged med adr på samme måde som vi lige har planlagt vedrørende context.md-conceptet og ja til dit sprgs,mål , men først beder jeg dig forholde dig til hvad jeg har skrevet her. derefter gør vi klar til faktisk at handle
+
+---
+
+#### CLAUDE — 14:15
+
+Du trækker tre tråde sammen til ét mønster. Lad mig gengive det:
+
+**Mønsteret du beskriver:** Stop med at lave separate dokumenttyper. Ét dokument per "ting" der rummer alt om den ting.
+
+- NOW + PLAN + PROGRESS → **CONTEXT.md** (besluttet)
+- IMPLEMENTATION + ADR → **samme princip**: ét projektdokument
+- README + index + freshness + origin → **samme princip**: ét mappe-dokument
+
+Det er ikke tre forskellige beslutninger. Det er den *samme* beslutning anvendt tre steder:
+
+| Scope | Dokument | Indhold |
+|-------|----------|---------|
+| **Roden** (hele projektet) | CONTEXT.md | NOW + PLAN + PROGRESS + versionering |
+| **Et projekt** (DLR/PoC/etc) | emne.adr.md | Beslutninger + implementeringsplan + changelog + backlog |
+| **En mappe** (references/, chatlogs/) | README.md | Hvad er dette + index + freshness + oprindelse |
+
+Tre niveauer, ét princip: **alt om tingen, i én fil, ved tingen.**
+
+**IMPLEMENTATION.md merger ind i ADR'en.** ADR'en får en Implementation-sektion — lige efter Exit Criteria, før Changelog. Den siger "her er rækkefølgen, her er checklisten." Når et step er udført, markeres det og en changelog-entry skrives. Dokumentet er selvindeholdt.
+
+Den opdaterede ADR-template bliver:
+
+```
+0. Metadata
+1. Origin Story
+2. Current State
+3. Problem Statement
+4. Target State
+5. Architecture & Trade-offs
+6. Evaluation
+7. Exit Criteria
+8. Implementation          ← NY: step-by-step, checkliste
+9. Changelog
+10. Backlog
+11. Original ADR
+```
+
+**Mht README.md i mapper som references/:**
+
+Ikke en fuld ADR — det er overkill for en mappe der bare samler filer. Men mere end en tom README:
+
+```markdown
+# References
+
+Opslagsværker og research-output. BMS-materiale.
+
+## Indhold
+
+| Fil | Type | Oprindelse | Sidst relevant |
+|-----|------|-----------|---------------|
+| project-structure.md | Research M4 | Session 3 | Session 9 |
+| yggdra-gold.md | Destillat | Session 3 | Løbende |
+| context-engineering-research.md | Research | Session 10 | Aktiv |
+| ... | | | |
+
+## Vedligeholdelse
+Audit ved PDCA-evaluering. Filer der ikke er refereret i 5+ sessioner 
+overvejes til _ARC/.
+```
+
+**Mht session-prompt:** CLAUDE.md bør have en eksplicit session-start instruktion:
+
+```markdown
+Ved session start: Læs @CONTEXT.md. Den indeholder status, plan og progress.
+Ved audit: Læs også references/README.md og ADR-INDEX.md.
+```
+
+---
+
+Nu til handling. Jeg laver:
+
+1. Omdøb `ADR.md` → `project-reformation.adr.md`
+2. Merger IMPLEMENTATION.md ind som sektion 8 i ADR'en
+3. Tilføj Implementation-sektion til ADR-template
+4. Opdatér NOW.md med denne sessions beslutninger
+5. Commit + push
+
+---
+
+#### YTTRE — 14:17
+
+ok
+
+---
+
+#### CLAUDE — 14:17
+
+Nu merger jeg IMPLEMENTATION.md ind i ADR'en, omdøber filen, opdaterer template, og opdaterer NOW.md.
+
+---
+
+#### CLAUDE — 14:18
+
+Nu indsætter jeg Implementation-sektionen (sektion 8) og rykker de nuværende sektioner 8-10 til 9-11:
+
+---
+
+#### CLAUDE — 14:19
+
+Nu opdaterer jeg ADR-templaten med den nye Implementation-sektion:
+
+---
+
+#### CLAUDE — 14:19
+
+Nu opdaterer jeg NOW.md:
+
+---
+
+#### CLAUDE — 14:19
+
+Nu commit + push:
+
+---
+
+#### CLAUDE — 14:20
+
+Done. Alt committed og pushed.
+
+**Opsummering af hvad der er gjort i denne session:**
+
+| Handling | Status |
+|----------|--------|
+| Context rot i begge CLAUDE.md | Rettet |
+| Projekt-CLAUDE.md omskrevet | Done |
+| @import NOW.md + compaction | Tilføjet |
+| Context engineering research | 8 kilder, gemt i references/ |
+| ADR omdøbt → `project-reformation.adr.md` | Done |
+| IMPLEMENTATION.md → merged i ADR sektion 8 | Done |
+| ADR-template → 12 sektioner (inkl Implementation) | Done |
+| Governance + templates → undermapper | Done |
+| Fil-audit (fase 0.5) → tilføjet som forudsætning | Done |
+| NOW.md opdateret | Done |
+| Commit + push | Done |
+
+**Næste session:** Fase 0.5 — den komplette fil-audit. Derefter er implementeringen klar til at køre.
+
+---
+
+#### YTTRE — 14:24
+
+lille ændring. jeg foretrækker at adr kommer først da det er det som er det centrale, det der kommer efter er hvad adr indehold er. det er det samme som forskellen på at sige "kapitel 4: reformationen" og "reformationen: kapitel 4". så altså adr.project-reformation.md. adr.[indhold/project/modul.md(dokumenttype)
+
+---
+
+#### CLAUDE — 14:24
+
+Godt argument. `adr.project-reformation.md` — typen først, indholdet dernæst. Konsistent med hvordan man scanner: "hvad er det? en ADR. om hvad? project-reformation."
+
+---
+
+#### CLAUDE — 14:24
+
+Opdaterer template-filen til at afspejle konventionen:
+
+---
+
+#### CLAUDE — 14:24
+
+Done. Konventionen er: `adr.[emne].md` — type først, indhold dernæst. Fremtidige ADR'er følger samme mønster: `adr.auto-chatlog.md`, `adr.checkpoint.md`, `adr.context-engineering.md`.
+
+---
+
+#### YTTRE — 14:26
+
+er disse ændringer også parallele i alle dokumenter? dvs er der noget som helst info i project-reformation der er i strid med hinanden (for det er vel kun den der vigtigt. alt andet rod bliver jo tragteret gennem projektets implementationspipeline.
+
+---
+
+#### CLAUDE — 14:26
+
+Lad mig tjekke.
+
+---
+
+#### CLAUDE — 14:26
+
+Her er konflikterne jeg finder:
+
+**1. Filnavn-konvention: ADR siger ét, filen hedder noget andet**
+- Fase 0 linje 56: `ADR-filnavn konvention: emne.adr.md` — det var den *gamle* beslutning
+- Filen hedder nu `adr.project-reformation.md` — den *nye* beslutning
+- Fase 4 linje 104-107: bruger stadig `emne.adr.md` konventionen (`auto-chatlog.adr.md`)
+- **Konflikt:** Filen selv følger `adr.[emne].md`, men implementeringsplanen refererer `[emne].adr.md`
+
+**2. ADR-template siger "11 sektioner", ADR har 12**
+- Current State linje 14: "ADR-template (11 sektioner)"
+- Virkelighed: templaten har nu 12 sektioner (Implementation tilføjet)
+
+**3. Backlog-items der nu er i Implementation**
+- Backlog linje 163-164: "README'er/governance-manualer" og "Map eksisterende filer" — disse er nu steps i Implementation sektion 8, ikke backlog
+- Backlog linje 168: "Plan-konsolidering (parkeret som eksperiment)" — det er nu besluttet (CONTEXT.md), ikke parkeret
+
+**4. ADR header bruger gammelt format**
+- Linje 1: `# ADR-001: Project Reformation` — template siger nu `# ADR: [Navn]`
+
+Retter:
+
+---
+
+#### CLAUDE — 14:27
+
+4 konflikter fundet og rettet:
+
+1. **Filnavn-konvention:** `emne.adr.md` → `adr.[emne].md` overalt
+2. **Sektionsantal:** "11 sektioner" → "12 sektioner" i Current State
+3. **Backlog oprydning:** Items der nu er i Implementation (README'er, fil-mapping, plan-konsolidering, omdøbning, arkiveringspolitik) fjernet fra backlog — de er besluttet og har steps
+4. **Header:** `ADR-001:` → `ADR:` (matcher template)
+
+Dokumenterne i project-reformation/ er nu internt konsistente.
+
+---
+
+#### YTTRE — 14:28
+
+mht til contextmd progress med 100% detaljeret context i seneste input, synes jeg vi skal passe på med de tre seneste da de ofte hænger sammen (eller 2 første) først stiger destillationskvotienten kraftigt, hvad tænker du om det ?
+
+---
+
+#### CLAUDE — 14:29
+
+Enig. De seneste 2-3 sessioner er ofte én sammenhængende tankegang — som session 9 og 10 her. At destillere session 9 til 50% mens session 10 er 100% ville skære kontekst der stadig er aktiv.
+
+Reglen bør være: **destillér ikke det der stadig er i spil.** Konkret:
+
+```
+Seneste session:     100% (fuld detalje)
+Aktive sessioner:    100% (hænger sammen med seneste)
+Første inaktive:     ~50% (hovedbeslutninger, nøgleresultater)
+Derefter:            progressiv komprimering
+Bund:                1-3 sætninger med ref til _ARC/
+```
+
+"Aktiv" = sessioner der direkte informerer det igangværende arbejde. Session 9 designede reformationen, session 10 raffinerede den — de er begge aktive. Session 8 (M4 afsluttet) er ikke aktiv — den kan destilleres.
+
+Det er ikke et fast antal. Det er en vurdering: *har denne sessions detaljer indflydelse på hvad vi gør nu?* Hvis ja, 100%. Hvis nej, destillér.
+
+Det undgår den mekaniske fejl ("altid destillér plads 2 med 50%") og erstatter den med en kontekstuel regel Claude kan følge.
+
+---
+
+#### YTTRE — 14:30
+
+er det en regel/princip der er svær at overholde, eller er den nærmest naturlig automatisk uahængigt af contextvinduet på daværende tidspunkt?
+
+---
+
+#### CLAUDE — 14:30
+
+Ærligt: den er svær. Her er hvorfor:
+
+Claude ved ikke hvad der er "aktivt" uden at læse det. Ved session-start læser den CONTEXT.md og ser progress-sektionen. Men vurderingen "er session 9 stadig aktiv?" kræver at Claude *forstår* at session 9's reformationsdesign er det der arbejdes på nu. Det er en kontekstuel vurdering, ikke en mekanisk regel.
+
+En mekanisk regel ("behold de 3 seneste på 100%") er dum men pålidelig. En kontekstuel regel ("behold aktive på 100%") er smart men upålidelig — præcis det problem checkpoint-skillen allerede har.
+
+**Det pragmatiske svar:** Brug begge.
+
+```
+Regel: Behold de seneste 3 sessioner på 100%.
+       Derefter progressiv komprimering.
+       
+Undtagelse: Hvis en ældre session stadig er direkte aktiv 
+            (vurderes ved checkpoint), behold den på 100%.
+```
+
+Reglen er mekanisk og fejlsikker. Undtagelsen er kontekstuel og fanger edge cases. Hvis Claude glemmer undtagelsen, er det værste der sker at en aktiv session komprimeres til 50% — irriterende men ikke katastrofalt, og fuld detalje ligger i _ARC/.
+
+Det er "stilladset fanger det" — den mekaniske regel er stilladset, den kontekstuelle vurdering er bonussen.
+
+---
+
+#### YTTRE — 14:33
+
+så længe de seneste 2. og 3. session ikke kommer under 85 90% af oprindelige indhold er det fint som hovedregel. vi er nødt til at erfarer hvordan det virker i praksis før vi gøre mere ud af det. noter dette i dets ADR. ændre det nu som giver mening og tjek igen hele projectmappen for mulige misforståelser/konflikter/etc
+
+---
+
+#### CLAUDE — 14:33
+
+Her er konflikterne:
+
+**1. ADR-template sektionsnummer i governance-filer:**
+- README-BMS.md linje 15: "Origin Story og Original ADR (sektion 10)" — det er nu sektion 11
+- README-SIP.md linje 15: "alle sektioner 0-9" — det er nu 0-11 (12 sektioner)
+- README-DLR.md linje 7: "minimum sektion 0-7" — korrekt stadig (Implementation er 8, men DLR behøver det ikke nødvendigvis)
+
+**2. ADR-template siger "sektion 3-7" i Original ADR snapshot:**
+- Template linje 58: "uændret kopi af sektion 3-7" — men nu er Implementation sektion 8, så Original ADR bør fryse 3-7 (korrekt, Implementation eksisterer ikke ved oprettelse)
+- ADR'en selv (Original ADR, linje 171+) mangler sektion 4 (Target State) eksplicit — den har det men uden overskrift
+
+**3. Backlog-item "Graduated summary komprimeringsregler" er nu delvist besluttet:**
+- Linje 169: "præcise procenter og tærskel" — reglen er nu: seneste 3 på ≥85-90%, derefter progressiv komprimering, kontekstuel undtagelse for aktive sessioner. Bør opdateres.
+
+Retter:
+
+---
+
+#### CLAUDE — 14:34
+
+3 konflikter fundet og rettet:
+
+1. **README-BMS.md:** "sektion 10" → "sektion 11" (Original ADR rykket pga Implementation)
+2. **README-SIP.md:** "sektioner 0-9" → "alle 12 sektioner, 0-11"
+3. **Backlog graduated summary:** Opdateret fra "præcise procenter" (ubestemt) til den faktiske beslutning (≥85-90% for seneste 3, evaluér i praksis)
+
+Alt i project-reformation/ er nu konsistent.
+
+---
+
+#### YTTRE — 14:36
+
+altså få at være sikker seneste session 100%. de 2 der kom før det minimum 80 til 90% derefter hvad?
+
+---
+
+#### CLAUDE — 14:36
+
+Forslag:
+
+```
+Session 1 (seneste):    100%
+Session 2-3:            85-90% minimum
+Session 4-6:            ~50% (hovedbeslutninger, nøgleresultater, refs)
+Session 7-10:           ~25% (1 afsnit per session, refs)
+Session 11+:            1-3 sætninger med dato + ref til _ARC/
+```
+
+Undtagelse: hvis en ældre session stadig er direkte aktiv, forbliver den på det niveau den havde da den sidst var "seneste." Evalueres i praksis.
+
+---
+
+#### YTTRE — 14:38
+
+bør hver sektion undtagen seneste session og alle 11+ som er som du har skrevet dem?: have et minnim maximum? "session 4-6 min 25% max 75%.
+
+---
+
+#### CLAUDE — 14:38
+
+Nej. Min/max lyder præcist men er umuligt at håndhæve — hvordan måler du om noget er 25% vs 30%? Det bliver en regel der *lyder* mekanisk men kræver subjektiv vurdering alligevel.
+
+Bedre: beskriv hvad hver tier *indeholder*, ikke procenter.
+
+```
+Seneste session:       Alt. Fuld detalje.
+Session 2-3:           Alt væsentligt. Kun gentagelser og tangenter skæres.
+Session 4-6:           Beslutninger + resultater + refs. Ingen narrativ.
+Session 7-10:          1 afsnit: hvad skete, hvad blev besluttet. Ref til _ARC/.
+Session 11+:           1-3 sætninger + dato + ref.
+```
+
+Det er den samme tragt, men instruktionen er "hvad skal med" i stedet for "hvor mange procent." Claude kan følge "behold beslutninger, skær narrativ" — Claude kan ikke følge "skriv præcis 42% af originalen."
+
+Skal jeg opdatere backlog-entry'en i ADR'en med denne formulering?
+
+---
+
+#### YTTRE — 14:39
+
+godt set, jeg er enig. relger det er præcise og fleksible nok, færre chance for edge-case-incidents.
+
+---
+
+#### CLAUDE — 14:40
+
+Opdateret og pushed. Reglen er nu indholdsbaseret — "hvad skal med" i stedet for "hvor mange procent."
+
+---
+
+#### YTTRE — 14:41
+
+det er jo lige derfor jeg understregede at idéen ikke skulle tages som absolut. det var blot konceptet. du burde have set det noget før med bedre stilladsering, men det kommer sikkert af sig selv hen ad vejen, mens infrastrukturen modnes og itereres.
+
+---
+
+#### CLAUDE — 14:41
+
+Du har ret. Jeg hæftede mig ved procenterne i stedet for at forstå konceptet bag dem. Det er præcis den fejl MANUAL.md på VPS'en advarer mod — "falsk selvsikkerhed" og manglende mirror-princip. Jeg burde have genfortalt konceptet ("du mener progressiv komprimering baseret på relevans, ikke faste procenter") i stedet for at bygge videre på de specifikke tal.
+
+Det kommer med bedre stilladsering, ja. Og med at CONTEXT.md faktisk eksisterer og vi kan se hvad der virker i praksis i stedet for at designe i vakuum.
+
+Er der mere du vil diskutere, eller er vi klar til at lukke sessionen?
+
+---
+
+#### YTTRE — 14:43
+
+husk at alt fra vps er forældet, lad være med at følge den som etableret viden. senere kommer der et project hvor alt fra vps gåre gennem samme reformationspipeline som lige om lidt skal til at ske med basic setup. tag lige en sidste gennem af projekt reformation mappen, er alt som det skal være. alt up to date ?
+
+---
+
+#### CLAUDE — 14:44
+
+Gennemgangen:
+
+**ADR (adr.project-reformation.md):** Konsistent. Ingen konflikter. Ét sted der bør opdateres:
+- Current State (linje 15-17) mangler session 10's sene beslutninger: CONTEXT.md-design (graduated summary), `adr.[emne].md` konvention, Implementation merged i ADR, fil-audit som forudsætning. Changelog (linje 161) har dem, men Current State er bagud.
+
+**Template (ADR-template.md):** Konsistent med ADR'en. Ingen konflikter.
+
+**Governance-filer:** Allerede rettet. Konsistente.
+
+Opdaterer Current State:
+
+---
+
+#### CLAUDE — 14:44
+
+Alt i project-reformation/ er nu konsistent og up to date. Current State afspejler alle beslutninger fra session 10, inklusive de sene (CONTEXT.md, filnavn-konvention, Implementation-merge, fil-audit forudsætning).
+
+Mht VPS-referencen: noteret. VPS-materiale (MANUAL.md, yggdra-gold.md etc.) er historisk reference, ikke etableret viden. Det gennemgår sin egen reformation når tiden kommer.
+
+---
+
+#### YTTRE — 14:47
+
+checkpoint?
+
+---
+
+#### CLAUDE — 14:47
+
+NOW.md er allerede opdateret fra tidligere. Lad mig opdatere MEMORY.md og committe.
+
+---
+
+#### CLAUDE — 14:48
+
+NOW.md var allerede committed. Alt er pushed.
+
+Her er prompten til audit-sessionen:
+
+```
+Læs project-reformation/adr.project-reformation.md — sektion 8 (Implementation), fase 0.5 (fil-audit).
+
+Denne session udfører fil-auditen. Formålet er at producere et komplet fil-manifest: hver fil og mappe i repoet → destination + begrundelse.
+
+Audit-rækkefølge (fra ADR'en):
+1. Roden (alle filer, hvad er BMS, hvad flyttes)
+2. references/ (opslagsværk vs research vs arkiv, freshness)
+3. chatlogs/ (relation til SIP/auto-chatlog, pensioneringsplan)
+4. .claude/ (skills, hooks, implementation journals → _ARC/)
+5. template/ (skal ADR-template og CONTEXT-template ind her?)
+6. auto-chatlog/ (hvad eksisterer, hvad mangler)
+7. ~/parallel-tasks/ (7 outputs → mapping til specifikke briefs)
+8. Skriv komplet fil-manifest
+
+Kontekst: Roden ER BMS — etablerede ting forbliver. Pipeline-mapper (_backlog/, PoC/, DLR/, SIP/, _ARC/) oprettes i næste fase. Filnavn-konvention for ADR'er: adr.[emne].md.
+
+Vigtig regel: Spørg før du bygger. Præsentér manifestet som udkast, lav intet før bekræftelse.
+```
+
+---
+
+#### CLAUDE — 14:51
+
+Lad mig starte med at læse ADR'en og få overblik over repoet.
+
+---
+
+#### CLAUDE — 14:51
+
+Godt. Lad mig nu auditere alle områder parallelt.
+
+---
+
+#### CLAUDE — 14:52
+
+Godt, jeg har nu fuldt overblik. Lad mig læse et par nøglefiler for at forstå kontekst bedre.
+
+---
+
+#### CLAUDE — 14:53
+
+Nu har jeg komplet overblik. Her er fil-auditen, område for område:
+
+---
+
+## 1. Roden
+
+| Fil | Status | Destination | Begrundelse |
+|-----|--------|-------------|-------------|
+| `CLAUDE.md` | BMS | **Bliver** | Projekt-instruktioner, altid i roden |
+| `NOW.md` | BMS → erstattes | **Bliver (midlertidigt)** | Erstattes af CONTEXT.md i fase 5 |
+| `PLAN.md` | BMS → erstattes | **Bliver (midlertidigt)** | Erstattes af CONTEXT.md v3 i fase 5, arkiveres som `_ARC/PLAN.v2.md` |
+| `PROGRESS.md` | BMS → erstattes | **Bliver (midlertidigt)** | Destilleres → arkiveres som `_ARC/PROGRESS-pre-v3.md` i fase 5 |
+| `README.md` | BMS | **Bliver** | Repo-beskrivelse |
+| `.editorconfig` | BMS | **Bliver** | Projekt-config |
+| `.gitattributes` | BMS | **Bliver** | Projekt-config |
+| `.gitignore` | BMS | **Bliver** | Projekt-config |
+| `basic-setup.code-workspace` | BMS → omdøbes | **Bliver** | Omdøbes til `yggdra.code-workspace` i fase 7 |
+| `.firecrawl/` | Tooling-artefakt | **Bliver** | 4 filer (leaderboards, skill-specs) — Firecrawl config, ignoreret af git? |
+
+**Spørgsmål:** Er `.firecrawl/` gittracked? Den ser ud til at indeholde research-output (leaderboards, skill-specs), ikke config.
+
+---
+
+## 2. references/
+
+| Fil | Type | Freshness | Destination | Begrundelse |
+|-----|------|-----------|-------------|-------------|
+| `README.md` | Indeks | Aktuelt | **Bliver** — opdateres i fase 2 | Indeksfil |
+| `git.md` | Guide (M1) | Stabil | **Bliver** | Quick reference, BMS-materiale |
+| `git-concepts.md` | Guide (M1) | Stabil | **→ `_ARC/`** | Læremateriale, forstået og absorberet. ADR'en nævner det eksplicit |
+| `vscode.md` | Guide (M2) | Stabil | **Bliver** | Quick reference, BMS |
+| `terminal.md` | Guide (M3) | Stabil | **Bliver** | Quick reference, BMS |
+| `project-structure.md` | Research (M4) | Stabil | **Bliver** | 25+ kilder, aktivt opslagsværk |
+| `scripts-and-tools-layout.md` | Research (M4) | Stabil | **Bliver** | Opslagsværk |
+| `claude-code-organization.md` | Research (M4) | Stabil | **Bliver** | Opslagsværk |
+| `automation.md` | Research (M4) | Stabil | **Bliver** | Dokumentation af automatiseringer |
+| `PLAN.v1.md` | Historisk | Forældet | **→ `_ARC/`** | Erstattet af PLAN.md v2, kun arkivværdi |
+| `yggdra-gold.md` | Reference | Stabil | **Bliver** | Destillerede VPS-guldkorn, aktivt brugt |
+| `windows-setup-research.md` | Research (M5) | Aktuel | **Bliver** | Aktiv for M5 step 11-17 |
+| `x1-carbon-gen13-dev-setup.md` | Research (M5) | Aktuel | **Bliver** | Aktiv for M5 step 12 |
+| `google-ai-samtale-rd-framework.md` | Research (reformation) | Absorberet | **→ `_ARC/`** | Kontekst nu fanget i ADR'en. ADR nævner det eksplicit |
+| `context-engineering-research.md` | Research (M7/CE) | Ny (12/3) | **Bliver** | Aktiv research, bruges af kommende CE-projekt |
+
+---
+
+## 3. chatlogs/
+
+| Fil | Destination | Begrundelse |
+|-----|-------------|-------------|
+| `chatlog-2026-03-09.md` | **Bliver (midlertidigt)** | Pensioneres når auto-chatlog er SIP |
+| `chatlog-2026-03-10.md` | **Bliver (midlertidigt)** | Pensioneres når auto-chatlog er SIP |
+| `chatlog-2026-03-11.md` | **Bliver (midlertidigt)** | Pensioneres når auto-chatlog er SIP |
+| `dump-chatlog.js` | **→ `_ARC/`** | Erstattet af `auto-chatlog/chatlog-engine.js` |
+
+**Plan:** `chatlogs/` forbliver uændret nu. Når auto-chatlog promoveres til SIP, flyttes de genererede filer til `_ARC/chatlogs/` og mappen pensioneres. `dump-chatlog.js` er allerede erstattet.
+
+---
+
+## 4. .claude/
+
+| Fil/mappe | Destination | Begrundelse |
+|-----------|-------------|-------------|
+| `settings.local.json` | **Bliver** | Projekt-config |
+| `skills/chatlog-search.md` | **Bliver** | Aktiv skill |
+| `skills/checkpoint.md` | **Bliver** | Aktiv skill |
+| `skills/infrastructure.md` | **Bliver** | Aktiv skill |
+| `skills/new-project.md` | **Bliver** | Aktiv skill |
+| `skills/notion.md` | **Bliver** | Aktiv skill |
+| `skills/session-state.md` | **Bliver** | Aktiv skill |
+| `implementation journals/auto-chatlog.md` | **→ `_ARC/implementation-journals/`** | IJ'er erstattes af ADR-changelog |
+| `implementation journals/chatlog-search.md` | **→ `_ARC/implementation-journals/`** | Samme |
+| `implementation journals/checkpoint.md` | **→ `_ARC/implementation-journals/`** | Samme |
+
+---
+
+## 5. template/
+
+| Fil | Destination | Begrundelse |
+|-----|-------------|-------------|
+| `.editorconfig` | **Bliver** | Skabelon-fil for `/new-project` |
+| `.gitattributes` | **Bliver** | Skabelon-fil |
+| `.gitignore` | **Bliver** | Skabelon-fil |
+| `CLAUDE.md` | **Bliver** | Skabelon-fil |
+| `NOW.md` | **Bliver** → opdateres | Bliver evt. CONTEXT.md-skabelon efter fase 5 |
+| `PLAN.md` | **Bliver** | Skabelon-fil |
+| `SKILL-new-project.md` | **Bliver** | Kilde til `/new-project` skill |
+| `project.code-workspace` | **Bliver** | Skabelon-fil |
+
+**Spørgsmål:** ADR-template (`project-reformation/templates/ADR-template.md`) — skal den også ind i `template/`? Min anbefaling: **nej, ikke endnu.** ADR-templaten er DLR-materiale, i
+...[truncated]
+
+---
+
+#### CLAUDE — 15:51
+
+Gode pointer. Lad mig adressere dem:
+
+**`.firecrawl/`** — lad mig tjekke om den er tracked.
+
+---
+
+#### CLAUDE — 15:52
+
+Ikke tracked — den er udenfor git. Kan ignoreres i manifestet (tilføjes evt. til `.gitignore` hvis den ikke allerede er der).
+
+**`template/` → `_ARC/`?** — nej, det tror jeg ikke er rigtigt. `_ARC/` er for *afsluttet/forældet* materiale. Templates er *aktivt værktøj* — `/new-project` skill bruger dem. De er BMS. Men pointen om clean rod er valid. Lad mig tælle hvad roden har nu vs. efter reformation:
+
+**Rod nu:** 7 filer + 7 mapper = 14 items
+**Rod efter fase 2:** 7 filer + 10 mapper (_backlog, PoC, DLR, SIP, _ARC, chatlogs, references, template, .claude, .firecrawl) = 17 items
+
+Det er i overkanten. Men `_backlog/` og `_ARC/` har underscore-prefix netop for at sortere dem væk visuelt, og pipeline-mapperne (PoC, DLR, SIP) er midlertidige — de tømmes efterhånden som ting promoveres.
+
+`template/` kan evt. flyttes *ind i* `.claude/` da den primært bruges af skills. Men det er en separat beslutning, ikke reformation-scope.
+
+**`chatlogs/` → pensionering nu:**
+
+Det der forhindrer det er ét konkret spørgsmål: hvor skal de 3 chatlog-filer hen?
+
+- `dump-chatlog.js` → `_ARC/` (erstattet af chatlog-engine.js) ✅ allerede i manifestet
+- `chatlog-2026-03-09/10/11.md` → de er genereret output fra den gamle parser. De har historisk værdi men er ikke aktivt reference-materiale
+
+Så: **`chatlogs/*.md` → `_ARC/chatlogs/`**, og `chatlogs/` mappen slettes. Auto-chatlog i `SIP/` overtager funktionen.
+
+Det gør roden 1 mappe mindre. Opdateret manifest:
+
+**Ændringer til manifestet:**
+
+| Ændring | Fra | Til |
+|---------|-----|-----|
+| ~~chatlogs/ bliver midlertidigt~~ | `chatlogs/*.md` | `_ARC/chatlogs/` |
+| ~~chatlogs/dump-chatlog.js~~ | `chatlogs/dump-chatlog.js` | `_ARC/dump-chatlog.js` |
+| Hele `chatlogs/` | **Slettes efter flytning** | — |
+| `.firecrawl/` | Udenfor git | Ingen handling (evt. `.gitignore`) |
+
+**Rod efter reformation (revideret):** 7 filer + 9 mapper = 16 items. Og 3 af mapperne (_backlog, _ARC, .firecrawl) er visuelt "gemt" via prefix/dot.
+
+Skal jeg opdatere det fulde manifest med disse ændringer og skrive det til disk som fil-manifestet (fase 0.5 step 8)?
+
+---
+
+#### YTTRE — 15:52
+
+ved ikke hvad gittracked betyder
+
+---
+
+#### CLAUDE — 15:52
+
+**Git-tracked** = om git kender til filen og versionerer den.
+
+Når du `git add` en fil, bliver den "tracked" — git holder øje med ændringer, og den indgår i commits. Filer der *ikke* er tracked (som `.firecrawl/`) eksisterer kun lokalt på din disk — de pushes ikke til GitHub, og de dukker ikke op i `git log`.
+
+`.gitignore` fortæller git: "ignorer disse filer, track dem aldrig." Typisk bruges det til ting som build-output, credentials, og cache-mapper.
+
+**Konkret:** `.firecrawl/` er ikke tracked og ikke i `.gitignore`. Den ligger bare lokalt. Den kan trygt ignoreres i manifestet — den er ikke en del af repoet.
+
+Skal den tilføjes til `.gitignore` så git ikke engang foreslår den? Eller vil du beholde muligheden for at tracke den senere (f.eks. hvis webscraping-projektet kommer i backlog)?
+
+---
+
+#### YTTRE — 15:58
+
+hvorfor skulle den trackes ikke trackes ?
+
+---
+
+#### CLAUDE — 15:59
+
+Godt spørgsmål. Den bør `.gitignore`'s. 
+
+Den indeholder research-output genereret af Firecrawl-toolen — ikke kode du har skrevet. Hvis du vil bruge det materiale, kopierer du det relevante ind i en brief eller reference-fil. Selve `.firecrawl/`-mappen er bare tool-cache.
+
+Tilføjer den til `.gitignore` i manifestet.
+
+Vil du have det reviderede manifest skrevet til disk nu?
+
+---
+
+#### YTTRE — 15:59
+
+hvad med referencemappen ?
+
+---
+
+#### CLAUDE — 15:59
+
+God pointe. Efter at 3 filer flyttes til `_ARC/` har `references/` stadig 12 filer — over din 5-fil grænse. Og de er blandede typer:
+
+**Quick references (daglig brug):**
+- `git.md`, `vscode.md`, `terminal.md`
+
+**Research (opslagsværk, sjældent opslået):**
+- `project-structure.md`, `scripts-and-tools-layout.md`, `claude-code-organization.md`, `automation.md`
+
+**Research (aktiv, M5):**
+- `windows-setup-research.md`, `x1-carbon-gen13-dev-setup.md`
+
+**Research (aktiv, fremtidigt projekt):**
+- `context-engineering-research.md`
+
+**Stabil reference:**
+- `yggdra-gold.md`
+
+To muligheder:
+
+**A) Undermapper:** `references/guides/`, `references/research/` — splitter de 12 filer i logiske grupper.
+
+**B) Flad men med bedre README** — 12 filer er ikke katastrofalt, og undermapper tilføjer navigation-overhead for en mappe du sjældent browser manuelt.
+
+Jeg hælder mod **A** — det matcher din egen regel om 5+ filer, og typerne er tydeligt forskellige. Quick references er "slå op dagligt", research er "læs én gang, referer sjældent."
+
+Hvad tænker du?
+
+---
+
+### 16:00–18:00 <a id="2026-03-12-16"></a>
+
+#### YTTRE — 16:00
+
+læs alle filer i references og lad mig høre om hvad du tænker
+
+---
+
+#### CLAUDE — 16:01
+
+OK, efter at have læst alt:
+
+**Tre typer indhold blandet i én mappe:**
+
+**1. Cheat sheets (daglig brug, slå op):**
+- `git.md` — 98 linjer, kommandoer og ordliste
+- `vscode.md` — 73 linjer, genveje og settings
+- `terminal.md` — 67 linjer, aliases og installeret software
+
+Disse er færdige. De ændrer sig kun hvis du ændrer dit setup. BMS-materiale.
+
+**2. Research (store, sjældent genbesøgt):**
+- `project-structure.md` — 14K, 25+ kilder. Opslagsværk, relevant men sjældent opslået.
+- `scripts-and-tools-layout.md` — 11K. Samme.
+- `claude-code-organization.md` — 10K. Opslagsværk + aktivt relevant for CE-projektet.
+- `windows-setup-research.md` — 28K. Aktiv for M5 step 11-17.
+- `x1-carbon-gen13-dev-setup.md` — 11K. Aktiv for M5 step 12.
+- `context-engineering-research.md` — 14K. Aktiv for kommende CE-projekt.
+
+**3. Noget andet:**
+- `automation.md` — dette er **ikke research**. Det er levende systemdokumentation over hvad der er implementeret (hooks, skills). Det er nærmere en "system manifest" end en reference. Stien i filen (`C:\Users\Krist\Basic Setup\CLAUDE.md`) er endda forkert — den mangler `dev/projects/`.
+- `yggdra-gold.md` — destillerede principper fra VPS. Ikke research, ikke guide — det er "institutionel hukommelse".
+
+**Mine observationer:**
+
+1. **automation.md hører ikke i references/.** Den dokumenterer levende state. Den er mere beslægtet med CLAUDE.md end med git.md. Den bør enten leve i roden eller i `.claude/` — tættere på det den beskriver.
+
+2. **Research-filer bør følge deres projekt** når reformation modnes. `context-engineering-research.md` bør flytte med CE-projektet. `windows-setup-research.md` er M5-materiale. Men det er fremtidigt — lige nu er de fine i references/.
+
+3. **Undermapper?** Med 9 filer efter flytning (3 guides, 5 research, 1 gold) er det på kanten. Undermapper `guides/` og `research/` er logisk rent men giver navigation-overhead for en mappe du browserer sjældent. Ærligt: det er et maybe, ikke et must.
+
+4. **yggdra-gold.md er værdifuld men unik.** Den er den eneste fil der bærer VPS-viden. Når repoet omdøbes til Yggdra, kan den måske absorberes ind i CLAUDE.md eller CONTEXT.md — principperne der er allerede delvist i MEMORY.md.
+
+**Kort sagt:** Mappen er OK strukturelt, men `automation.md` er fejlplaceret, og på sigt bør research-filer migrere ud med deres projekter. Undermapper er valgfrit.
+
+Hvad tænker du?
+
+---
+
+#### CLAUDE — 16:20
+
+OK, nu forstår jeg. Tre distinkte ting musset sammen i én mappe:
+
+**1. Manualer** — `git.md`, `vscode.md`, `terminal.md`. Levende dokumenter der vokser fra cheatsheets til håndbøger. Yggdras operationsmanual over tid.
+
+**2. Research** — en *praksis*, ikke bare en mappe. Forskningsinfrastruktur der betjener hele pipelinen (backlog, PoC, DLR, SIP). Kilder: Anthropic, OpenAI, Perplexity, forskningsinstitutter, eksperter, communities. Produktet er kvalitetssikret research der placeres i det område den tilhører.
+
+**3. Research-arkiv** — ældre research lavet med mangelfuld arkitektur. Kan promoveres ud af arkiv til anerkendt research-produkt og flyttes til relevant mappe.
+
+Det giver denne struktur:
+
+```
+manuals/                    ← levende håndbøger (git, vscode, terminal, +fremtidige)
+research/                   ← aktiv forskningspraksis
+  _ARC/                     ← ældre research, kan promoveres ud
+```
+
+Og så forsvinder `references/` helt — den var en catch-all der maskerede tre forskellige ting.
+
+**Konsekvenser for manifestet:**
+
+| Fil | Ny destination |
+|-----|---------------|
+| `git.md`, `vscode.md`, `terminal.md` | `manuals/` |
+| `automation.md` | Ud af references — tættere på det den beskriver (roden eller `.claude/`) |
+| `project-structure.md`, `scripts-and-tools-layout.md`, `claude-code-organization.md` | `research/` |
+| `windows-setup-research.md`, `x1-carbon-gen13-dev-setup.md` | `research/` (aktiv, M5) |
+| `context-engineering-research.md` | `research/` (aktiv, CE-projekt) |
+| `yggdra-gold.md` | `research/` eller `manuals/` — den er destilleret viden, ikke research |
+| `PLAN.v1.md`, `git-concepts.md`, `google-ai-samtale-rd-framework.md` | `_ARC/` (som allerede planlagt) |
+| `README.md` | Slettes — erstattes af README i `manuals/` og `research/` |
+
+**Åbent spørgsmål:**
+- `yggdra-gold.md` — manual eller research? Den er destillerede principper, ikke forskning. Jeg hælder mod `manuals/`.
+- `automation.md` — hvor? Den dokumenterer implementeret system-state. Måske `.claude/docs/` eller bare roden?
+
+---
+
+#### YTTRE — 16:34
+
+det er destilleret fra forskning lavet på vps for længe siden. når reformationen er gennemførst skal der kigges på indholdet af vps repoet. der er vildt meget research som enten er forældet og/eller amatøragtigt udført i profesionelle øjne. men der er guldkorn. researchen fra vps lægges i archiv/vps og alt skal gennemgåes, måske researches på nyt indtil vi har en langt bedre, opdateret version af den daværende research. men før vi gør det skal research-hub'en udvikle formidabel research prasksis. jer høre flere og flere steder at det professionelle er strukturen og brug af de rigtige llm'er til de rigtige ting. lige nu bruger jeg kun anthropic. alt dette er jo bare tanker, husk jeg ører bare derudaf og jeg tænker umiddelbart at research-architecture bliver et omfattende projekt i sig selv men den er lige så fundemental som det mest grundlæggende architecture Yggdra er bygget af. vores praksisser, infrastruktur, planlægningsstrategier bygger på forskning vi har lavet i sammenhold, men hvor velkontrueret er fundamentet for den research. jo renere, bedre og konstant up to date vedligholdt det er jo bedre er det. dette project kan starte i backlog, men har høj prioritet efter project reformation er fuldført til BMS. men som udgangspunkt burde al research output vi har lige nu lægges i en mappe der hedder research archive. jeg vil ikke sætte i gang i for meget før det vi allerede har planlagt er på plads.
+
+---
+
+#### CLAUDE — 16:35
+
+Forstået. Klar besked. Lad mig opsummere hvad jeg hører:
+
+**Research-arkitektur** er et stort, selvstændigt projekt — backlog-prioritet, høj prioritet efter reformation BMS. Fundamentet for alt andet. Men ikke nu.
+
+**Lige nu, for manifestet:** Al eksisterende research-output er "pre-reformation" materiale. Ingen af det har gennemgået kvalitetssikret research-praksis, fordi den praksis ikke eksisterer endnu. Så det hele er ærligt talt arkiv-kandidater — noget af det er godt, noget er amatøragtigt, alt mangler en struktureret vurdering.
+
+**Pragmatisk beslutning for fase 0.5:**
+
+```
+manuals/                         ← git.md, vscode.md, terminal.md (levende)
+research/                        ← TOM indtil research-arkitektur er på plads
+  _ARC/                          ← ALT eksisterende research-output
+```
+
+Dvs. alle nuværende research-filer (project-structure, scripts-and-tools, claude-code-org, windows-setup, x1-carbon, context-engineering, yggdra-gold) → `research/_ARC/`.
+
+Det er ærligt: vi ved det ikke er kvalitetssikret, vi gemmer det, og vi vender tilbage med bedre praksis.
+
+**Undtagelse:** `windows-setup-research.md` og `x1-carbon-gen13-dev-setup.md` bruges *aktivt* af M5 step 11-17. Flytte dem til arkiv nu gør M5 besværligt. Forslag: de bliver i `research/_ARC/` men M5 ved hvor de er — det er bare en sti-ændring, ikke en blokering.
+
+**`automation.md`** — stadig åben. Den dokumenterer implementeret state, ikke research. Forslag: roden, tæt på det den beskriver. Eller `.claude/`. Hvad tænker du?
+
+**Nyt backlog-brief:** `brief.research-architecture.md` — tilføjes i fase 3.
+
+Skal jeg opdatere det samlede manifest med alt dette?
+
+---
+
+#### CLAUDE — 16:39
+
+Godt. `automation.md` → backlog-brief (systemovervågning/automation-index). Og filen selv kan leve i `research/_ARC/` indtil videre — den er forældet og hører til et fremtidigt system.
+
+Her er det reviderede, komplette manifest:
+
+---
+
+## Fil-manifest v2 — Komplet audit
+
+### Roden (BMS — bliver)
+
+| Fil | Handling | Note |
+|-----|----------|------|
+| `CLAUDE.md` | Bliver | Projekt-instruktioner |
+| `NOW.md` | Bliver (midlertidigt) | → CONTEXT.md i fase 5 |
+| `PLAN.md` | Bliver (midlertidigt) | → `_ARC/PLAN.v2.md` i fase 5 |
+| `PROGRESS.md` | Bliver (midlertidigt) | → `_ARC/PROGRESS-pre-v3.md` i fase 5 |
+| `README.md` | Bliver | Repo-beskrivelse |
+| `.editorconfig` | Bliver | Config |
+| `.gitattributes` | Bliver | Config |
+| `.gitignore` | Bliver | Config — tilføj `.firecrawl/` |
+| `basic-setup.code-workspace` | Bliver | → omdøbes fase 7 |
+| `.firecrawl/` | Ignoreres | Tilføjes til `.gitignore` |
+
+### references/ → OPLØSES
+
+| Fil | Destination | Begrundelse |
+|-----|-------------|-------------|
+| `git.md` | `manuals/` | Levende håndbog |
+| `vscode.md` | `manuals/` | Levende håndbog |
+| `terminal.md` | `manuals/` | Levende håndbog |
+| `project-structure.md` | `research/_ARC/` | Pre-reformation research |
+| `scripts-and-tools-layout.md` | `research/_ARC/` | Pre-reformation research |
+| `claude-code-organization.md` | `research/_ARC/` | Pre-reformation research |
+| `windows-setup-research.md` | `research/_ARC/` | Pre-reformation research (aktiv M5, men bare en sti-ændring) |
+| `x1-carbon-gen13-dev-setup.md` | `research/_ARC/` | Pre-reformation research (aktiv M5) |
+| `context-engineering-research.md` | `research/_ARC/` | Pre-reformation research |
+| `yggdra-gold.md` | `research/_ARC/` | Destilleret fra VPS, pre-reformation |
+| `automation.md` | `research/_ARC/` | Forældet, erstattes af kommende automation-index |
+| `PLAN.v1.md` | `_ARC/` | Historisk, erstattet af v2 |
+| `git-concepts.md` | `_ARC/` | Absorberet læremateriale |
+| `google-ai-samtale-rd-framework.md` | `_ARC/` | Absorberet i ADR |
+| `README.md` | Slettes | Erstattes af README i `manuals/` og `research/` |
+
+`references/` mappen slettes efter flytning.
+
+### chatlogs/ → PENSIONERES
+
+| Fil | Destination | Begrundelse |
+|-----|-------------|-------------|
+| `chatlog-2026-03-09.md` | `_ARC/chatlogs/` | Historisk output |
+| `chatlog-2026-03-10.md` | `_ARC/chatlogs/` | Historisk output |
+| `chatlog-2026-03-11.md` | `_ARC/chatlogs/` | Historisk output |
+| `dump-chatlog.js` | `_ARC/` | Erstattet af chatlog-engine.js |
+
+`chatlogs/` mappen slettes efter flytning.
+
+### .claude/
+
+| Fil | Destination | Begrundelse |
+|-----|-------------|-------------|
+| `settings.local.json` | Bliver | Config |
+| `skills/*` (6 stk) | Bliver | Aktive skills |
+| `implementation journals/auto-chatlog.md` | `_ARC/implementation-journals/` | Erstattes af ADR-changelog |
+| `implementation journals/chatlog-search.md` | `_ARC/implementation-journals/` | Erstattes af ADR-changelog |
+| `implementation journals/checkpoint.md` | `_ARC/implementation-journals/` | Erstattes af ADR-changelog |
+
+### template/
+
+| Fil | Handling | Note |
+|-----|----------|------|
+| Alle 8 filer | Bliver | Aktiv skabelon for `/new-project` |
+
+### auto-chatlog/ → SIP
+
+| Fil | Destination | Begrundelse |
+|-----|-------------|-------------|
+| `chatlog-engine.js` | `SIP/auto-chatlog/` | Aktiv prototype |
+| `archive.md` | `SIP/auto-chatlog/` | Generet output |
+| `live.md` | `SIP/auto-chatlog/` | Generet output |
+
+### project-reformation/ → DLR
+
+| Fil | Destination | Begrundelse |
+|-----|-------------|-------------|
+| `adr.project-reformation.md` | `DLR/project-reformation/` | DLR-stadie |
+| `governance/README-*.md` (5 stk) | Pipeline-mapper | Governance README'er |
+| `templates/ADR-template.md` | `DLR/project-reformation/templates/` | Følger med |
+
+### ~/parallel-tasks/ → backlog-briefs (fase 3)
+
+7 briefs + 9 outputs → konsolideres til briefs i `_backlog/`.
+
+---
+
+## Nye mapper (fase 1 — revideret)
+
+```
+_backlog/          ← README fra README-Backlog.md
+PoC/               ← README fra README-PoC.md
+DLR/               ← README fra README-DLR.md
+SIP/               ← README fra README-SIP.md
+_ARC/              ← ny README
+  chatlogs/        ← pensionerede chatlog-filer
+  implementation-journals/
+manuals/           ← ny README + git.md, vscode.md, terminal.md
+research/          ← ny README (tom — afventer research-arkitektur)
+  _ARC/            ← al pre-reformation research
+```
+
+## Nye backlog-briefs (fase 3 — tilføjet)
+
+- `brief.research-architecture.md` — forskningspraksis, infrastruktur, multi-LLM strategi, VPS research audit. Høj prioritet post-reformation.
+- `brief.automation-index.md` — levende automation-overblik, cruft-forebyggelse, system-overvågning.
+
+---
+
+## Samlet flytningsoversigt
+
+| Fra | Til |
+|-----|-----|
+| `references/git.md`, `vscode.md`, `terminal.md` | `manuals/` |
+| `references/` (9 øvrige research-filer) | `research/_ARC/` |
+| `references/PLAN.v1.md`, `git-concepts.md`, `google-ai-samtale-rd-framework.md`
+...[truncated]
+
+---
+
+#### YTTRE — 16:41
+
+kør checkpoint manuelt, efterfulgt af go.
+
+---
+
+#### CLAUDE — 16:42
+
+Lad mig læse NOW.md først, så jeg kan opdatere den korrekt.
+
+---
+
+#### CLAUDE — 16:43
+
+Du har ret — PROGRESS.md og PLAN.md skal også opdateres. Lad mig læse PROGRESS.md og opdatere begge.
+
+---
+
+#### CLAUDE — 16:44
+
+OK, PROGRESS.md er 338 linjer. Lad mig opdatere begge.
+
+---
+
+#### CLAUDE — 16:44
+
+Nu PLAN.md — fase 0.5 er done:
+
+---
+
+#### CLAUDE — 16:45
+
+Checkpoint done. NOW.md, PROGRESS.md og PLAN.md opdateret.
+
+Nu: **go**. Lad mig implementere fase 1 (mappestruktur) og fase 2 (fil-flytning).
+
+Starter med at oprette alle mapper og flytte filer. Kører det i logisk rækkefølge — mapper først, flytninger derefter.
+
+---
+
+#### CLAUDE — 16:45
+
+Mapper oprettet. Nu governance README'er — kopierer fra project-reformation/governance/ og skriver nye.
+
+---
+
+#### CLAUDE — 16:45
+
+Nu skriver jeg README'er for de nye mapper (_ARC, manuals, research):
+
+---
+
+#### CLAUDE — 16:46
+
+Mapper og README'er klar. Nu fase 2 — flyt alle filer:
+
+---
+
+#### CLAUDE — 16:47
+
+Nu slet tomme mapper og opdatér .gitignore:
+
+---
+
+#### CLAUDE — 16:47
+
+Nu .gitignore:
+
+---
+
+#### CLAUDE — 16:48
+
+.firecrawl/ er allerede i .gitignore. Chatlog-linjerne er forældede nu — filerne er flyttet. Lad mig opdatere:
+
+---
+
+#### CLAUDE — 16:48
+
+Lad mig verificere den endelige struktur:
+
+---
+
+#### CLAUDE — 16:48
+
+Alt er på plads. Lad mig opdatere ADR'en med fase 0.5 completion:
+
+---
+
+#### CLAUDE — 16:48
+
+Nu fase 1 og 2 checkboxes:
+
+---
+
+#### CLAUDE — 16:49
+
+Opdatér ADR current state:
+
+---
+
+#### CLAUDE — 16:49
+
+Lad mig verificere med git status:
+
+---
+
+#### CLAUDE — 16:49
+
+Alt ser korrekt ud. Alle filer flyttet, alle nye mapper oprettet. Skal jeg committe nu?
+
+---
+
+#### YTTRE — 17:29
+
+ja, giv mig her et overblik over den nye struktur samt opsummering
+
+---
+
+#### CLAUDE — 17:29
+
+**Ny struktur:**
+
+```
+Yggdra (Basic Setup)/
+├── CLAUDE.md                    # Projekt-instruktioner
+├── NOW.md                       # Aktuel state (→ CONTEXT.md i fase 5)
+├── PLAN.md                      # Plan v2 (→ v3 pipeline-baseret i fase 5)
+├── PROGRESS.md                  # Narrativ kontekst (→ arkiveres i fase 5)
+├── README.md                    # Repo-beskrivelse
+├── .editorconfig / .gitattributes / .gitignore
+├── basic-setup.code-workspace   # → yggdra.code-workspace i fase 7
+│
+├── _backlog/                    # Idéer og briefs (fase 3 fylder den)
+├── PoC/                         # Prototyper (tom)
+├── DLR/                         # Design/development
+│   └── project-reformation/     # ADR + governance + templates
+├── SIP/                         # Staging/integration
+│   └── auto-chatlog/            # chatlog-engine.js, live.md, archive.md
+├── _ARC/                        # Arkiv
+│   ├── chatlogs/                # 3 chatlog-filer (pre-auto-chatlog)
+│   ├── implementation-journals/ # 3 journals (pre-ADR)
+│   ├── PLAN.v1.md, git-concepts.md, google-ai-samtale-rd-framework.md
+│   └── dump-chatlog.js
+│
+├── manuals/                     # Levende håndbøger
+│   ├── git.md, vscode.md, terminal.md
+│
+├── research/                    # Tom — afventer research-arkitektur
+│   └── _ARC/                    # 8 pre-reformation research-filer
+│
+├── template/                    # /new-project skabeloner (8 filer)
+└── .claude/                     # Skills (6 stk) + settings
+```
+
+**Opsummering af hvad der skete:**
+
+- **Fil-audit gennemført** — hver fil i repoet vurderet med destination og begrundelse
+- **references/ opløst** — tre ting var blandet: manualer → `manuals/`, research → `research/_ARC/`, historisk → `_ARC/`
+- **chatlogs/ pensioneret** — auto-chatlog i SIP overtager
+- **Pipeline-struktur live** — _backlog, PoC, DLR, SIP, _ARC med governance README'er
+- **Implementation journals arkiveret** — ADR-changelog erstatter dem
+- **2 nye backlog-briefs planlagt** — research-architecture (høj prioritet), automation-index
+- **.gitignore opdateret** — forældede regler fjernet
+
+**Næste:** Fase 3 (briefs), fase 4 (ADR'er), fase 5 (CONTEXT.md — egen session).
+
+---
+
+#### CLAUDE — 17:29
+
+Git har korrekt genkendt de fleste som renames. Committer:
+
+---
+
+#### CLAUDE — 17:30
+
+Committed. Fase 1-2 er done. Skal jeg pushe og fortsætte med fase 3 (briefs)?
+
+---
+
+#### YTTRE — 17:38
+
+vent lidt hvorfor har arc og backlog underscore. det skal poc dlr og sip have. egentlig kan jeg ikke lide de ikke har kronologisk placering. , 0_backlog 1_PoC, 2_DLR, 3_SIP, 4_ARC. der er altfor mange mapper i roden. det har jeg understreget før.  overvej hvad der kan smides ind som undermapper i andre overmapper
+
+---
+
+#### CLAUDE — 17:39
+
+Du har ret. Lad mig tænke over det.
+
+**Rod lige nu (10 synlige mapper):**
+_ARC, _backlog, DLR, manuals, PoC, research, SIP, template + .claude
+
+**Problem 1: Inkonsistent prefix + ingen kronologi.**
+Nummererede pipeline-mapper løser begge:
+```
+0_backlog/  1_PoC/  2_DLR/  3_SIP/  4_ARC/
+```
+Sorterer kronologisk, visuelt gruppperet.
+
+**Problem 2: For mange mapper.**
+Hvad kan absorberes:
+
+- **template/** → `.claude/template/` — det er skill-infrastruktur (`/new-project` bruger den). Ingen grund til at den er synlig i roden.
+- **manuals/** og **research/** — de er forskellige ting, men de er begge "viden." Kunne leve under én paraply, f.eks. `docs/manuals/` og `docs/research/`. Men du slagtede netop `references/` fordi det var en catch-all, så det er tvivlsomt.
+
+**Alternativ:** manuals og research bliver i roden. De er 2 mapper med klart defineret formål. Research er næsten tom (kun _ARC/), og manuals har kun 3 filer. De fylder ikke mentalt.
+
+**Rod efter ændring (8 synlige mapper):**
+```
+0_backlog/  1_PoC/  2_DLR/  3_SIP/  4_ARC/
+manuals/  research/
+.claude/ (+ template indeni)
+```
+
+5 pipeline (sorterer først, kronologisk) + 2 vidensmapper + 1 config. Det er rent.
+
+Hvad tænker du?
+
+---
+
+### 20:00–22:00 <a id="2026-03-12-20"></a>
+
+#### YTTRE — 20:41
+
+[Request interrupted by user]
+
+---
+
+#### YTTRE — 20:42
+
+derudover synes jeg ikke at backlog, poc dlr og sip skal ligge i bms, men i deres egen mappe
+
+---
+
+#### CLAUDE — 20:43
+
+Godt punkt. Pipeline-stadier er *processen*, BMS er *resultatet*. De bør ikke blandes.
+
+**Revideret rod:**
+
+```
+Basic Setup/
+├── CLAUDE.md, NOW.md, PLAN.md, PROGRESS.md, README.md
+├── .editorconfig, .gitattributes, .gitignore, .code-workspace
+│
+├── pipeline/
+│   ├── 0_backlog/
+│   ├── 1_PoC/
+│   ├── 2_DLR/
+│   ├── 3_SIP/
+│   └── 4_ARC/
+│
+├── manuals/              ← git.md, vscode.md, terminal.md
+├── research/             ← tom + _ARC/ med gammelt research
+└── .claude/              ← skills, settings, template/
+```
+
+**3 synlige mapper + config/state.** Meget rent.
+
+Mht. manuals og research som projekter med ADR i PoC — det giver mening *konceptuelt*, men lige nu er manuals bare 3 filer og research er tom. ADR og PoC-stadie føles som overhead for noget der endnu ikke har kompleksitet. Research-architecture som backlog-brief dækker det fremtidige projekt. Manuals vokser organisk.
+
+Forslag: lad dem bo i BMS-roden som de er nu, og *hvis* de vokser i kompleksitet, kan de altid få en ADR og flytte ind i pipeline. Men det er din beslutning.
+
+---
+
+#### CLAUDE — 20:45
+
+Ja, præcis. Når research-architecture projektet starter (fra backlog), *er* `research/` mappen dets hjem. Projektet handler om at bygge research-praksis — og `research/_ARC/` er det gamle materiale der skal igennem den nye praksis.
+
+Så `research/` er allerede research-architecture projektets mappe. Den starter i `pipeline/0_backlog/` som brief, og når den promoveres til PoC/DLR, arbejdes der *i* `research/`. Det gamle materiale i `research/_ARC/` er input til projektet.
+
+Ingen merge nødvendig — det er allerede det samme.
+
+**Opdateret manifest:**
+
+```
+Basic Setup/
+├── CLAUDE.md, NOW.md, PLAN.md, PROGRESS.md, README.md
+├── .editorconfig, .gitattributes, .gitignore, .code-workspace
+│
+├── pipeline/
+│   ├── 0_backlog/
+│   ├── 1_PoC/
+│   ├── 2_DLR/
+│   │   └── project-reformation/
+│   ├── 3_SIP/
+│   │   └── auto-chatlog/
+│   └── 4_ARC/
+│       ├── chatlogs/
+│       ├── implementation-journals/
+│       ├── PLAN.v1.md, git-concepts.md, google-ai-samtale-rd-framework.md
+│       └── dump-chatlog.js
+│
+├── manuals/
+│   └── git.md, vscode.md, terminal.md
+│
+├── research/
+│   └── _ARC/   ← 8 pre-reformation research-filer
+│
+└── .claude/
+    ├── skills/ (6 stk)
+    ├── template/ (8 filer, fra template/)
+    └── settings.local.json
+```
+
+Klar til go, eller er der mere at justere?
+
+---
+
+#### CLAUDE — 20:47
+
+Ja — alt i PLAN.md der er parkeret/backlog bliver til briefs i `pipeline/0_backlog/`. Og ting der allerede er i gang (som project-reformation, auto-chatlog) er allerede placeret i DLR/SIP.
+
+Men lad mig være ærlig: jeg har ikke læst PLAN.md i denne session. Lad mig gøre det for at sikre jeg ikke misser noget.
+
+---
+
+#### CLAUDE — 20:47
+
+Her er hvad der skal mappes fra PLAN.md til pipeline:
+
+**Idé-parkering (linje 139-154) → `pipeline/0_backlog/` briefs:**
+
+1. `brief.research-vidensbank.md` — personligt forskningsinstitut (merger med research-architecture)
+2. `brief.visualisering.md` — infographics som projekt
+3. `brief.notion-spejling.md` — Notion ↔ VS Code
+4. `brief.voice-integration.md`
+5. `brief.mcp-kompendium.md` — scan mcpmarket.com top 100
+6. `brief.abonnement-overblik.md` — alle services
+7. `brief.pdf-toolkit.md` — fakturaer, rapporter, OCR
+8. `brief.webscraping.md` — professionel Firecrawl-setup
+9. `brief.session-drift-pipeline.md` — automatisér drift-loop (M7-relateret)
+10. `brief.cross-session-peer-review.md` — parallelle review-sessioner
+11. `brief.integrationer.md` — Gmail, Google, mobil-adgang
+12. `brief.automation-index.md` — levende automation-overblik
+13. `brief.research-architecture.md` — forskningspraksis (høj prioritet)
+
+**Moduler → pipeline-stadier:**
+
+| Modul | Status | Destination |
+|-------|--------|-------------|
+| M1-M4 | Done | BMS (allerede i roden, PDCA-evalueret) |
+| M5 (step 11-17) | I gang | `pipeline/2_DLR/` eller forbliver i PLAN.md? |
+| M6 (terminal-auto) | Ikke startet | `pipeline/0_backlog/` |
+| M7 (context engineering) | Ikke startet | `pipeline/0_backlog/` (allerede besluttet i session 10) |
+| M8 (skabeloner) | Ikke startet | `pipeline/0_backlog/` |
+| Project Reformation | DLR | `pipeline/2_DLR/` (allerede placeret) |
+
+**Åbent spørgsmål:** M5 er halvvejs. Den sidder i PLAN.md som "i gang". Skal M5 have sin egen mappe i `pipeline/2_DLR/m5-pc-setup/` med en ADR? Eller forbliver den i PLAN.md indtil den er færdig og PLAN.md selv arkiveres i fase 5?
+
+Og `~/parallel-tasks/` (7 outputs) — de mapper direkte til flere af briefs ovenfor. Indholdet absorberes i de relevante briefs.
+
+---
+
+#### YTTRE — 20:49
+
+når projekt reformation er done, færdiggører vi planen der står i den nye context.md.
+
+---
+
+#### CLAUDE — 20:49
+
+Forstået. Så PLAN.md forbliver som den er indtil fase 5, hvor CONTEXT.md overtager. M5 og resten afsluttes derfra. Ingen grund til at flytte moduler ind i pipeline nu — de lever i PLAN.md → CONTEXT.md.
+
+**Briefs fra idé-parkering** oprettes i fase 3 i `pipeline/0_backlog/`.
+
+Er manifestet klar nu, eller er der mere at justere før vi kører?
+
+---
+
+#### CLAUDE — 20:56
+
+Det ser ud til at fase 1-2 allerede er udført (commit `c9e32de`). Lad mig se hvad der faktisk eksisterer nu.
+
+---
+
+#### CLAUDE — 20:57
+
+Fase 1-2 er allerede gennemført. Nu skal jeg implementere de ændringer fra denne session:
+
+1. **Pipeline-mapper** → `pipeline/0_backlog/`, `pipeline/1_PoC/`, `pipeline/2_DLR/`, `pipeline/3_SIP/`, `pipeline/4_ARC/`
+2. **template/** → `.claude/template/`
+3. Tjek `.gitignore` for `.firecrawl/`
+
+---
+
+#### CLAUDE — 20:57
+
+`.firecrawl/` er allerede i `.gitignore`. Nu kører jeg omstruktureringen.
+
+---
+
+#### CLAUDE — 20:57
+
+Strukturen er på plads. Lad mig opdatere `/new-project` skillen da template-stien er ændret, og opdatere NOW.md.
+
+---
+
+#### CLAUDE — 20:57
+
+Skillen refererer `template/` generisk (linje 13), men den finder filerne via stien relativt til projektet. Siden skillen køres fra *andre* projekter (ikke Basic Setup), og template-filerne kopieres ind, er stien til template/ i *dette* repo den der skal opdateres. Lad mig tjekke om den hardcoder stien.
+
+Skillen siger bare "fra template/" — den antager det er i det aktuelle repo. Men `/new-project` køres fra Basic Setup, så stien skal nu pege på `.claude/template/`.
+
+---
+
+#### CLAUDE — 20:57
+
+Nu NOW.md — opdaterer med den nye struktur og hvad der blev gjort.
+
+---
+
+#### CLAUDE — 20:58
+
+Done. Strukturen er implementeret:
+
+- **3 synlige mapper i roden:** `pipeline/`, `manuals/`, `research/`
+- **Pipeline kronologisk:** `0_backlog` → `4_ARC`
+- **template/** absorberet i `.claude/template/`
+- **NOW.md** opdateret
+- **`/new-project` skill** opdateret med ny sti
+
+Klar til commit når du siger til.
+
+---
+
+#### YTTRE — 20:58
+
+templates*
+
+---
+
+#### CLAUDE — 20:58
+
+Governance README'erne referer til de gamle stier (`_backlog/`, `DLR/`, etc.). De skal opdateres til `pipeline/0_backlog/`, `pipeline/2_DLR/`, osv.
+
+Og ADR-template.md — den bor i `project-reformation/templates/`, som er DLR-materiale. Korrekt placering.
+
+Skal jeg opdatere stierne i governance README'erne?
+
+---
+
+#### YTTRE — 21:00
+
+ja
+
+---
+
+#### CLAUDE — 21:00
+
+Governance README'erne nævner stier som `PoC/DLR/SIP` og `_backlog` uden `pipeline/`-prefix. Og de skal kopieres til de faktiske pipeline-mapper. Lad mig tjekke hvad der allerede ligger i pipeline-mapperne.
+
+---
+
+#### CLAUDE — 21:01
+
+Governance README'erne og de installerede kopier er identiske. Ændringer nødvendige:
+
+1. Headers → matcher de nye mappenavne
+2. Krydsreferencer → bruger de nye sti-navne
+
+---
+
+#### CLAUDE — 21:01
+
+Nu de øvrige stagereferencer — "flyttes til PoC", "promotion til SIP" osv. er konceptuelle navne, ikke stier. De behøver ikke ændres. Men lad mig opdatere `README-PoC.md` header og `README-SIP.md`/`README-DLR.md` headers for konsistens med de installerede kopier.
+
+---
+
+#### CLAUDE — 21:01
+
+Nu CLAUDE.md — den refererer også til de gamle pipeline-stier.
+
+---
+
+#### CLAUDE — 21:01
+
+Alle headers og stier opdateret. Klar til commit.
+
+---
+
+#### CLAUDE — 21:02
+
+Committed. Skal jeg pushe?
+
+---
+
+#### YTTRE — 21:03
+
+ja
+
+---
+
+#### CLAUDE — 21:03
+
+Pushet. GitHub nævner at repoet er flyttet til `Basic-setup.git` (ændret casing) — det virker stadig, men kan opdateres i remote-config senere.
+
+---
+
+#### YTTRE — 21:04
+
+hvad betyder det?
+
+---
+
+#### CLAUDE — 21:04
+
+GitHub har ændret casing på repo-navnet fra `basic-setup` til `Basic-setup`. Det sker typisk hvis du (eller nogen) har ændret repo-navnet på GitHub. 
+
+Det påvirker ingenting funktionelt — git push/pull virker stadig. Men remote-URL'en peger på det gamle navn. Du kan opdatere den hvis det generer dig:
+
+```
+git remote set-url origin git@github.com:Yttrehus/Basic-setup.git
+```
+
+Ikke presserende — alt virker som det er.
+
+---
+
+#### YTTRE — 21:05
+
+sådan: Basic Setup on  main
+❯ git remote set-url origin git@github.com:Yttrehus/Basic-setup.git
+
+
+Basic Setup on  main
+❯
+
+---
+
+#### CLAUDE — 21:05
+
+Opdateret. Remote peger nu på det korrekte navn.
+
+Hvad er næste step — fase 3 (briefs)?
+
+---
+
+#### YTTRE — 21:05
+
+yes
+
+---
+
+#### CLAUDE — 21:06
+
+Fase 3 — briefs. Lad mig læse ADR'en for at forstå hvad der skal ske, og tjekke PLAN.md for parkerede idéer + parallel-tasks.
+
+---
+
+#### CLAUDE — 21:06
+
+Godt. Lad mig læse parallel-tasks for at forstå råmaterialet.
+
+---
+
+#### CLAUDE — 21:07
+
+OK. Her er det komplette billede. Idé-parkering + parallel-tasks + session-beslutninger → briefs.
+
+**13 briefs (med kilde):**
+
+| # | Brief | Kilde | Parallel-tasks output |
+|---|-------|-------|-----------------------|
+| 1 | `brief.mcp-skills-kompendium.md` | Idé-parkering + PT 01 | output-01 |
+| 2 | `brief.abonnement-overblik.md` | Idé-parkering + PT 02 | output-02 |
+| 3 | `brief.pdf-skill.md` | Idé-parkering + PT 03 | output-03 (2 filer) |
+| 4 | `brief.webscraping-audit.md` | Idé-parkering + PT 04 | output-04 |
+| 5 | `brief.notion-spejling.md` | Idé-parkering + PT 05 | output-05 |
+| 6 | `brief.session-drift-pipeline.md` | Idé-parkering + PT 06 | output-06 |
+| 7 | `brief.research-architecture.md` | Idé-parkering + PT 07 + session 12 | output-07 |
+| 8 | `brief.automation-index.md` | Session 12 | — |
+| 9 | `brief.visualisering.md` | Idé-parkering | — |
+| 10 | `brief.voice-integration.md` | Idé-parkering | — |
+| 11 | `brief.cross-session-peer-review.md` | Idé-parkering | — |
+| 12 | `brief.integrationer.md` | Idé-parkering | — |
+| 13 | `brief.context-engineering.md` | M7 (trukket ud som selvstændigt projekt) | — |
+
+**Udeladt:**
+- **Adobe Acrobat Pro** — "afvent behov", for tynd til en brief. Kan tilføjes senere.
+- **Projekt-omdøbning** — allerede fase 7 i project-reformation ADR.
+
+**Format per brief:** Opsummering → Origin Story → Rå input (inkl. parallel-tasks output).
+
+**Spørgsmål:**
+- Er listen korrekt? Mangler der noget, eller skal noget fjernes?
+- Skal parallel-tasks output inkluderes som "Rå input" i briefen, eller skal det ligge separat?
+
+---
+
+#### YTTRE — 21:07
+
+er project reformation adr løbende opdateret ?
+
+---
+
+#### CLAUDE — 21:07
+
+Nej. ADR'en afspejler session 11-strukturen, ikke session 12-ændringerne. Specifikt:
+
+- **Sektion 2 (Current State):** Siger "fase 0-2 komplet" — korrekt, men nævner ikke pipeline/-ændringen
+- **Sektion 8 (Implementation):** Fase 1-2 refererer til `_backlog/`, `PoC/`, `DLR/`, `SIP/`, `_ARC/` — ikke `pipeline/0_backlog/` osv.
+- **Fase 3:** Siger `_backlog/` — skal være `pipeline/0_backlog/`
+
+Skal jeg opdatere den nu?
+
+---
+
+#### YTTRE — 21:09
+
+ja, og noter ved parallel tasks at de er forsøgt udfurt. (findes i /krist/parallel tasks, de kræver dog revision, abonnements oversigten er vist ikke helt done,
+
+---
+
+#### CLAUDE — 21:09
+
+Nu opdaterer jeg ADR'en med session 12-ændringer.
+
+---
+
+#### CLAUDE — 21:10
+
+Nu fase 4-6 stierne:
+
+---
+
+#### CLAUDE — 21:10
+
+Nu fase 5 stier:
+
+---
+
+#### CLAUDE — 21:10
+
+Til sidst changelog-entry for session 12 og backlog-ref-opdatering:
+
+---
+
+#### CLAUDE — 21:11
+
+ADR opdateret. Current State, Implementation (alle stier), Changelog (session 12 entry), og Backlog-referencer er nu ajour.
+
+Skal vi fortsætte med at oprette de 13 briefs?
+
+---
+
+#### YTTRE — 21:12
+
+ja
+
+---
+
+#### CLAUDE — 21:12
+
+Lad mig læse parallel-tasks outputs for at inkludere dem som rå input.
+
+---
+
+#### CLAUDE — 21:13
+
+Alle outputs læst. Nu opretter jeg de 13 briefs. Starter med de 7 der har parallel-tasks output.
+
+---
+
+#### CLAUDE — 21:14
+
+7 af 13 oprettet. Nu de 6 uden parallel-tasks output.
+
+---
+
+#### CLAUDE — 21:15
+
+13 briefs oprettet. Nu opdaterer jeg PLAN.md — fjerner idé-parkering og erstatter med pointer til backlog.
+
+---
+
+#### CLAUDE — 21:15
+
+Nu opdaterer jeg rækkefølge-sektionen og reformation-status:
+
+---
+
+#### CLAUDE — 21:16
+
+Nu opdaterer jeg research-fil stien:
+
+---
+
+#### CLAUDE — 21:16
+
+Nu markerer jeg fase 3 som done i ADR'en:
+
+---
+
+#### CLAUDE — 21:16
+
+Opdaterer Current State:
+
+---
+
+#### CLAUDE — 21:16
+
+Klar til commit. Lad mig verificere:
+
+---
+
+#### CLAUDE — 21:16
+
+13 briefs, alle på plads. Skal jeg committe og pushe?
+
+---
+
+#### YTTRE — 21:17
+
+commit og push
+
+---
+
+#### CLAUDE — 21:18
+
+Done. Fase 3 committed og pushet.
+
+**Status:** Reformation fase 0-3 komplet. Næste er fase 4 (ADR'er for auto-chatlog og projekt-omdøbning).
+
+---
+
+#### CLAUDE — 21:26
+
+Hvad nu — fase 4, eller pause?
+
+---
+
+#### CLAUDE — 21:53
+
+For **auto-chatlog ADR** har jeg god kontekst fra:
+- ADR changelog (session 9: parser-prototype, design-iterationer)
+- Implementation journal i `pipeline/4_ARC/implementation-journals/auto-chatlog.md`
+- Koden i `pipeline/3_SIP/auto-chatlog/`
+
+Mangler: jeg har ikke læst selve chatlog-engine.js eller implementation-journalen i denne session. Lad mig læse dem for at skrive en præcis ADR.
+
+For **projekt-omdøbning ADR** har jeg kontekst fra ADR changelog (session 10: "Repo omdøbes til Yggdra") og PLAN.md. Den er simplere — det er et PoC-stadie projekt der venter på reformation fase 7.
+
+Skal jeg læse og skrive begge nu?
+
+---
+
+### 22:00–24:00 <a id="2026-03-12-22"></a>
+
+#### YTTRE — 22:01
+
+giv mig et udkast her
+
+---
+
+#### CLAUDE — 22:01
+
+Lad mig læse de nødvendige filer først.
+
+---
+
+#### CLAUDE — 22:02
+
+Her er udkastene:
+
+---
+
+## ADR: Auto-chatlog
+
+```markdown
+# ADR: Auto-chatlog
+<!-- Filnavn: adr.auto-chatlog.md -->
+
+## 0. Metadata
+- **Stage:** SIP
+- **Status:** Active
+- **Oprettet:** 2026-03-11
+- **Sidst opdateret:** 2026-03-12
+- **Ejer:** Yttre + Claude
+
+## 1. Origin Story
+Auto-chatlog opstod 11/3-2026 under session 9. Yttre observerede at Claude Codes .jsonl sessionsfiler vokser kontinuerligt men aldrig omdannes til læsbar chatlog automatisk. De manuelle chatlog-dumps (dump-chatlog.js + chatlogs/-mappen) krævede at Claude blev bedt om det eksplicit — og outputtet var en flad sekvens uden tidsopdeling eller navigation. Den første prototype blev bygget direkte i session 9, men Claude gik i bygge-mode for tidligt. Yttre kalibrerede: "spørg før du bygger." Tre design-iterationer fulgte: navigationslinks, referater, retskrivning — alt parkeret som fremtidige forbedringer. Format først, automatisering bagefter.
+
+## 2. Current State
+SIP-stadie. chatlog-engine.js fungerer og parser 1000+ beskeder fra 6+ sessions. Producerer to filer: live.md (dagens samtale) og archive.md (tidligere datoer med index + 2-timers tidsblokke). Kører manuelt — ingen automatisk trigger endnu. Nøgleord-extraction er frekvensbaseret og utilstrækkelig (generiske ord). Det gamle chatlogs/-system er pensioneret til pipeline/4_ARC/chatlogs/.
+
+## 3. Problem Statement
+- **Hvad:** Claude Code sessionsfiler (.jsonl) er maskinlæsbare men ikke menneskelæsbare. Der er ingen automatisk omdannelse til chatlog. Manuelle dumps glemmes, og outputtet mangler tidsopdeling og navigation.
+- **Hvorfor:** Yttre bruger chatlog som kontekst-kilde mellem sessioner og til retrospektiv ("hvad diskuterede vi?"). Uden læsbar chatlog er man afhængig af hukommelse eller at grave i rå JSONL.
+
+## 4. Target State
+live.md opdateres automatisk (file-watcher eller hook-trigger). archive.md indekserer alle tidligere samtaler med meningsfulde nøgleord (LLM-baseret, ikke frekvens). Navigation mellem tidsblokke er friktionsfri. Yttre kan åbne archive.md og finde en specifik diskussion på under 30 sekunder.
+
+## 5. Architecture & Trade-offs
+- **Beslutning:** Node.js parser der læser alle .jsonl sessions, splitter på dato (live vs archive), og formaterer som markdown med 2-timers tidsblokke.
+- **Brute-force rebuild:** Hele chatloggen rebuildes fra scratch ved hver kørsel. Simpelt, korrekt, men skalerer ikke til hundredvis af sessions. Inkrementel opdatering er fremtidig forbedring.
+- **Dansk tid:** UTC konverteres til Europe/Copenhagen. Vigtigt for korrekt datoskift.
+- **Truncation:** Beskeder over 5000 tegn afkortes. Balancerer læsbarhed mod fuldstændighed.
+- **System-noise filtrering:** <system-reminder>, <ide_*>, <local-command>, <command-name> tags springes over.
+
+## 6. Evaluation
+- Kan Yttre finde en specifik diskussion i archive.md under 30 sekunder?
+- Kører chatlog-engine.js uden fejl efter 10+ sessions akkumuleret?
+- Er live.md nyttig som "hvad lavede vi i dag?"-overblik?
+- Erstatter det reelt de manuelle chatlog-dumps?
+
+## 7. Exit Criteria
+- **Promotion til BMS:** Kører automatisk (hook eller file-watcher). Nøgleord-extraction er meningsfuld. Brugt friktionsfrit i 5+ sessioner. Gammel chatlogs/-mappe ikke savnet.
+- **Demotion til DLR:** Fundamental arkitekturfejl (f.eks. JSONL-format ændres og parser bryder).
+- **Sunset:** Hvis chatloggen aldrig konsulteres i 10 sessioner, er den cruft.
+
+## 8. Implementation
+
+### Fase 1: Parser-prototype ✅
+- [x] chatlog-engine.js — parser .jsonl, splitter live/archive
+- [x] Dansk tid (UTC+1)
+- [x] 2-timers tidsblokke i archive
+- [x] Index-tabel med nøgleord per dato
+- [x] Sub-index per tidsblok
+- [x] System-noise filtrering
+- [x] Truncation af lange beskeder
+
+### Fase 2: Automatisering
+- [ ] File-watcher mode (--watch flag, designet men ikke bygget)
+- [ ] Eller: PostToolUse hook ved git commit (se brief.session-drift-pipeline.md)
+
+### Fase 3: Intelligens
+- [ ] LLM-baseret nøgleord/referat (lokal LLM, Ollama — se brief i backlog)
+- [ ] Navigationslinks mellem tidsblokke
+- [ ] Retskrivning af bruger-input
+- [ ] Session-ID markering ved parallelle sessions
+
+## 9. Changelog
+- 2026-03-11 (session 9, ~09:30): Prototype bygget i chatlog-test/. 494 beskeder parset. UTC-tid → dansk tid fikset. Kronologisk rækkefølge fikset. 2-timers tidsblokke tilføjet.
+- 2026-03-11 (session 9, ~10:00): Nøgleord-extraction testet — frekvensbaseret, utilstrækkelig. LLM-baseret løsning parkeret.
+- 2026-03-11 (session 11): Flytning til SIP/auto-chatlog/. Gammel chatlogs/ pensioneret til _ARC/.
+- 2026-03-12 (session 11): 1098 beskeder fra 6 sessions. Datoskift d.11→d.12 håndteret korrekt.
+- 2026-03-12 (session 12): Pipeline restrukturering → pipeline/3_SIP/auto-chatlog/.
+
+## 10. Backlog
+- Navigationslinks mellem tidsblokke
+- Lokal LLM til opsummering/nøgleord (se brief.mcp-skills-kompendium.md)
+- File-watcher eller hook-baseret automatisering
+- Inkrementel opdatering (ikke brute-force rebuild)
+- Session-ID markering ved parallelle sessions
+- Retskrivning af bruger-
+...[truncated]
+
+---
+
+#### YTTRE — 22:07
+
+flot
+
+---
+
+#### CLAUDE — 22:07
+
+Skal jeg skrive dem til disk, committe og pushe?
+
+---
+
+#### YTTRE — 22:08
+
+ja
+
+---
+
+#### CLAUDE — 22:10
+
+Nu markerer jeg fase 4 som done i ADR'en og committer.
+
+---
+
+#### CLAUDE — 22:11
+
+Done. Fase 0-4 komplet. Næste er fase 5 (CONTEXT.md) — ADR'en anbefaler at den får sin egen session.
+
+---
+
+#### CLAUDE — 22:14
+
+Changelog mangler entries for fase 3 og 4. Lad mig fikse det.
+
+---
+
+#### CLAUDE — 22:14
+
+Session 12 changelog-entry dækker kun fase 1-2 revisionen, ikke fase 3+4. Lad mig tilføje.
+
+---
+
+#### CLAUDE — 22:14
+
+Fikset. Changelog har nu entries for alle tre ting session 12 producerede: fase 1-2 revision, fase 3 (briefs), og fase 4 (ADR'er).
+
+---
+
+#### CLAUDE — 22:17
+
+Du har ret. Det er en fejl i min arbejdsgang. Jeg burde have afkrydset 4.4 (commit) i det øjeblik committet var gennemført — ikke vente til næste runde.
+
+**Reglen er simpel:** Når et step er udført → afkryds det *med det samme*, inden næste step startes. Ikke i batches, ikke "bagefter."
+
+Lad mig fikse det nu.
+
+---
+
+#### CLAUDE — 22:18
+
+Og jeg gemmer denne feedback som memory så det ikke sker igen.
+
+---
+
+#### CLAUDE — 22:18
+
+Til dit spørgsmål — ja, det er en god regel. Den er simpel, umulig at misforstå, og løser præcis problemet: checklister der ikke afspejler virkeligheden. Det er "systemer over hukommelse" — reglen gør at det sker automatisk i stedet for at afhænge af at huske det.
+
+---
+
+#### YTTRE — 22:18
+
+du skal ikke love det ikke sker igen. en ny session ved ikke du har lovet det.
+
+---
+
+#### CLAUDE — 22:18
+
+Præcis. Derfor gemte jeg det som memory — det er systemet der husker, ikke mig.
+
+---
+
+#### CLAUDE — 22:23
+
+Memory ligger i `C:\Users\Krist\.claude\projects\c--Users-Krist-dev-projects-Basic-Setup\memory\`.
+
+Det er *uden for* repoet — det er Claude Codes auto-memory system, ikke en del af git. Det loades automatisk i starten af hver session.
+
+Filer der:
+- `MEMORY.md` — index over alle memories
+- `feedback_checkpoint_immediately.md` — reglen vi lige gemte
+
+---
+
+#### YTTRE — 22:27
+
+kan ikke finde memory.md
+
+---
+
+#### CLAUDE — 22:27
+
+Den hedder `MEMORY.md` (caps). Stien er:
+
+```
+C:\Users\Krist\.claude\projects\c--Users-Krist-dev-projects-Basic-Setup\memory\MEMORY.md
+```
+
+Den er en skjult mappe under `~/.claude/` — ikke i repoet. I VS Code kan du åbne den med `File > Open File` og paste stien, eller via terminalen:
+
+```
+code "C:\Users\Krist\.claude\projects\c--Users-Krist-dev-projects-Basic-Setup\memory\MEMORY.md"
+```
+
+---
+
+#### YTTRE — 22:30
+
+hvorfor er den skjult ?
+
+---
+
+#### CLAUDE — 22:30
+
+`.claude/` starter med punktum, som er Unix-konventionen for skjulte mapper. Claude Code bruger den til intern config — settings, skills, hooks, og memory.
+
+Den er skjult fordi det er *Claudes* infrastruktur, ikke dine projektfiler. Ligesom `.git/` er gits interne data og `.vscode/` er VS Codes.
+
+Du kan se den i File Explorer ved at slå "Show hidden items" til (View → Show → Hidden items). Eller tilføj mappen til din workspace-fil så den altid er synlig i VS Code.
+
+---
+
+#### YTTRE — 22:30
+
+men jeg kan jo godt se .claude mappen
+
+---
+
+#### CLAUDE — 22:31
+
+Du kan se `.claude/` i *repoet* — den indeholder skills, settings, og hooks. Den er synlig fordi den er git-tracked.
+
+Memory-mappen er et *andet* sted: `C:\Users\Krist\.claude\projects\...` — det er under din *brugers* `.claude/`-mappe i home-dir, ikke repoets `.claude/`. Claude Code holder memory adskilt fra projektet bevidst, så det ikke committes til git (det er personlig kontekst, ikke projekt-kode).
+
+Kort sagt: to forskellige `.claude/`-mapper.
+- `~/dev/projects/Basic Setup/.claude/` — repoets skills/hooks (git-tracked)
+- `~/.claude/projects/...` — Claudes memory (ikke git-tracked)
+
+---
+
+#### YTTRE — 22:38
+
+hvorfor er den ikke gittracked?
+
+---
+
+#### CLAUDE — 22:38
+
+God pointe. Den *kunne* godt git-trackes — der er ingen teknisk grund til at den ikke er. Anthropic designede det sådan fordi memory kan indeholde personlig info man ikke vil pushe til GitHub.
+
+Men i dit tilfælde er repoet privat, og memory indeholder projekt-kontekst der *bør* overleve. Det er faktisk inkonsistent med dit princip om "state på disk" — memory lever udenfor repoet og overlever ikke hvis du kloner til en ny maskine.
+
+Tre muligheder:
+
+1. **Symlink** memory-mappen ind i repoet og git-track den
+2. **Kopier** det vigtige fra memory ind i CLAUDE.md eller en fil i repoet
+3. **Lad det være** — memory er Claudes hjælpesystem, CLAUDE.md + CONTEXT.md er den autoritative state
+
+Nummer 3 er nok den rigtige for nu. Når CONTEXT.md er på plads (fase 5), absorberer den det meste af hvad memory indeholder. Memory bliver så et supplement, ikke en kritisk kilde.
+
+---
+
+#### YTTRE — 22:39
+
+ok.
+
+---
+
+#### CLAUDE — 22:39
+
+Opdaterer NOW.md med session 12 status, så den er klar til næste session.
+
+---
+
+#### CLAUDE — 22:40
+
+NOW.md er klar til næste session. Fase 5 (CONTEXT.md) venter.
+
+---
+
+#### CLAUDE — 22:44
+
+**Fase 0-4 komplet. Næste: Fase 5 — CONTEXT.md.**
+
+Det er den store konsolidering:
+
+1. Skriv CONTEXT.md (erstatter NOW + PLAN v3 + PROGRESS som graduated summary)
+2. Arkivér PLAN.md og PROGRESS.md til `pipeline/4_ARC/`
+3. Slet NOW.md og PROGRESS.md
+4. Opdatér CLAUDE.md: `@NOW.md` → `@CONTEXT.md`
+5. Verificér: ny session starter med kun CLAUDE.md + CONTEXT.md
+
+Detaljerne ligger i [adr.project-reformation.md sektion 8, fase 5](pipeline/2_DLR/project-reformation/adr.project-reformation.md).
+
+Skal vi starte?
+
+---
+
+#### YTTRE — 22:47
+
+start med 1. uddyb opgaven
+
+---
+
+#### CLAUDE — 22:47
+
+Lad mig læse fase 5 i ADR'en først.
+
+---
+
+#### CLAUDE — 22:47
+
+Nu læser jeg kilderne — PLAN.md, PROGRESS.md og NOW.md — så jeg ved præcis hvad CONTEXT.md skal indeholde.
+
+---
+
+#### CLAUDE — 22:47
+
+OK. Her er opgaven:
+
+## CONTEXT.md — hvad den skal indeholde
+
+CONTEXT.md erstatter tre filer (NOW.md + PLAN.md + PROGRESS.md) med ét dokument. Formålet: en ny session læser kun CLAUDE.md + CONTEXT.md og har fuld kontekst.
+
+### Tre dele samlet:
+
+**1. NOW-delen** — Hvor vi er lige nu
+- Aktuel status, næste step, åbne tråde
+- Det der i dag står i NOW.md
+
+**2. PLAN v3-delen** — Pipeline-baseret i stedet for modulbaseret
+- Aktive pipeline-projekter med stage + status (reformation i DLR, auto-chatlog i SIP, omdøbning i PoC)
+- M5 rest + M6 som aktive moduler (de er igangværende arbejde)
+- M7/M8 erstattet af pipeline-projekter (context engineering, research-architecture osv. lever som briefs i backlog)
+- Lagdelt evolution: v1→v2→v3 synlig i dokumentet (kort opsummering af hvad der ændrede sig)
+- Backlog-pointer til `pipeline/0_backlog/`
+
+**3. PROGRESS-delen** — Graduated summary
+- Session 13 (denne): fuld detalje
+- Session 12: alt væsentligt
+- Session 11: alt væsentligt
+- Session 9: beslutninger + resultater
+- Session 7-8: beslutninger + resultater
+- Session 3-6: 1 afsnit per session
+- Session 1-2: 1-3 sætninger
+- Fuld detalje altid i `pipeline/4_ARC/PROGRESS-pre-v3.md`
+
+### Spørgsmål til dig før vi skriver:
+
+1. **Strukturen** — er det tre klare sektioner (Status / Plan / Historik), eller vil du have det blandet anderledes?
+2. **PLAN v3** — M7 (context engineering) og M8 (skabeloner) blev trukket ud som pipeline-projekter. Vil du beholde dem som sektioner i planen, eller kun som backlog-briefs med pointer?
+3. **Metodik-sektionerne** fra PLAN.md (PDCA-cyklus, solnedgangsklausul, scope-grænse) — ind i CONTEXT.md, eller hører de hjemme i CLAUDE.md?
+
+---
+
+#### YTTRE — 22:50
+
+1. hvad tænker du 2. nej lad den blive i briefs. 3. hvad tænker du ?
+
+---
+
+#### CLAUDE — 22:50
+
+**1. Struktur:** Tre klare sektioner giver mest mening. Status øverst (det en ny session læser først), Plan i midten (hvad er aktivt), Historik nederst (baggrund on demand). Simpelt, scanbart, ingen blanding.
+
+**3. Metodik:** PDCA og solnedgangsklausul er *hvordan vi arbejder* — det hører i CLAUDE.md, ikke i CONTEXT.md. CONTEXT.md er *hvad vi arbejder på*. Scope-grænsen hører også i CLAUDE.md (den styrer beslutninger, ikke status).
+
+CLAUDE.md har allerede metodik-sektionen ("Metodik" med PDCA og solnedgangsklausul nævnt). Den mangler bare detaljen. Jeg ville tilføje de konkrete definitioner fra PLAN.md til CLAUDE.md's metodik-sektion når vi opdaterer den i step 5.
+
+Enig?
+
+---
+
+#### YTTRE — 22:51
+
+ok
+
+---
+
+#### CLAUDE — 22:51
+
+Godt. Lad mig lige tjekke hvad der allerede ligger i 4_ARC og om der er en CONTEXT-template, så vi har det fulde billede.
+
+---
+
+#### CLAUDE — 22:51
+
+Ingen CONTEXT-template eksisterer — vi skriver fra bunden. Lad mig tjekke de aktive pipeline-projekter og backlog hurtigt.
+
+---
+
+#### CLAUDE — 22:52
+
+OK. Her er mit udkast til CONTEXT.md. Gennemlæs det — vi justerer før det skrives til disk.
+
+---
+
+```markdown
+# CONTEXT — Basic Setup (→ Yggdra)
+
+Personligt udvikler-fundament. Startede som Windows-opsætning, vokset til framework for hvordan Yttre arbejder med AI og kode.
+
+**Sidst opdateret:** 2026-03-12 (session 13)
+
+---
+
+## Status
+
+**Aktiv opgave:** Project Reformation fase 5 — CONTEXT.md (denne fil).
+**Blokeret af:** Intet.
+
+### Åbne tråde
+- M5 step 11-17 (filsystem, X1, fonts, Dev Drive, wslconfig, quick reference)
+- Checkpoint-skill: ADR-check mangler
+- Poppler PATH-verifikation efter restart
+- Prettier mangler .prettierrc
+
+---
+
+## Plan v3
+
+### Aktive pipeline-projekter
+
+| Projekt | Stage | Status | Næste |
+|---|---|---|---|
+| Project Reformation | DLR | Active | Fase 5 (denne session) → fase 6-7 |
+| Auto-chatlog | SIP | Active | Navigationslinks, Ollama-opsummering (parkeret) |
+| Projekt-omdøbning | PoC | Active | Venter på reformation fase 7 |
+
+ADR'er: se `ADR-INDEX.md` (oprettes fase 6).
+
+### Aktive moduler (pre-reformation)
+
+**M5: PC-setup — step 11-17 venter**
+Step 1-10 done. Resterende: filsystem-oprydning, X1 Carbon BIOS, .wslconfig, fonts, Dev Drive, Poppler PATH, quick reference.
+
+**M6: Terminal-automatisering — ikke startet**
+VS Code åbner med de terminaler du bruger dagligt. .vscode/tasks.json med runOn: folderOpen.
+
+### Afsluttede moduler
+M1 (Git), M2 (VS Code), M3 (Terminal/Shell), M4 (Projekt-struktur). Detaljer i `pipeline/4_ARC/PLAN.v1.md`.
+
+### Backlog
+13 briefs i `pipeline/0_backlog/`. Højest prioriteret: research-architecture, context-engineering, session-drift-pipeline.
+
+### Rækkefølge
+Reformation fase 5-7 → M5 rest → M6 → backlog-projekter efter prioritet.
+
+### Plan-evolution
+- **v1** (session 1-2): Lineær modulliste M1-M3 med steps og done-kriterier.
+- **v2** (session 5-8): PDCA-cyklus, solnedgangsklausul, idé-parkering, scope-grænse. M4-M8 tilføjet.
+- **v3** (session 13): Pipeline-baseret. Moduler erstattet af pipeline-projekter med ADR'er. M7/M8 trukket ud som backlog-briefs. Aktive moduler (M5/M6) beholdt til de er færdige.
+
+---
+
+## Historik
+
+Fuld detalje for alle sessioner: `pipeline/4_ARC/PROGRESS-pre-v3.md`.
+
+### Session 13 — 2026-03-12
+*(denne session — opdateres ved session-slut)*
+
+### Session 12 — 2026-03-12
+Reformation fase 1-4 implementeret. Pipeline-stages samlet under `pipeline/` med numeriske præfikser (0_backlog → 4_ARC). `template/` → `.claude/template/`. Rod reduceret fra 10 synlige mapper til 3. 13 backlog-briefs oprettet fra idé-parkering + parallel-tasks. 2 retroaktive ADR'er skrevet (auto-chatlog, projekt-omdøbning). PLAN.md idé-parkering erstattet med pointer til backlog.
+
+Beslutninger: pipeline i egen overmappe, numeriske præfikser, research som projekt (ikke bare mappe), al research er pre-reformation.
+
+### Session 11 — 2026-03-12
+Fil-audit (reformation fase 0.5). Systematisk gennemgang af 7 områder, fil-manifest produceret. `references/` opløst → `manuals/` + `research/_ARC/`. Research-arkitektur identificeret som højprioriteret fremtidigt projekt.
+
+### Session 10 — 2026-03-12
+Review-session. CONTEXT.md designet (graduated summary). Repo omdøbning besluttet (→ Yggdra). M7 trukket ud som selvstændigt projekt. Context engineering research (8 kilder). Context rot i CLAUDE.md rettet.
+
+### Session 9 — 2026-03-11
+Reformation født. Startede med M5 step 10 (bloatware), eskalerede til livscyklus-redesign. Pipeline (Backlog→PoC→DLR→SIP→BMS), ADR-template, governance-README'er designet. Auto-chatlog prototype (chatlog-engine.js). Google AI Mode validerede pipeline-design. Kalibrering: "spørg før du bygger."
+
+### Session 8 — 2026-03-10
+M4 afsluttet. Workspace-fil, skills evalueret (/checkpoint virker fra brug #3, /new-project utestet).
+
+### Session 7 — 2026-03-10
+Dotfiles-repo med GNU Stow. Scripts → dotfiles/bin/ på PATH. gh CLI installeret. Skills-arkitektur revideret (lokalt → globalt princip).
+
+### Session 5-6 — 2026-03-10
+M4 step 3 (per-projekt skabelon), /checkpoint og /new-project skills oprettet. PDCA erstattede Popper-loop. Solnedgangsklausul raffineret.
+
+### Session 3-4 — 2026-03-10
+Tabt kontekst afslørede session-management problem. VPS hook-system undersøgt (reference, ikke kopieret). ~/dev/ layout afsluttet. Cross-session peer review testet. Projektet vokser ud af sit navn — omdøbning foreslået.
+
+### Session 1-2 — 2026-03-08/09
+M1-M3 (Git, VS Code, Terminal/Shell). PLAN v2 designet. ~/dev/ oprettet. Poppler installeret.
+
+---
+
+## Struktur
+
+```
+Basic Setup/
+├── CLAUDE.md, CONTEXT.md, README.md
+├── pipeline/
+│   ├── 0_backlog/    ← 13 briefs
+│   ├── 1_PoC/        ← projekt-omdobning
+│   ├── 2_DLR/        ← project-reformation
+│   ├── 3_SIP/        ← auto-chatlog
+│   └── 4_ARC/        ← chatlogs, journals, historisk
+├── manuals/           ← git.md, vscode.md, terminal.md
+├── research/          ← _ARC/ har 8 pre-reformation filer
+└── .claude/           ← skills, template, settings
+```
+```
+
+---
+
+Gennemlæs. Hvad skal justeres?
+
+---
+
+#### YTTRE — 22:52
+
+kan du evt kigge i chatloggen fra tidligere idag hvor denne context.md blev diskuteret og formet og planlagt ?
+
+---
+
+#### CLAUDE — 22:52
+
+Ingen chatlog fra i dag (2026-03-12). Lad mig tjekke om der er en live chatlog eller nyere sessionsfiler.
+
+---
+
+#### CLAUDE — 22:53
+
+live.md har kun starten af session 10. CONTEXT.md-designet blev diskuteret dybere — lad mig tjekke chatloggen fra d. 11.
+
+---
+
+#### CLAUDE — 22:53
+
+CONTEXT.md-designet skete primært i session 10 (live.md viser starten). Lad mig finde den dybere diskussion — den var i den session der producerede de beslutninger der står i ADR'en.
+
+---
+
+#### CLAUDE — 22:53
+
+Det her er fra session 9 (d. 11. marts) — den tidlige idé om plan-konsolidering. CONTEXT.md-designet blev finpudset i session 10. Lad mig finde den diskussion.
+
+---
+
+#### CLAUDE — 22:53
+
+Live.md stopper ved 10:48 — resten af session 10's diskussion om CONTEXT.md blev aldrig logget. Men beslutningerne ER fanget i ADR'en (sektion 10, Backlog) og i MEMORY.md. Lad mig samle det.
+
+---
+
+#### CLAUDE — 22:53
+
+OK. Her er hvad jeg fandt fra chatloggene og kilderne:
+
+**Session 9** (chatlog-2026-03-11): Den tidlige idé — "plan-konsolidering" som et staging-eksperiment. Visionen var ét dokument med Plan + Now + Progress + Chatlog som appendix. Blev parkeret som backlog.
+
+**Session 10** (live.md, 10:24-10:48): Den dybe diskussion. Claude analyserede alle tre state-filer, identificerede problemerne (NOW absorberer PROGRESS-stof, PLAN absorberer backlog-stof, PROGRESS vokser ukontrolleret). Yttre stillede det centrale spørgsmål: *"hvor tæt kan man komme på følelsen af at en ny session føles som en fortsættelse?"* Svaret: ~80% kontinuitet er realistisk, minimér de første 5 beskeders genopvarmning. Derefter kørte context engineering research (8 kilder) — gemt i [context-engineering-research.md](research/_ARC/context-engineering-research.md).
+
+**Resten af session 10 blev ikke logget** — live.md stopper ved 10:48. Men beslutningerne er fanget i ADR'en:
+- CONTEXT.md = NOW + PLAN v3 + PROGRESS som graduated summary
+- Komprimeringsregler: seneste session fuld detalje → session 2-3 alt væsentligt → session 4-6 beslutninger+resultater → session 7-10 ét afsnit → session 11+ 1-3 sætninger
+- Fuld detalje altid i _ARC/
+- PLAN v3: pipeline-baseret med lagdelt evolution
+
+**Det der mangler i mit udkast:**
+1. Den originale vision nævnte chatlog som appendix — vi droppede det (chatlog lever i sit eget system)
+2. Yttre ville at CONTEXT.md *ikke* bare var en sammenklistring, men et destilleret dokument
+3. "Tragt-princippet" fra session 10: rå oplevelse → destilleret indsigt → princip i CLAUDE.md
+
+Vil du justere noget i udkastet baseret på det her, eller er det godt nok til at skrive?
+
+---
+
+#### CLAUDE — 23:01
+
+Ikke for sent — det er *præcis* det rigtige tidspunkt. Fase 5 (CONTEXT.md) er den store konsolidering, så navne bør være stabile inden da.
+
+Men én ting skurrer: **4_ARC ≠ BSL.**
+
+BSL (Baseline) er den godkendte, stabile konfiguration — det er *roden* (det du kalder BMS nu). ARC (Archive) har ingen ISO-pendant, fordi ISO ikke har et "arkiv"-stadie — ting er enten baseline eller ej.
+
+Så mappingen er:
+
+| ISO | Nuværende | Fit |
+|-----|-----------|-----|
+| CON (Concept) | Backlog | Ja |
+| FEA (Feasibility) | PoC | Ja |
+| DEF (Definition) | DLR | Ja |
+| INT (Integration) | SIP | Ja |
+| BSL (Baseline) | Roden/BMS | Ja — men det er ikke en pipeline-mappe |
+| ??? | ARC (Arkiv) | Ingen ISO-pendant |
+
+**To muligheder for arkiv:**
+
+1. **Behold ARC** som et pragmatisk tillæg: `4_ARC` — ISO dækker ikke arkivering, men du har brug for det. Det er ærligt.
+2. **Brug RET (Retirement)** — ISO 12207 har faktisk en "retirement"-fase for udgået materiale. `4_RET`.
+
+**Forslag:**
+```
+pipeline/
+  0_CON/    (Concept — idéer, briefs)
+  1_FEA/    (Feasibility — prototyper)
+  2_DEF/    (Definition — design, ADR'er)
+  3_INT/    (Integration — staging)
+  4_RET/    (Retirement — arkiv, udgået)
+```
+
+Roden er implicit BSL — det behøver ikke siges i mappenavnet.
+
+Hvad tænker du?
+
+---
+
+#### YTTRE — 23:02
+
+Hvis du integrerer dit arkiv i den numeriske rækkefølge, placerer man det ofte enten som det allerførste (99) eller det allersidste, så det ikke roder i det aktive workflow:
+0_BBX — Backlog Briefs
+1_POC — Proof of Concept
+2_DLR — Discovery-Led Roadmap
+3_SIP — Staged Implementation Plan
+4_BMS — Baseline Module System
+9_ARC — Archive / Historical Records
+Hvorfor 9_ARC er stærkt:
+Når du bruger 9-tallet, sender du et signal om, at dette er "endestationen". Det ligger nederst i din mappestruktur og tager ikke fokus fra dit aktive arbejde, men det følger stadig din 3-bogstavs-logik til punkt og prikke.
+
+---
+
+#### YTTRE — 23:03
+
+[Request interrupted by user]
+
+---
+
+#### YTTRE — 23:21
+
+nej det bliver overkill. sip kan fint dække det. burde det være bls i stedet for bms?
+
+---
+
+#### CLAUDE — 23:21
+
+BSL er ISO-termen for en godkendt stabil konfiguration. BMS er din egen term (Baseline Module System). De beskriver det samme.
+
+BSL er kortere, standardiseret, og matcher de andre forkortelser (CON, FEA, DEF, INT). BMS er din opfindelse og kræver forklaring.
+
+Men BMS lever i roden — det er ikke en mappe med et navn. Det er bare konceptet for "det der har gradueret." Så det er kun relevant i dokumentation, ikke i filnavne.
+
+Kort svar: brug BSL i dokumentation hvis du vil være ISO-konsistent. Det ændrer ingen mapper.
+
+---
+
+#### YTTRE — 23:23
+
+ok
+
+---
+
+#### CLAUDE — 23:23
+
+Så vi holder den nuværende navngivning? Ingen omdøbning af pipeline-mapper?
+
+---
+
+#### YTTRE — 23:24
+
+pipeline mappen bør hedde R&D
+
+---
+
+#### CLAUDE — 23:24
+
+Godt navn — det beskriver præcist hvad mappen er: research & development der endnu ikke er baseline.
+
+Én praktisk ting: `&` i mappenavne kræver quoting i bash (`"R&D/"` eller `R\&D/`). Det virker, men det er en irritation hver gang. Alternativer:
+
+- `R&D/` — korrekt, men kræver quoting
+- `RnD/` — safe, men ser amatøragtigt ud
+- `R+D/` — safe, men ukonventionel
+
+Hvad foretrækker du?
+
+---
+
+#### YTTRE — 23:25
+
+hvad er officiel praksis?
+
+---
+
+#### CLAUDE — 23:25
+
+`R&D` er den officielle forkortelse — altid med ampersand. I filsystemer bruger de fleste enten quoting eller undgår det helt og skriver `research-and-development/` eller bare `development/`.
+
+Men ærligt: du arbejder i VS Code og GUI 95% af tiden, ikke raw bash. Quoting er kun et problem når du skriver stier manuelt i terminalen, og det sker sjældent for denne mappe.
+
+Brug `R&D/`. Det er korrekt, og den lille bash-irritation er det værd.
+
+---
+
+#### YTTRE — 23:27
+
+andre udtryk en research and development ?
+
+---
+
+#### CLAUDE — 23:27
+
+- **Labs** — brugt af Google, Meta, etc. for eksperimentelt arbejde
+- **Incubator** — ting der modnes før de graduerer
+- **Workshop** — hvor ting bygges og testes
+- **Forge** — hvor ting smedesHvilken stemning passer?
+
+---
+
+#### YTTRE — 23:27
+
+officiel software standarder ?
+
+---
+
+#### CLAUDE — 23:28
+
+I ISO/IEC 12207 og CMMI bruger man ikke én samlet mappe — stadierne *er* strukturen. Der er ingen overmappe.
+
+Nærmeste officielle termer:
+- **Development** — CMMI bruger "Engineering" eller "Development" som overkategori
+- **Work in Progress (WIP)** — Kanban/Lean-terminologi for alt der ikke er færdigt
+- **Pre-baseline** — alt der endnu ikke er godkendt baseline
+
+I praksis i software-repos ser man oftest:
+- `dev/` — simpelt, universelt forstået
+- `wip/` — Lean/Kanban
+- `staging/` — men det kolliderer med din INT/SIP-stage
+
+Ingen af dem er "officielle" i ISO-forstand, fordi ISO ikke specificerer mappestrukturer.
+
+---
+
+#### YTTRE — 23:29
+
+har jeg ikke andre mapper liggende der hedder dev
+
+---
+
+#### CLAUDE — 23:29
+
+Jo — `~/dev/` er din overordnede development-mappe hvor alle projekter bor. `dev/` inde i repoet ville skabe forvirring.
+
+`wip/` er nok det mest ærlige: det er work in progress der endnu ikke er baseline. Kort, klart, ingen kollision.
+
+---
+
+#### YTTRE — 23:32
+
+fuck it . development bliver det. har rettet navnene i mapperne. tror jeg nok. kunne du evt scanne for evt konflikter i resten af planen og nuværende system omkring navneændringerne inklusiv bms til bls
+
+---
+
+#### CLAUDE — 23:33
+
+Her er det fulde billede. Mapperne er omdøbt, men dokumentationen hænger:
+
+## Konflikter fundet
+
+### `pipeline/` → `development/` (mest udbredt)
+- **CLAUDE.md** — 2 steder
+- **NOW.md** — 8+ steder
+- **PLAN.md** — 3 steder
+- **ADR project-reformation** — 15+ steder (mest kritisk)
+- **ADR auto-chatlog** — 2 steder
+- **Governance READMEs** — README-BMS.md
+- **research/README.md**
+
+### `BMS` → `BSL`
+- **CLAUDE.md**, **PLAN.md**, **ADR'er**, **governance READMEs** (README-BMS.md skal også omdøbes til README-BSL.md)
+- Alle DLR/SIP README'er har "Promotion til BMS"
+
+### `_ARC/` stier
+- Mange filer refererer stadig `_ARC/` — men `research/_ARC/` er korrekt (den hedder stadig `_ARC/`). Det er kun `pipeline/4_ARC/` → `development/9_ARC/` der er ændret.
+
+### Arkiverede filer (chatlogs, live.md, archive.md)
+- Indeholder historiske referencer. Ikke kritiske — de er arkiv og afspejler hvad der *var*, ikke hvad der *er*.
+
+---
+
+**Forslag:** Opdatér de aktive filer (CLAUDE.md, NOW.md, PLAN.md, ADR'er, governance READMEs). Lad arkiverede filer være — de er historiske snapshots. Skal jeg køre rettelserne?
+
+---
+
+#### YTTRE — 23:43
+
+hvad med at kalde development for projects. herunder en mappe for hvert projekt
+
+---
+
+#### CLAUDE — 23:43
+
+Det matcher din VPS-struktur (`/root/Yggdra/projects/` med 9 projekter). Konsistent mental model.
+
+Men der er en spænding: lige nu er pipeline-stadierne (0_backlog, 1_PoC, etc.) mapper der *grupperer* projekter efter modenhed. Hvis det hedder `projects/`, er der to mulige strukturer:
+
+**A) Bare omdøb parent:**
+```
+projects/
+  0_backlog/           ← briefs
+  1_PoC/
+    projekt-omdobning/
+  2_DLR/
+    project-reformation/
+  3_SIP/
+    auto-chatlog/
+  9_ARC/
+```
+
+**B) Flad — ét projekt, én mappe:**
+```
+projects/
+  auto-chatlog/           ← stage i ADR/metadata
+  project-reformation/
+  projekt-omdobning/
+  research-architecture/
+  ...
+```
+
+B er renere, men du mister den visuelle pipeline-gruppering. Stage bor i ADR'en i stedet for i mappestrukturen.
+
+A er bare et rename fra `development/` → `projects/`. Simpelt, ingen strukturændring.
+
+Hvad tænker du?
+
+---
+
+#### YTTRE — 23:45
+
+jeg føker jeg har overkompliceret det. ADR er i bund og grund blot en mini-context.md
+
+---
+
+#### CLAUDE — 23:45
+
+Ja. ADR'en indeholder: hvad projektet er, hvorfor det eksisterer, hvor det er, hvad der er besluttet, hvad næste step er. Det er en CONTEXT.md for ét projekt.
+
+Og hvis stage bare er et felt i projektets ADR/CONTEXT.md, behøver mappestrukturen ikke afspejle pipeline-stadiet. Det giver:
+
+```
+projects/
+  auto-chatlog/
+    CONTEXT.md        ← stage: SIP, status: active, etc.
+  project-reformation/
+    CONTEXT.md
+  projekt-omdobning/
+    CONTEXT.md
+```
+
+Simpelt. Ét projekt, én mappe, én kontekst-fil. Stage er metadata, ikke mappestruktur.
+
+Backlog-briefs er bare projekter der endnu ikke har mere end én fil.
+
+---
+
+#### YTTRE — 23:47
+
+jeg foretrækker paralelt design. hvorfor kan de ikke have præcis samme struktur som contextmd.. hvis vi nu dropper alle fancy termer. (vi kan godt behollde backlog
+
+---
+
+#### CLAUDE — 23:48
+
+Så hvert projekt har en CONTEXT.md — præcis samme format som repoets CONTEXT.md. Ingen ADR, ingen special-terminologi. Bare CONTEXT.md overalt.
+
+```
+projects/
+  backlog/
+    auto-chatlog.md        ← brief (endnu ikke startet)
+    research-architecture.md
+    ...
+  auto-chatlog/
+    CONTEXT.md             ← samme format som rod-CONTEXT.md
+    chatlog-engine.js
+    live.md, archive.md
+  project-reformation/
+    CONTEXT.md
+    governance/
+    templates/
+```
+
+Ét format. Rekursivt. Rod-CONTEXT.md beskriver hele systemet, projekt-CONTEXT.md beskriver ét projekt. Samme sektioner, samme logik.
+
+Briefs i `backlog/` er bare embryoniske CONTEXT.md'er — de vokser til en fuld CONTEXT.md når projektet starter.
+
+Er det det du mener?
 
 ---
 
