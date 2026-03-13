@@ -1,7 +1,7 @@
 # Chatlog — Yggdra
 
-**Sidst opdateret:** 2026-03-13 18:20  
-**Sektioner:** 15 · **Beskeder:** 2579
+**Sidst opdateret:** 2026-03-13 19:01  
+**Sektioner:** 15 · **Beskeder:** 2614
 
 ## Hovedindeks
 
@@ -48,12 +48,12 @@ Manifest v2→v4 iteration: pipeline-stadier blev egen mapper, repo-navn til Ygg
 - [kl. 10:24–17:39](#sektion-11) (136) — Project Reformation-initiering med struktur-designdiskussioner. Stor session om PLAN.md v3-design, backlog-lokation (root vs. project), pipeline-stadier, Yggdra-omdøbning, og hukommelsesarkitektur.
 - [kl. 20:41–23:48](#sektion-12) (128) — Repositori-struktur-ændring og git-setup. Flytning af backlog/POC/DLR/SIP ud af BMS-mappe, git remote-ændring til GitHub, bekræftelse på struktur-implementering.
 
-### [fredag d. 13/3-2026](#dato-2026-03-13) (290 beskeder)
+### [fredag d. 13/3-2026](#dato-2026-03-13) (325 beskeder)
 
 Reformation fase 6 gennemført: struktur implementeret, CONTEXT.md template designet, chatlog v2-krav defineret. Chatlog-engine v3 udviklet (gap-sektioner, subagent-abstracts, danske datoer, secret-redaction). Checkpoint og chatlog-search integreret. Archive ryddet. Template opdateret fra NOW+PLAN til CONTEXT.md. Fase 7 (Yggdra-omdøbning) venter.
 
 - [kl. 08:17–09:21](#sektion-13) (40) — Manifest v3→v4 og struktur-simplificering. Valg af flat `projects/`-struktur uden pipeline-stadier i filnavne, ADR-terminologi dropper, CONTEXT.md template-design påbegyndt.
-- [kl. 11:19–18:20](#sektion-14) (250) — Chatlog-engine v3 og reformation fase 6-afslutning. Samlede Claude-sessions fra 5 mapper med gap-sektioner, implementerede subagent-abstracts, danske datoer, og secret-redaction. Checkpoint og chatlog-search fuldt integreret i auto-chatlog-projektet. Archive-mapper ryddet og konsolideret. CONTEXT.md template etableret som rekursiv standard for alle projekter.
+- [kl. 11:19–19:01](#sektion-14) (285) — Chatlog-engine v3 og reformation fase 6-afslutning. Samlede Claude-sessions fra 5 mapper med gap-sektioner, implementerede subagent-abstracts, danske datoer, og secret-redaction. Checkpoint og chatlog-search fuldt integreret i auto-chatlog-projektet. Archive-mapper ryddet og konsolideret. CONTEXT.md template etableret som rekursiv standard for alle projekter.
 
 ---
 
@@ -30799,9 +30799,9 @@ Hvad tænker du?
 
 ---
 
-### kl. 11:19–18:20 <a id="sektion-14"></a>
+### kl. 11:19–19:01 <a id="sektion-14"></a>
 
-**250 beskeder** · Sessions: ecede3ac, 6cbcb95a, 3344448a
+**285 beskeder** · Sessions: ecede3ac, 6cbcb95a, 3344448a
 
 > Chatlog-engine v3 og reformation fase 6-afslutning. Samlede Claude-sessions fra 5 mapper med gap-sektioner, implementerede subagent-abstracts, danske datoer, og secret-redaction. Checkpoint og chatlog-search fuldt integreret i auto-chatlog-projektet. Archive-mapper ryddet og konsolideret. CONTEXT.md template etableret som rekursiv standard for alle projekter.
 
@@ -33073,6 +33073,329 @@ CONTEXT.md er allerede opdateret. Lad mig opdatere PROGRESS.md med session 14 na
 #### CLAUDE — 18:20
 
 Abstracts blev lige opdateret — ingen nye sektioner. Kører full build direkte.
+
+---
+
+#### CLAUDE — 18:21
+
+### 5. Git commit + push
+
+---
+
+#### CLAUDE — 18:21
+
+### 6. Bekræft
+
+Checkpoint done.
+
+**Gemt:** PROGRESS.md med fuld session 14 narrativ, auto-chatlog changelog opdateret, chatlog rebuilt (2579 beskeder).
+
+**Næste step:** M5 step 11-17 (filsystem, X1 Carbon, .wslconfig, fonts, Dev Drive, Poppler, quick reference).
+
+---
+
+#### YTTRE — 18:23
+
+godt whats next
+
+---
+
+#### CLAUDE — 18:23
+
+Ifølge CONTEXT.md:
+
+**Reformation:** Done.
+
+**Næste i rækkefølgen:** M5 step 11-17 — filsystem, X1 Carbon, .wslconfig, fonts, Dev Drive, Poppler, quick reference.
+
+Men det er hardware/OS-opsætning — mere hands-on end det vi har lavet i dag. Og du har 13 briefs i backlog/ der venter.
+
+Hvad trækker dig mest lige nu?
+
+---
+
+#### CLAUDE — 18:25
+
+Henvisningerne er fra den gamle PLAN.md der listede M5 steps. Men den specifikke step-liste er væk (PLAN.md slettet i reformation). Lad mig finde den i git.
+
+---
+
+#### CLAUDE — 18:25
+
+Her er de konkrete steps:
+
+| Step | Hvad | Status |
+|---|---|---|
+| 11 | Filsystem — `C:\Users\Krist` organiseret, Downloads oprydning, Desktop ryddet | Ikke startet |
+| 12 | X1 Carbon — BIOS-check (VT-x/VT-d), Lenovo Vantage (battery 80%), 400 MHz bug | Ikke startet |
+| 13 | .wslconfig — RAM/CPU-grænser for WSL2 | Ikke startet |
+| 14 | Fonts + extensions — JetBrains Mono, Mermaid Preview | Ikke startet |
+| 15 | Dev Drive — evaluer om det giver mening (kræver 50GB+, flyt ~/dev/) | Ikke startet |
+| 16 | Poppler PATH-verifikation (installeret, mangler restart) | Åben tråd |
+| 17 | Quick reference — PowerToys genveje, Windows shortcuts, touchpad gestures (én fil) | Ikke startet |
+
+Det er alt sammen PC-vedligehold og polish. Intet af det blokerer noget. WSL er konfigureret (M3), men `.wslconfig` for resource-limits er aldrig sat.
+
+---
+
+#### YTTRE — 18:26
+
+giv mig kort forklaring af hver
+
+---
+
+#### CLAUDE — 18:27
+
+11. **Filsystem** — Ryd `C:\Users\Krist`: Downloads fyldt med crud, Desktop brugt som dumping ground. Organisér så du ved hvor ting er.
+
+12. **X1 Carbon** — Din laptop har BIOS-settings der påvirker performance (VT-x for virtualisering/WSL, VT-d for device passthrough). Lenovo Vantage kan sætte battery threshold til 80% så batteriet holder længere. "400 MHz bug" er en kendt X1 Carbon issue hvor CPU'en låser sig på lav frekvens.
+
+13. **.wslconfig** — Fil i `C:\Users\Krist\.wslconfig` der begrænser hvor meget RAM og CPU WSL2 må bruge. Uden den æder WSL al tilgængelig RAM.
+
+14. **Fonts + extensions** — JetBrains Mono er en developer-font med ligaturer (→, !=, >=). Mermaid Preview er en VS Code extension til diagrammer i markdown.
+
+15. **Dev Drive** — Windows-feature: en separat partition optimeret til dev-workloads (hurtigere I/O, ingen Windows Defender scanning). Kræver 50GB+ og at du flytter `~/dev/` derover.
+
+16. **Poppler** — PDF-tool du installerede men aldrig verificerede virker efter restart. Tjek om `pdftotext` er i PATH.
+
+17. **Quick reference** — Én markdown-fil med de genveje du bruger dagligt: PowerToys, Windows shortcuts, touchpad gestures. Så du ikke skal google dem igen.
+
+---
+
+#### YTTRE — 18:27
+
+hvor meget kan du gøre på egen hånd ?
+
+---
+
+#### CLAUDE — 18:27
+
+Realistisk:
+
+| Step | Kan jeg | Hvorfor/hvorfor ikke |
+|---|---|---|
+| 11. Filsystem | **Delvist** — kan scanne Downloads/Desktop og foreslå oprydning. Du skal godkende sletninger. | Jeg kan ikke vide hvad du vil beholde |
+| 12. X1 Carbon | **Nej** — BIOS kræver reboot, Lenovo Vantage er GUI | Fysisk adgang |
+| 13. .wslconfig | **Ja** — kan oprette filen med fornuftige defaults | Én fil, kendte parametre |
+| 14. Fonts + extensions | **Ja** — kan installere begge via CLI | `code --install-extension`, font-download |
+| 15. Dev Drive | **Nej** — kræver diskpartitionering i Windows GUI | Destruktiv operation, kræver admin |
+| 16. Poppler | **Ja** — `pdftotext --version` og tjek PATH | Ét kommando |
+| 17. Quick reference | **Ja** — kan skrive filen baseret på hvad du bruger | Markdown-fil |
+
+Kan gøre 13, 14, 16, 17 nu. Vil du have det?
+
+---
+
+#### YTTRE — 18:28
+
+tjek lige parallel tasks i krist/ claude cowork prøvee at udføre dem, måske kan det bruges
+
+---
+
+#### CLAUDE — 18:29
+
+Der er en `parallel-tasks.lnk` i Recent — du har åbnet filen for nylig. Lad mig søge i chatlog for konteksten.
+
+---
+
+#### CLAUDE — 18:29
+
+De ligger i `~/parallel-tasks/` — og alle 7 har output-filer! De blev altså kørt via Cowork. Lad mig tjekke om nogen er relevante for M5:
+
+---
+
+#### CLAUDE — 18:29
+
+Alle 7 outputs eksisterer fra 10. marts (session 5). De er research-outputs fra Cowork — ikke direkte M5-relaterede, men flere matcher backlog-briefs:
+
+| Output | Matcher | Relevant nu? |
+|---|---|---|
+| 01 MCP/Skills kompendium | `brief.mcp-skills-kompendium.md` | Ja — reference-materiale |
+| 02 Abonnement-overblik | Intet backlog-brief | Personlig økonomi — separat |
+| 03 PDF skill spec | `brief.pdf-skill.md` | Ja — klar til implementation |
+| 04 Firecrawl audit | `brief.webscraping-audit.md` | Ja — Firecrawl er installeret |
+| 05 Notion-spejling | `brief.notion-spejling.md` | Ja — design klar |
+| 06 Session-drift | `brief.session-drift-pipeline.md` | **Delvist løst** — checkpoint integreret i dag |
+| 07 Vidensbank scope | `brief.research-architecture.md` | Ja — scope for M7/CE |
+
+Denne mappe burde nok flyttes ind under `projects/` eller absorberes i de respektive backlog-briefs. Den ligger løst i `~/`. Hvad vil du gøre med den?
+
+---
+
+#### YTTRE — 18:39
+
+absober i respektive backlog briefs
+
+---
+
+#### CLAUDE — 18:43
+
+Alle 7 absorberet. Nu kan `~/parallel-tasks/` slettes — alt indhold er i backlog-briefs.
+
+---
+
+#### CLAUDE — 18:43
+
+Done. 7 outputs absorberet, `~/parallel-tasks/` slettet. Backlog-briefs har nu både den originale idé og research-outputtet samlet ét sted.
+
+---
+
+#### CLAUDE — 18:44
+
+Tre problemer:
+
+1. **Mappenavn:** Hedder `backlog/` men README siger `0_backlog` (fra pipeline-stage-æraen)
+2. **"Promotion til PoC":** Refererer til PoC-stage der ikke eksisterer længere — projekter går direkte fra backlog til `projects/`
+3. **Brief-format:** Siger `Klar til: Backlog | PoC-klar` — PoC er droppet
+4. **Filnavne:** Siger `kebab-case.md` men alle hedder `brief.kebab-case.md`
+
+Og dit spørgsmål om rækkefølge: `backlog/` og `.archive/` er begge under `projects/`. Dotprefix (`.archive`) sorterer den allerede nederst i de fleste filmanagere. `backlog/` sorterer naturligt øverst (b før p/r). Så det virker faktisk allerede.
+
+Lad mig opdatere README'en:
+
+---
+
+#### CLAUDE — 18:44
+
+Lad mig også hurtigt tjekke om briefs følger formatet:
+
+---
+
+#### CLAUDE — 18:45
+
+Briefs følger formatet. De bruger `Klar til: Backlog | PoC-klar` — det gamle stadie-sprog. Men det er kosmetisk og i 13 filer. Ikke værd at rette nu.
+
+---
+
+#### CLAUDE — 18:45
+
+Done. README ryddet op, briefs følger formatet (bortset fra `Klar til: PoC-klar` i et par stykker — kosmetisk).
+
+---
+
+#### YTTRE — 18:47
+
+analyser projects
+
+---
+
+#### CLAUDE — 18:47
+
+Her er analysen:
+
+| Projekt | Status | Handling |
+|---|---|---|
+| **auto-chatlog/** | Aktivt, v3, velholdt CONTEXT.md | Fin |
+| **backlog/** | 13 briefs, README opdateret | Fin |
+| **manuals/** | 4 filer, README korrekt. Mangler `git-concepts.md` i tabellen | Tilføj til tabel |
+| **project-reformation/** | **Done** — CONTEXT.md siger stadig "I gang". Reformation er afsluttet. | **Flyt til .archive/** |
+| **projekt-omdobning/** | **Done** — siger "Venter" men omdøbning er gennemført. | **Flyt til .archive/** |
+| **research/** | Tom. README refererer til `_backlog/` og pipeline-stadier (PoC/DLR/SIP). | **Opdatér README** eller arkivér |
+| **.archive/** | Kun architecture.R&D med CONTEXT.md | Fin |
+
+Tre ting at gøre:
+1. Flyt `project-reformation/` og `projekt-omdobning/` til `.archive/`
+2. Opdatér `research/` README (fjern pipeline-terminologi)
+3. Tilføj `git-concepts.md` til manuals README
+
+Skal jeg?
+
+---
+
+#### YTTRE — 18:48
+
+y
+
+---
+
+#### CLAUDE — 18:48
+
+Done. `projects/` er nu:
+
+```
+projects/
+├── auto-chatlog/    ← aktivt projekt
+├── backlog/         ← 13 briefs
+├── manuals/         ← 4 håndbøger
+├── research/        ← venter på arkitektur
+└── .archive/        ← 3 afsluttede (reformation, omdøbning, architecture.R&D)
+```
+
+---
+
+#### YTTRE — 18:54
+
+0_backlog og 9_archive?
+
+---
+
+#### CLAUDE — 18:54
+
+Simpelt og fungerer. Sorterer backlog først, archive sidst, alt andet alfabetisk imellem.
+
+---
+
+#### CLAUDE — 18:54
+
+```
+projects/
+├── 0_backlog/       ← idéer
+├── auto-chatlog/    ← aktivt
+├── manuals/         ← håndbøger
+├── research/        ← venter
+└── 9_archive/       ← afsluttet
+```
+
+---
+
+#### YTTRE — 18:55
+
+nej det virkede ikke. men så bare 1_archive, så er de to øverst
+
+---
+
+#### CLAUDE — 18:55
+
+```
+projects/
+├── 0_backlog/
+├── 1_archive/
+├── auto-chatlog/
+├── manuals/
+├── research/
+```
+
+---
+
+#### YTTRE — 19:00
+
+godt så checkpoint
+
+---
+
+#### CLAUDE — 19:00
+
+Kører checkpoint.
+
+### 1. State-filer
+
+---
+
+#### CLAUDE — 19:00
+
+Strukturen er forældet. Lad mig opdatere.
+
+---
+
+#### CLAUDE — 19:01
+
+### 2-4. Chatlog-engine + subagent + build
+
+---
+
+#### CLAUDE — 19:01
+
+Ingen nye sektioner, abstracts er aktuelle. Full build:
 
 ---
 

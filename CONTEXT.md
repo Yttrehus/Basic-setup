@@ -20,23 +20,19 @@ Chatlog v2 krav defineret: én fil (chatlog.md), komplet sessionsdata inkl. tæn
 ### Struktur
 ```
 Yggdra/
-├── CONTEXT.md              ← dette dokument (erstatter NOW.md + PLAN.md)
-├── PROGRESS.md             ← fuld narrativ, læses efter behov
-├── CLAUDE.md, README.md
+├── CONTEXT.md, PROGRESS.md, CLAUDE.md, README.md
+├── chatlog.md              ← genereret af auto-chatlog engine
 ├── projects/
-│   ├── backlog/            ← 13 idé-briefs
-│   ├── .archive/            ← architecture.R&D (med CONTEXT.md)
-│   ├── auto-chatlog/       ← chatlog-engine (output → chatlog.md i roden)
-│   ├── project-reformation/
-│   ├── projekt-omdobning/
-│   ├── manuals/            ← git, vscode, terminal håndbøger
-│   └── research/           ← archive/ med 8 pre-reformation filer
+│   ├── 0_backlog/          ← 13 idé-briefs
+│   ├── 1_archive/          ← afsluttede projekter (reformation, omdøbning, architecture.R&D)
+│   ├── auto-chatlog/       ← chatlog-engine + checkpoint + chatlog-search
+│   ├── manuals/            ← git, vscode, terminal, git-concepts
+│   └── research/           ← venter på research-arkitektur
 └── .claude/                ← skills, template, settings
 ```
 
 ### Aktive projekter
-- **Project Reformation:** Fase 6 (oprydning) næsten done, fase 7 (omdøbning) venter. → `projects/project-reformation/CONTEXT.md`
-- **Auto-chatlog:** v3 fungerer (~2500 beskeder, 30 sessions, subagent-abstracts). Mangler automatisering. → `projects/auto-chatlog/CONTEXT.md`
+- **Auto-chatlog:** v3 fungerer (~2500 beskeder, 30 sessions, subagent-abstracts, checkpoint-integration). → `projects/auto-chatlog/CONTEXT.md`
 
 ### Afsluttede moduler
 - **M1-M3:** Git, VS Code, Terminal (SSH, extensions, WSL, Zsh, Starship)
