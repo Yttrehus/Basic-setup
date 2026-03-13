@@ -99,18 +99,13 @@ Udført i session 11-13, itereret tre gange.
 - [x] `projects/projekt-omdobning/CONTEXT.md`
 - [x] Commit + push
 
-### Fase 5: Rod-CONTEXT.md
-Den store konsolidering. Bør have sin egen session.
-
-1. [ ] Skriv CONTEXT.md: NOW + PLAN v3 + PROGRESS (graduated summary)
-2. [ ] Arkivér PLAN.md → `projects/archive/PLAN.v2.md` med overgangsnotat
-3. [ ] Arkivér PROGRESS.md → `projects/archive/PROGRESS-pre-v3.md`
-4. [ ] Slet NOW.md og PROGRESS.md
-5. [ ] Opdatér CLAUDE.md: `@NOW.md` → `@CONTEXT.md`
-6. [ ] Opdatér global CLAUDE.md: peg til CONTEXT.md
-7. [ ] Opdatér MEMORY.md
-8. [ ] Verificér: ny session starter med kun CLAUDE.md + CONTEXT.md
-9. [ ] Commit: "reformation fase 5: CONTEXT.md live"
+### Fase 5: Rod-CONTEXT.md ✅
+1. [x] Skriv CONTEXT.md (graduated summary changelog + "Hvor er vi" for seneste session)
+2. [x] Arkivér NOW.md → `projects/.archive/NOW-pre-context.md`
+3. [x] Arkivér PLAN.md → `projects/.archive/PLAN.v2.md`
+4. [x] PROGRESS.md beholdt som fuld narrativ (læses efter behov)
+5. [x] Opdatér CLAUDE.md: `@NOW.md` → `@CONTEXT.md`, state-filer sektion revideret
+6. [x] Commit: "reformation fase 5: CONTEXT.md live"
 
 ### Fase 6: Oprydning
 1. [ ] Opdatér checkpoint-skill med CONTEXT-check

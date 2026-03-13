@@ -9,10 +9,15 @@ Personligt udvikler-fundament. Startede som Windows-opsætning, vokset til frame
 Alle projekter bor i `projects/`. Hvert projekt har en CONTEXT.md (samme format som rod-CONTEXT.md).
 Idéer starter som briefs i `projects/backlog/`. Arkiv i `projects/archive/`.
 
-## State-filer
+## Hvad læses automatisk
 
-- CONTEXT.md — overblik, aktuel state, changelog (læses automatisk)
-- PROGRESS.md — fuld narrativ per session (læses efter behov)
+Kun denne fil (CLAUDE.md) og CONTEXT.md (via @import). Alt andet læses efter behov.
+
+## Kontekst-kilder (læses efter behov)
+
+- PROGRESS.md — fuld narrativ per session, destilleret
+- projects/auto-chatlog/chatlog.md — komplet sessionsdata inkl. tænkeblokke og tool calls
+- projects/*/CONTEXT.md — projekt-specifik kontekst
 
 ## Workflow
 
