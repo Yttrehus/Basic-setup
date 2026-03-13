@@ -2,7 +2,7 @@
 
 Personligt udvikler-fundament. Startede som Windows-opsætning, vokset til framework for hvordan Yttre arbejder med AI og kode.
 
-@NOW.md
+@CONTEXT.md
 
 ## Projekter
 
@@ -11,14 +11,13 @@ Idéer starter som briefs i `projects/backlog/`. Arkiv i `projects/archive/`.
 
 ## State-filer
 
-- NOW.md — hvor vi er (start her)
-- PLAN.md — hvad der skal gøres (moduler + rækkefølge)
-- PROGRESS.md — hvorfor det ser ud som det gør (narrativ)
+- CONTEXT.md — overblik, aktuel state, changelog (læses automatisk)
+- PROGRESS.md — fuld narrativ per session (læses efter behov)
 
 ## Workflow
 
-- PLAN.md opdateres efter hvert afsluttet step
-- NOW.md opdateres automatisk — ved pauser, beslutninger, session-slut
+- CONTEXT.md opdateres ved pauser, beslutninger, session-slut
+- PROGRESS.md opdateres med fuld session-narrativ ved session-slut
 - Commit + push efter hver logisk ændring
 - State på disk — alt vigtigt overlever en session-crash
 - Spørg før du bygger. Diskussion færdig → bekræftelse → kode.
