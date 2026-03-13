@@ -16,14 +16,13 @@ Bootstrapper et nyt projekt med standard-skabelon og feedback-loop.
    - `.gitignore` — kopiér uændret
    - `<navn>.code-workspace` — kopiér fra `project.code-workspace`, omdøb
    - `CLAUDE.md` — udfyld projektnavn + kort beskrivelse fra prompten
-   - `PLAN.md` — udfyld projektnavn, lad steps være tomme
-   - `NOW.md` — udfyld dato og "Projekt oprettet"
+   - `CONTEXT.md` — udfyld projektnavn, dato, "Projekt oprettet"
 4. `git init` + `git add -A` + initial commit
 5. Bekræft: "Projektet er klar i [sti]"
 
 ## Feedback-loop (indbygget i skabelonen)
 
-Hvert projekt har en sektion i PLAN.md under PDCA-evaluering:
+Hvert projekt har en sektion i CONTEXT.md under evaluering:
 
 ```markdown
 ## Skabelon-feedback

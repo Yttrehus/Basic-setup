@@ -107,11 +107,14 @@ Udført i session 11-13, itereret tre gange.
 5. [x] Opdatér CLAUDE.md: `@NOW.md` → `@CONTEXT.md`, state-filer sektion revideret
 6. [x] Commit: "reformation fase 5: CONTEXT.md live"
 
-### Fase 6: Oprydning
-1. [ ] Opdatér checkpoint-skill med CONTEXT-check
-2. [ ] Fjern eventuelle forældreløse filer/mapper
-3. [ ] Verificér: rod er ren
-4. [ ] Commit: "reformation fase 6: oprydning"
+### Fase 6: Oprydning ✅
+1. [x] Opdatér checkpoint-skill → CONTEXT-check (NOW/PLAN refs fjernet)
+2. [x] session-state.md slettet (absorberet i checkpoint)
+3. [x] chatlog-search.md opdateret (chatlogs/ → chatlog.md)
+4. [x] new-project.md opdateret (NOW+PLAN → CONTEXT.md)
+5. [x] governance/ + ADR-template arkiveret → projects/.archive/reformation-artifacts/
+6. [x] Rod verificeret: 2 synlige mapper (projects, .claude)
+7. [x] Commit: "reformation fase 6: oprydning"
 
 ### Fase 7: Omdøbning
 1. [ ] Omdøb repo: Basic Setup → Yggdra (GitHub + lokal)

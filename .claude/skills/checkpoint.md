@@ -8,16 +8,16 @@ Session-checkpoint: gem alt state til disk i ét kald.
 
 ## Hvad den gør
 
-Kør alle 5 trin i rækkefølge:
+Kør alle trin i rækkefølge:
 
 ### 1. Opdatér state-filer
-- **NOW.md** — opdatér status, næste step, beslutninger, åbne tråde
-- **PROGRESS.md** — append hvad der skete siden sidst (kort, narrativt)
-- **PLAN.md** — markér steps done, tilføj nye idéer til parkering hvis relevant
+- **CONTEXT.md** — opdatér "Hvor er vi" (seneste session), "Hvad mangler", "Åbne tråde"
+- **PROGRESS.md** — append session-narrativ (hvad skete og hvorfor)
+- **Projekt-CONTEXT.md** — opdatér relevante projekters CONTEXT.md hvis de blev arbejdet på
 
-### 2. Dump chatlog
+### 2. Kør chatlog-engine
 ```bash
-node "C:/Users/Krist/dev/projects/Basic Setup/chatlogs/dump-chatlog.js"
+node "c:/Users/Krist/dev/projects/Basic Setup/projects/auto-chatlog/chatlog-engine.js"
 ```
 
 ### 3. Git commit + push
@@ -29,18 +29,12 @@ Commit-besked skal beskrive *hvad der blev opnået*, ikke "update files".
 ### 4. Bekræft
 Vis kort: hvad blev gemt, hvad er næste step.
 
-### 5. Skill-feedback (intern)
-Efter hver brug, notér kort i `.claude/implementationlogs/checkpoint.md`:
-- Tog det for lang tid? Blev noget glemt? Var rækkefølgen forkert?
-- Virkede det friktionsfrit eller krævede det manuel korrektion?
-
 ## Regler
 
 - Opdatér KUN filer der har reelle ændringer — ingen no-op commits
-- NOW.md: kort og præcis. En ny session skal kunne starte ved at læse den.
-- PROGRESS.md: narrativt, ikke bullet-points af commits. Hvad *skete* og *hvorfor*.
-- PLAN.md: rør den kun hvis steps faktisk er afsluttet eller planen er ændret
-- Chatlog-dump: brug altid seneste session (ingen args til dump-chatlog.js)
+- CONTEXT.md: kort og præcis. En ny session skal kunne starte ved at læse den.
+- PROGRESS.md: narrativt. Hvad *skete* og *hvorfor*.
+- Afkryds hvert step med det samme — ikke i batches.
 
 ## Hvornår
 
@@ -48,19 +42,3 @@ Efter hver brug, notér kort i `.claude/implementationlogs/checkpoint.md`:
 - Efter afsluttet step/milestone (Claude foreslår det)
 - Før session slutter
 - Før compact
-
-## Evaluering
-
-**Obligatorisk evaluering efter 5 brug.** Ved evaluering, besvar:
-
-- Hvor mange gange blev /checkpoint brugt?
-- Hvor mange gange krævede det manuel korrektion bagefter?
-- Var der state der gik tabt trods checkpoint? Hvad?
-- Blev PROGRESS.md for lang/ulæselig?
-- Blev chatlog-dump faktisk brugt som reference? Af hvem?
-- Skal rækkefølgen ændres?
-- Skal noget tilføjes/fjernes?
-
-Resultatet af evalueringen skrives i PLAN.md under PDCA-evaluering og bruges til at justere denne skill.
-
-Feedback-log: `.claude/implementationlogs/checkpoint.md`
