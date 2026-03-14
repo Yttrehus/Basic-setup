@@ -1,29 +1,38 @@
-# Basic Setup
+# Yggdra
 
-Personlig manual til at opbygge og vedligeholde et professionelt udviklermiljø.
+Personligt udvikler-fundament. Framework for hvordan jeg arbejder med AI og kode.
 
-Ikke en begyndervejledning — men min egen reference til hvordan tingene er sat op og hvorfor.
+Startede som en Windows-opsætning ("Basic Setup"), vokset til det system der styrer alt andet.
 
 ## Struktur
 
 | Fil/mappe | Formål |
 |-----------|--------|
 | `CLAUDE.md` | AI-instruktioner til Claude Code |
-| `NOW.md` | Aktuel status — start her |
-| `PLAN.md` | Plan med alle moduler og steps |
+| `CONTEXT.md` | Aktuel status — start her |
 | `PROGRESS.md` | Narrativ historik (hvad skete og hvorfor) |
-| `references/` | Research, guider og historiske dokumenter |
-| `template/` | Skabelon til nye projekter (6 filer) |
-| `chatlogs/` | Session-logs og dump-script |
+| `chatlog.md` | Komplet sessionsdata (auto-genereret) |
+| `projects/` | Alle projekter, backlog og arkiv |
+| `data/` | Data-filer |
+| `scripts/` | Utility scripts |
+| `.claude/` | Skills, template, settings |
 
-## Moduler
+## Projekter
 
-- **M1: Git** — done
-- **M2: VS Code** — done
-- **M3: Terminal/Shell** — done (Zsh, Oh My Zsh, Starship)
-- **M4: Projekt-struktur** — igangværende
-- **M5-M8:** PC-setup, terminal-automatisering, context engineering, skabeloner
+| Projekt | Status |
+|---------|--------|
+| `auto-chatlog` | Aktiv — chatlog-engine v3 |
+| `ydrasil` | Aktiv — VPS research + indeksering |
+| `mcp-skills-kompendium` | Aktiv — MCP + skills research |
+| `manuals` | Reference — git, vscode, terminal |
+| `research` | Reference — VPS-era research arkiv |
+| `0_backlog` | Idépulje — briefs og rå idéer |
+| `1_archive` | Afsluttede projekter |
 
-## Princip
+## Afsluttede moduler
 
-Næste gang jeg starter forfra, tager jeg denne mappe med.
+- **M1:** Git
+- **M2:** VS Code
+- **M3:** Terminal/Shell (Zsh, Oh My Zsh, Starship)
+- **M4:** Projektstruktur (~/dev/ layout, template, dotfiles)
+- **M5:** PC-setup (delvist — X1 Carbon og Dev Drive venter)
