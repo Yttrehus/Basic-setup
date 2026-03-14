@@ -4,6 +4,24 @@ Fortællende dagbog. Formålet er at en ny Claude-session kan læse dette og for
 
 ---
 
+## Session 19 (2026-03-14)
+
+VPS sandbox v2 designet, evalueret og deployed. Tre projekter kører nu autonomt i Ralph loop.
+
+**VPS v1 kvalitetsaudit.** Tre subagents undersøgte VPS'ens `yggdra-pc/` sandbox-output fra en tidligere autonom kørsel (6 iterationer). Fandt: direction-analysis var stærk (8/10, ærlig selvkritik), context-engineering god reference (7.5/10), men research-architecture-rapporten overdesignet (6/10 — Zettelkasten + PARA + 6-step pipeline for én person). Mindst én halluceret kilde (Stanford NLP 40% claim). Procesproblemet: 6 iterationer for at aktivere én JSON-fil fordi "done" aldrig blev verificeret.
+
+**Samlet VPS-prompt.** Tre projekter i én Ralph loop: (A) Research Architecture — audit 81 filer, byg INDEX.md. (B) TransportIntra Arkiv — komplet projektmappe fra alle kilder, med TI_KOMPLET_KILDEINDEX.md (519 linjer, fundet på VPS) som scanner-input. INDEX.md er vigtigste deliverable. (C) Prompt-skabeloner — mine chatlog for instruksmønstre, byg 1-2 skills.
+
+**Prompt evalueret med 3 subagents.** Token-efficiency fandt: LOOP_STATE vokser uendeligt (fix: rolling window), iteration 4 risikerer at scanne 942 filer (fix: cap top 30), iteration 9 for komprimeret. Deliverable-quality forudså: TI INDEX.md bliver god, PROGRESS.md risikerer event-liste i stedet for narrativ, subproject CONTEXT.md'er bliver delvist scaffolding. Failure-modes fandt: cascading failure uden input-validering (fix: check forrige iterations output), bash loop uden error handling (fix: grep for BLOCKED). Alt justeret i final prompt.
+
+**Handoff absorberet.** Session github-workflow havde uploadet chatlog.md + prompt.md + reference-skill til VPS for prompt-skabeloner projektet. Cross-session peer review bagt ind som iteration. Prompt-skabeloner CONTEXT.md, CLAUDE.md og VPS_HANDOFF.md committet.
+
+**Brief opdateret.** brief.research-architecture.md nu inkluderer VPS audit-resultater med scores, hvad der holder/ikke holder, og procesproblemer.
+
+**Deployed.** CLAUDE.md (100 linjer), LOOP_PLAN.md (118 linjer), LOOP_STATE.md (initial) uploadet til VPS. Start-kommando: for-loop med timeout 600, blocker-check, state-validering.
+
+---
+
 ## Session 18 (2026-03-14)
 
 Tre spor i dag: Ydrasil-projekt, MCP/Skills kompendium, og infrastruktur-oprydning.
