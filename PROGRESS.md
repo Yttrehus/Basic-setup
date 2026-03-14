@@ -4,6 +4,39 @@ Fortællende dagbog. Formålet er at en ny Claude-session kan læse dette og for
 
 ---
 
+## Session 20 (2026-03-14)
+
+VPS sandbox v2 og v3 afsluttet. Output evalueret, guld hentet til PC, resten sorteret fra.
+
+**V3 resultater modtaget.** VPS leverede besked med filregister og evaluering. 6 iterationer, alle done-kriterier opfyldt: Research INDEX.md fik 54 Key Insights (3/3 spot-checks ACCURATE), 4 TI subproject stubs uddybet fra 16→30-40 linjer, chatlog renset (0 artefakter), dialectic-pipeline skill bygget (120L), N8N archive med kausal kæde (93L). Reviewers: 4×IMPROVED, 3×PASS, 0×FAIL.
+
+**Evaluering med subagents.** Tre parallelle subagents hentede og vurderede output via SSH. Research INDEX.md insights verificeret mod kilder — alle 3 spot-checks accurate (CH2 context window 40%, METR 19% langsommere, Armin Ronacher 4 tools). TI subprojects: voice-dekomponering (4 kontekster) var standout, diesel korrekt markeret THIN. OpenClaw-framing i INDEX.md var eneste PARTIAL (komprimerede nuance for aggressivt — tool fravalgt, principper adopteret).
+
+**Fuld VPS-inventar.** 147 filer scannet. 20 med ægte værdi identificeret, ~100 duplikater af PC-filer, resten rådata/proces-artifakter. Fandt uventet guld: BLUEPRINT.md (5-lags systemarkitektur), vps-pc-convergence.md (anbefaler Model B: separate domæner), session-resume og sitrep skills (ikke set i v3-rapporten).
+
+**Hentet til PC (20 filer):**
+- 3 skills: dialectic-pipeline, session-resume, sitrep → `.claude/skills/`
+- TransportIntra projekt: INDEX.md (194L, crown jewels + hurtigreference), PROGRESS.md (103L, 4 kausale kæder), CONTEXT.md, api-reference.md (519L, 8 endpoints), getrute-schema.md (316L, 132 felter), N8N_SUMMARY.md (93L), 8 subproject CONTEXT.md → `projects/transportintra/`
+- Research INDEX.md v3 (54 Key Insights) → `projects/research/`
+- BLUEPRINT.md → roden
+- vps-pc-convergence.md → `projects/research/`
+- MINING_RESULTS.md → `projects/prompt-skabeloner/`
+- V3_EVALUATION.md → `projects/vps-sandbox/`
+
+**TRIAGE.md bygget fra PC's briefs.** 12 briefs triageret i 4 kategorier: Klar (context-engineering, automation-index, research-architecture), Næste op (notion-spejling, pdf-skill, abonnement-overblik, cross-session-peer-review), Kræver skærpning (integrationer, visualisering, voice-integration), Lav prioritet (project-taxonomy, work-intake). Session-forslag: context-engineering fase 3-5 først.
+
+**VPS-sandbox som projekt.** `projects/vps-sandbox/CONTEXT.md` oprettet med v1/v2/v3 historik. Dokumenterer infrastrukturen (Ralph loop, LOOP_STATE rolling window, prompt-design) og hvad der er hentet til PC.
+
+**Broken pointer fikset.** N8N_SUMMARY.md refererede til TI_KOMPLET_KILDEINDEX.md uden sti — rettet til VPS-path.
+
+**Beslutninger:**
+- VPS yggdra-pc/ indhold triageret: 20 filer hentet, resten ignoreret
+- TRIAGE.md bygges fra PC's faktiske briefs, ikke VPS'ens (mismatched count: 16 vs 12)
+- BLUEPRINT.md placeret i roden (systemarkitektur, ikke projekt-specifikt)
+- VPS-sandbox er ét projekt selvom det berører flere — kan opløses senere
+
+---
+
 ## Session 19 (2026-03-14)
 
 VPS sandbox v2 designet, evalueret og deployed. Tre projekter kører nu autonomt i Ralph loop.

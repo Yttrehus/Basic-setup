@@ -1,20 +1,26 @@
 # Yggdra
 
 ## Metadata
-- **Status:** Session 19 checkpoint. VPS sandbox v2 deployed (3 projekter: research-arch, TI-arkiv, prompt-skabeloner). Kører autonomt.
-- **Sidst opdateret:** 2026-03-14 (session 19)
+- **Status:** Session 20. VPS sandbox v2+v3 afsluttet, output evalueret og hentet til PC. 3 nye skills, TI-projekt, TRIAGE.md, BLUEPRINT.md installeret.
+- **Sidst opdateret:** 2026-03-14 (session 20)
 
 ## Hvad er det
 Personligt udvikler-fundament. Startede som "Basic Setup" (Windows-opsætning), vokset til framework for hvordan Yttre arbejder med AI og kode.
 
 ## Hvor er vi
 
-### Seneste session (19 — 2026-03-14)
-VPS sandbox v2 designet og deployed. Tre projekter kører autonomt i Ralph loop (10 iterationer):
-- **A: Research Architecture** — audit 81 research-filer, byg INDEX.md + CONTEXT.md
-- **B: TransportIntra Arkiv** — komplet projektmappe fra alle kilder. TI_KOMPLET_KILDEINDEX.md (519 linjer) som input. INDEX.md er vigtigste deliverable
-- **C: Prompt-skabeloner** — mine chatlog for instruksmønstre, byg 1-2 skills
-VPS v1 output kvalitetsauditeret (3 subagents): direction-analysis 8/10, context-engineering 7.5/10, research-arch-report 6/10. Brief.research-architecture opdateret med audit. Prompt evalueret af 3 subagents (token-efficiency, deliverable-quality, failure-modes) og justeret. Handoff fra github-workflow session absorberet (prompt-skabeloner).
+### Seneste session (20 — 2026-03-14)
+VPS sandbox v2 (10 iter) + v3 (6 iter) afsluttet og evalueret. Output hentet til PC:
+- **3 nye skills:** dialectic-pipeline, session-resume, sitrep → `.claude/skills/`
+- **TransportIntra projekt:** INDEX.md (194L, crown jewels), PROGRESS.md (103L, 4 kausale kæder), api-reference (519L), getrute-schema (316L), 8 subprojects, N8N archive → `projects/transportintra/`
+- **Research INDEX.md v3:** 54 Key Insights tilføjet → `projects/research/INDEX.md`
+- **BLUEPRINT.md:** 5-lags systemarkitektur → roden
+- **TRIAGE.md:** Prioriteret backlog-overblik, 12 briefs triageret → `projects/0_backlog/`
+- **VPS-sandbox projekt:** CONTEXT.md med v1/v2/v3 historik → `projects/vps-sandbox/`
+- **Reference:** vps-pc-convergence.md, MINING_RESULTS.md, V3_EVALUATION.md
+
+### Session 19 (2026-03-14)
+VPS sandbox v2 designet og deployed. Tre projekter i Ralph loop (10 iterationer). VPS v1 kvalitetsauditeret. Prompt evalueret og justeret. Handoff fra github-workflow absorberet (prompt-skabeloner).
 
 ### Session 18 (2026-03-14)
 Ydrasil-projekt startet: VPS research+docs indekseret (INDEX.md). MCP/Skills kompendium research gennemført (adversarial proces). Nye skills tilføjet (context-search, debugging-wizard, mcp-builder, spec-miner, strategic-compact, the-fool, verification-loop). Nye backlog briefs (project-taxonomy, session-blindhed). data/ og scripts/ mapper oprettet i roden. Checkpoint-skill rettet: chatlog-engine kører nu først. Underscore-prefix fjernet fra projektmapper.
@@ -39,25 +45,28 @@ Chatlog v2 krav defineret: én fil (chatlog.md), komplet sessionsdata inkl. tæn
 ### Struktur
 ```
 Yggdra/
-├── CONTEXT.md, PROGRESS.md, CLAUDE.md, README.md
+├── CONTEXT.md, PROGRESS.md, CLAUDE.md, BLUEPRINT.md, README.md
 ├── chatlog.md                ← genereret af auto-chatlog engine
 ├── data/                     ← data-filer
 ├── scripts/                  ← utility scripts
 ├── projects/
-│   ├── 0_backlog/            ← 12 briefs + raw/
+│   ├── 0_backlog/            ← 12 briefs + TRIAGE.md + raw/
 │   ├── 1_archive/            ← afsluttede projekter
 │   ├── auto-chatlog/         ← chatlog-engine + checkpoint + chatlog-search
 │   ├── manuals/              ← git, vscode, terminal, git-concepts
 │   ├── mcp-skills-kompendium/← MCP+skills research + kompendier
-│   ├── research/             ← ydrasil/ (VPS research+docs, ~160 filer)
+│   ├── prompt-skabeloner/    ← chatlog mining, MINING_RESULTS.md
+│   ├── research/             ← INDEX.md v3 (54 insights), ydrasil/, convergence
+│   ├── transportintra/       ← TI arkiv: INDEX, PROGRESS, 8 subprojects, research, archive
+│   ├── vps-sandbox/          ← VPS sandbox proces-dokumentation
 │   └── ydrasil/              ← VPS INDEX.md, research, sessions, docs
-└── .claude/                  ← skills, template, settings
+└── .claude/                  ← skills (13 stk), template, settings
 ```
 
 ### Aktive projekter
-- **Ydrasil:** VPS research indekseret, INDEX.md oprettet. → `projects/ydrasil/CONTEXT.md`
-- **MCP/Skills kompendium:** Adversarial research gennemført, kompendier skrevet. → `projects/mcp-skills-kompendium/CONTEXT.md`
-- **Auto-chatlog:** v3 fungerer (~3000 beskeder, 39 sessions). Checkpoint-skill rettet. → `projects/auto-chatlog/CONTEXT.md`
+- **TransportIntra arkiv:** Komplet projekt med INDEX, PROGRESS, 8 subprojects, research (API+schema), archive. → `projects/transportintra/CONTEXT.md`
+- **VPS Sandbox:** v1-v3 gennemført. Klar til v4 med nye briefs. → `projects/vps-sandbox/CONTEXT.md`
+- **Auto-chatlog:** v3 fungerer (~3000 beskeder, 39 sessions). → `projects/auto-chatlog/CONTEXT.md`
 
 ### Afsluttede moduler
 - **M1-M3:** Git, VS Code, Terminal (SSH, extensions, WSL, Zsh, Starship)
@@ -102,6 +111,7 @@ Yggdra/
 ## Changelog
 Komprimeret overblik. Fuld detalje i PROGRESS.md.
 
+- **Session 20** (2026-03-14): VPS v2+v3 evalueret, output hentet til PC. 3 skills (dialectic-pipeline, session-resume, sitrep), TI-projekt (INDEX+PROGRESS+8 subprojects+research+archive), research INDEX v3 (54 insights), BLUEPRINT.md, TRIAGE.md, vps-sandbox CONTEXT.md. → PROGRESS.md#session-20
 - **Session 19** (2026-03-14): VPS sandbox v2 deployed (3 projekter), v1 kvalitetsauditeret, prompt evalueret+justeret, github-workflow handoff absorberet. → PROGRESS.md#session-19
 - **Session 18** (2026-03-14): Ydrasil-projekt startet, MCP/Skills kompendium research done, 7 skills tilføjet, checkpoint-skill rettet, underscore-prefix fjernet. → PROGRESS.md#session-18
 - **Session 17** (2026-03-14): Skills-synlighed afklaret, MCP/Skills kompendium brief→projekt, adversarial research-proces designet. → PROGRESS.md#session-17

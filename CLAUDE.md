@@ -16,7 +16,9 @@ Kun denne fil (CLAUDE.md) og CONTEXT.md (via @import). Alt andet læses efter be
 ## Kontekst-kilder (læses efter behov)
 
 - PROGRESS.md — fuld narrativ per session, destilleret
+- BLUEPRINT.md — systemarkitektur (5 emergente lag, filstruktur, designprincipper)
 - chatlog.md — komplet sessionsdata (roden, genereret af projects/auto-chatlog/chatlog-engine.js)
+- projects/0_backlog/TRIAGE.md — prioriteret backlog-overblik med modenhed og afhængigheder
 - projects/*/CONTEXT.md — projekt-specifik kontekst
 
 ## Workflow
