@@ -1,6 +1,6 @@
 # Notion-spejling af VS Code-struktur
 
-**Dato:** 2026-03-10
+**Dato:** 2026-03-10 (opdateret 2026-03-15)
 **Klar til:** Backlog (mangler: oprettelse af Notion-database, test af mobiltilgang)
 
 ## Opsummering
@@ -51,8 +51,15 @@ Inbox-side, Rejseselskab-database, Ugeplan/Sprint-view, Reference-side, Lærte-t
 ### Risici
 Største risiko: properties passer ikke til virkeligheden (sandsynlighed: høj, konsekvens: lav — juster løbende). Notion-føles-ikke-nyttigt er lav risiko og koster intet at droppe.
 
+### Notion MCP (tilføjet 2026-03-15)
+Notion MCP er nu tilsluttet i Claude Code. Det ændrer implementeringsplanen:
+- Database-oprettelse kan ske direkte fra Claude Code via MCP (notion-create-database)
+- Sider kan oprettes/opdateres via MCP (notion-create-pages, notion-update-page)
+- Synk behøver muligvis ikke et separat Python-script — Claude Code kan potentielt synke direkte via MCP-kald
+- Overvej: er sync-to-notion.py stadig nødvendig, eller kan det hele køres via Claude Code + hooks?
+
 ### Action items
-- [ ] Opret "Projekter" database i Notion med 8 properties
-- [ ] Opret "Basic Setup" som første projekt med ægte data
+- [ ] Opret "Projekter" database i Notion via MCP (notion-create-database)
+- [ ] Opret "Yggdra" som første projekt med ægte data
 - [ ] Test mobiloplevelsen
-- [ ] Kør sync-to-notion.py skeleton med --list (dry run)
+- [ ] Evaluér: sync via MCP-kald eller separat Python-script?

@@ -1,7 +1,7 @@
 # Project Reformation
 
 ## 0. Metadata
-- **Status:** I gang — struktur implementeret, CONTEXT.md og oprydning mangler
+- **Status:** Arkiveret — alle faser afsluttet (session 14). Repo omdøbt til Yggdra.
 - **Oprettet:** 2026-03-11
 - **Sidst opdateret:** 2026-03-13 (session 13)
 - **Ejer:** Yttre + Claude

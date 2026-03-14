@@ -4,6 +4,61 @@ Fortællende dagbog. Formålet er at en ny Claude-session kan læse dette og for
 
 ---
 
+## Session 18 (2026-03-14)
+
+Tre spor i dag: Ydrasil-projekt, MCP/Skills kompendium, og infrastruktur-oprydning.
+
+**Ydrasil-projekt startet.** VPS research og docs (downloadet i session 16) blev indekseret. INDEX.md oprettet som overblik over alt indhold fra Ydrasil-æraen. Projektet bor i `projects/ydrasil/` med sessions/, docs/ og research/.
+
+**MCP/Skills kompendium research gennemført.** Den adversarial research-proces designet i session 17 blev eksekveret: context scout, parallel research (MCP-landskab, skills-landskab, Yggdra-behov), steelman, red team, neutral evaluator. Resulterede i `kompendium-mcp.md`, `kompendium-skills.md`, `needs-mapping.md` og `anbefaling.md`.
+
+**Skills tilføjet.** Syv nye skills installeret i `.claude/skills/`: context-search, debugging-wizard, mcp-builder, spec-miner, strategic-compact, the-fool, verification-loop.
+
+**Nye backlog briefs.** project-taxonomy og session-blindhed tilføjet. Tre briefs slettet/merged (mcp-skills-kompendium blev projekt, session-drift-pipeline merged med context-engineering, webscraping-audit + terminal-automatisering → raw/).
+
+**Infrastruktur.** `data/` og `scripts/` mapper oprettet i roden. Projektmapper havde midlertidigt fået underscore-prefix (`_auto-chatlog` osv.) — fjernet igen ved checkpoint. Checkpoint-skill rettet: chatlog-engine kører nu som trin 1 (før state-filer opdateres), så sessionsdata fanges inden kontekst-opdatering.
+
+**Beslutninger:**
+- Chatlog-engine kører først i checkpoint-flow (fanger sessionsdata før state-opdatering)
+- Ingen underscore-prefix på projektmapper (unødvendig konvention)
+- data/ og scripts/ i roden (ikke under projects/)
+
+---
+
+## Session 17 (2026-03-14)
+
+Kort session fokuseret på MCP/Skills kompendium-projektet.
+
+Skills-synlighed i VS Code blev afklaret: globale skills i `~/.claude/skills/` vs projekt-specifikke i `.claude/skills/`. Alle relevante skills var allerede synkroniseret i projekt-mappen.
+
+MCP/Skills kompendium opgraderet fra backlog-brief til aktivt projekt i `projects/mcp-skills-kompendium/`. Adversarial research-proces designet: context scout opsamler landskabet → parallel research i tre spor (MCP-servere, skills, Yggdra-behov) → steelman → red team → steelman red team → neutral evaluator. Formålet er at undgå confirmation bias i teknologi-valg.
+
+---
+
+## Session 16 (2026-03-15)
+
+Backlog-audit og VPS research download.
+
+**Backlog-audit:** 14 briefs reduceret til 11. context-engineering og session-drift-pipeline merged. webscraping-audit og terminal-automatisering flyttet til raw/ (ikke modne nok). 6 briefs opdateret og skærpet (visualisering, mcp, integrationer, notion, peer-review, voice).
+
+**VPS Ydrasil-æra download:** Al research og docs fra VPS downloaded til `projects/research/ydrasil/` (89+73 filer, ~9MB). GDrive-duplikat slettet. Research-kvalitet vurderet: høj substans men iterativt klutter (~30% duplikater fra ChatGPT-kapitler).
+
+**Prioriterings-diskussion:** research-arkitektur → agent teams → hukommelse. Vision-briefs parkeret (transport-app, politik, LLM-uafhængighed) — vigtige men ikke næste step.
+
+---
+
+## Session 15 (2026-03-14)
+
+M5 system-opsætning og chatlog-engine forbedringer.
+
+**M5 steps:** Downloads ryddet (225→2 filer), .wslconfig oprettet (8GB/4CPU), JetBrains Mono installeret med ligaturer, quick reference skrevet. M6/M7/M8 flyttet fra PLAN.md til backlog-briefs — de er selvstændige nok til at leve som projekter.
+
+**Chatlog-engine:** Token-scanning tilføjet (heuristisk scanner + subagent-verifikation via redact-patterns.json). Parallel tasks output absorberet i relevante backlog-briefs.
+
+**Oprydning:** "Basic Setup" referencer fjernet overalt. architecture.R&D fik CONTEXT.md. Archive ryddet. Lektie lært: `rm` i bash bypasser Windows papirkurven — slettet er slettet.
+
+---
+
 ## Session 14 (2026-03-13)
 
 Session 14 startede med et praktisk problem: Claude-sessions var spredt over 5 projektmapper fordi workspace-stien havde ændret sig over tid. Alle 30 .jsonl-filer blev samlet i én mappe (c--Users-Krist-dev-projects-Yggdra), og chatlog-engine'ens input-sti blev rettet.

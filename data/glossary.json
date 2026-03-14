@@ -1,0 +1,48 @@
+{
+  "route_codes": {
+    "ORG2ÅRH": "Organisk affald type 2, Aarhus",
+    "256": "Rute 256 - Organisk affald, Aarhus"
+  },
+  "container_types": {
+    "660L": "660 liter beholder",
+    "240L": "240 liter beholder",
+    "140L": "140 liter beholder"
+  },
+  "status_codes": {
+    "4": "Ikke startet",
+    "5": "I gang",
+    "6": "Færdig",
+    "50": "Normal fuldført (93.8% af alle stops)"
+  },
+  "error_codes": {
+    "38": "Kommentar-fejlkode",
+    "39": "Kommentar-fejlkode",
+    "110": "Kommentar-fejlkode",
+    "112": "Kommentar-fejlkode"
+  },
+  "rute_id_mapping": {
+    "231": "256 Organisk Århus Mandag",
+    "232": "256 Organisk Århus Tirsdag",
+    "233": "256 Organisk Århus Onsdag",
+    "234": "256 Organisk Århus Torsdag",
+    "235": "256 Organisk Århus Fredag"
+  },
+  "abbreviations": {
+    "t/pap": "Tørt papir/pap",
+    "t/madaffald": "Tørt madaffald",
+    "chf_rmrks": "Chauffør-bemærkninger (koder, tidskrav, nøgler, kontakter)",
+    "disps": "Dispatches (individuelle stops/opgaver på en rute)",
+    "aktl_slut": "Faktisk sluttidspunkt (completion timestamp)",
+    "sorter": "Sorteringsposition (0 = ikke sorteret)"
+  },
+  "concepts": {
+    "hybrid_search": "Kombineret keyword + semantisk søgning for bedre resultater",
+    "checkpoint": "Gemt tilstand der gør det muligt at genoptage fra afbrudt punkt",
+    "waypoints": "GPS-punkter langs en rute brugt til navigation og ETA",
+    "CostGuardian": "Budget-gatekeeper der tjekker og stopper API-kald ved overskridelse",
+    "compaction": "Claude Codes automatiske kontekst-komprimering ved lange sessioner",
+    "skills": "Modulære kontekst-filer i .claude/skills/ der loades ved relevante spørgsmål",
+    "slash_commands": "Bruger-kommandoer i .claude/commands/ (/context, /audit)",
+    "upstream_sources": "Kildernes kilder — hvem citerer de folk vi følger"
+  }
+}

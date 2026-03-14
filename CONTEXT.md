@@ -1,15 +1,18 @@
 # Yggdra
 
 ## Metadata
-- **Status:** MCP/Skills kompendium-projekt startet. Adversarial research-proces designet.
-- **Sidst opdateret:** 2026-03-14 (session 17)
+- **Status:** Session 18 checkpoint. Ydrasil-projekt + MCP/Skills kompendium aktive. Struktur konsolideret.
+- **Sidst opdateret:** 2026-03-14 (session 18)
 
 ## Hvad er det
 Personligt udvikler-fundament. Startede som "Basic Setup" (Windows-opsætning), vokset til framework for hvordan Yttre arbejder med AI og kode.
 
 ## Hvor er vi
 
-### Seneste session (17 — 2026-03-14)
+### Seneste session (18 — 2026-03-14)
+Ydrasil-projekt startet: VPS research+docs indekseret (INDEX.md). MCP/Skills kompendium research gennemført (adversarial proces). Nye skills tilføjet (context-search, debugging-wizard, mcp-builder, spec-miner, strategic-compact, the-fool, verification-loop). Nye backlog briefs (project-taxonomy, session-blindhed). data/ og scripts/ mapper oprettet i roden. Checkpoint-skill rettet: chatlog-engine kører nu først. Underscore-prefix fjernet fra projektmapper.
+
+### Session 17 (2026-03-14)
 Skills-synlighed i VS Code: global vs projekt `.claude/skills/` afklaret — alt allerede synkroniseret i projekt-mappen. MCP/Skills kompendium opgraderet fra brief til projekt. Adversarial research-proces designet: context scout → parallel research (MCP-landskab, skills-landskab, Yggdra-behov) → steelman → red team → steelman red team → neutral evaluator.
 
 ### Session 16 (2026-03-15)
@@ -30,18 +33,24 @@ Chatlog v2 krav defineret: én fil (chatlog.md), komplet sessionsdata inkl. tæn
 ```
 Yggdra/
 ├── CONTEXT.md, PROGRESS.md, CLAUDE.md, README.md
-├── chatlog.md              ← genereret af auto-chatlog engine
+├── chatlog.md                ← genereret af auto-chatlog engine
+├── data/                     ← data-filer
+├── scripts/                  ← utility scripts
 ├── projects/
-│   ├── 0_backlog/          ← 11 briefs + raw/ (2 umodne)
-│   ├── 1_archive/          ← afsluttede projekter (reformation, omdøbning, architecture.R&D)
-│   ├── auto-chatlog/       ← chatlog-engine + checkpoint + chatlog-search
-│   ├── manuals/            ← git, vscode, terminal, git-concepts
-│   └── research/           ← ydrasil/ (downloaded VPS research+docs, ~160 filer)
-└── .claude/                ← skills, template, settings
+│   ├── 0_backlog/            ← 12 briefs + raw/
+│   ├── 1_archive/            ← afsluttede projekter
+│   ├── auto-chatlog/         ← chatlog-engine + checkpoint + chatlog-search
+│   ├── manuals/              ← git, vscode, terminal, git-concepts
+│   ├── mcp-skills-kompendium/← MCP+skills research + kompendier
+│   ├── research/             ← ydrasil/ (VPS research+docs, ~160 filer)
+│   └── ydrasil/              ← VPS INDEX.md, research, sessions, docs
+└── .claude/                  ← skills, template, settings
 ```
 
 ### Aktive projekter
-- **Auto-chatlog:** v3 fungerer (~2500 beskeder, 30 sessions, subagent-abstracts, checkpoint-integration). → `projects/auto-chatlog/CONTEXT.md`
+- **Ydrasil:** VPS research indekseret, INDEX.md oprettet. → `projects/ydrasil/CONTEXT.md`
+- **MCP/Skills kompendium:** Adversarial research gennemført, kompendier skrevet. → `projects/mcp-skills-kompendium/CONTEXT.md`
+- **Auto-chatlog:** v3 fungerer (~3000 beskeder, 39 sessions). Checkpoint-skill rettet. → `projects/auto-chatlog/CONTEXT.md`
 
 ### Afsluttede moduler
 - **M1-M3:** Git, VS Code, Terminal (SSH, extensions, WSL, Zsh, Starship)
@@ -86,6 +95,7 @@ Yggdra/
 ## Changelog
 Komprimeret overblik. Fuld detalje i PROGRESS.md.
 
+- **Session 18** (2026-03-14): Ydrasil-projekt startet, MCP/Skills kompendium research done, 7 skills tilføjet, checkpoint-skill rettet, underscore-prefix fjernet. → PROGRESS.md#session-18
 - **Session 17** (2026-03-14): Skills-synlighed afklaret, MCP/Skills kompendium brief→projekt, adversarial research-proces designet. → PROGRESS.md#session-17
 - **Session 16** (2026-03-15): Backlog-audit (14→11 briefs), VPS research downloaded, research-kvalitet vurderet, prioritering diskuteret. → PROGRESS.md#session-16
 - **Session 15** (2026-03-14): M5 step 11/13/14/17 done, M6-M8→backlog, token-scanning, parallel tasks absorberet, archive ryddet. → PROGRESS.md#session-15

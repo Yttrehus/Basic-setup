@@ -1,16 +1,22 @@
-# Integrationer (Gmail, Google, Mobil)
+# Integrationer (Google, Mobil)
 
-**Dato:** 2026-03-12
+**Dato:** 2026-03-12 (opdateret 2026-03-15)
 **Klar til:** Backlog
 
 ## Opsummering
-- Gmail, Hotmail, Google (Drev, Calendar, Sheets) integration via MCP/API
+- ~~Gmail~~ ✅ Gmail MCP allerede tilsluttet (tilgængelig direkte i Claude Code)
+- Google Drive, Calendar, Sheets integration via MCP/API
 - Mobil-adgang: gennemse/redigere/rydde op i telefon-indhold via Claude
-- Muligvis flere separate projekter — afvent scope-vurdering
+- Scope for bred — vælg ét konkret problem først
 
 ## Origin Story
-Parkeret i PLAN.md idé-parkering under M5-scope. Alle tjenester der kan MCP-integreres eller API-tilgås. Mobil-adgang er potentielt et separat projekt. Gmail MCP er allerede tilgængelig i Claude Code.
+Parkeret i PLAN.md idé-parkering under M5-scope. Gmail MCP er nu tilsluttet og fungerer — den del er løst uden projekt.
+
+## Åbne spørgsmål
+- Hvad er det mest presserende? Google Sheets til bogføring? Kalender? Mobil-adgang?
+- Er mobil-adgang et separat projekt?
+- Hotmail — er der et reelt behov, eller bare "ville være fedt"?
 
 ## Rå input
 **Fra PLAN.md idé-parkering:**
-> Integrationer (M5-scope): Gmail, Hotmail, Google (Drev, Calendar, Sheets), evt. mobil-adgang. Alle tjenester der kan MCP-integreres eller API-tilgås. Mobil-adgang (gennemse/redigere/rydde op i telefon-indhold via Claude, ligesom VPS-adgang via SSH) er muligvis et separat projekt — afvent scope-vurdering.
+> Integrationer (M5-scope): Gmail, Hotmail, Google (Drev, Calendar, Sheets), evt. mobil-adgang. Alle tjenester der kan MCP-integreres eller API-tilgås.

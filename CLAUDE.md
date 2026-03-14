@@ -7,7 +7,7 @@ Personligt udvikler-fundament. Startede som "Basic Setup" (Windows-opsætning), 
 ## Projekter
 
 Alle projekter bor i `projects/`. Hvert projekt har en CONTEXT.md (samme format som rod-CONTEXT.md).
-Idéer starter som briefs i `projects/backlog/`. Arkiv i `projects/archive/`.
+Idéer starter som briefs i `projects/0_backlog/`. Arkiv i `projects/1_archive/`.
 
 ## Hvad læses automatisk
 

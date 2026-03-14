@@ -3,3 +3,10 @@
 
 # Firecrawl cache
 .firecrawl/
+
+# Secrets and credentials
+data/CREDENTIALS.md
+
+# VPS data (contains secrets)
+projects/ydrasil/sessions/
+projects/ydrasil/vps-chatlog.md

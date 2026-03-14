@@ -1,7 +1,7 @@
 # Projekt-omdøbning
 
 ## 0. Metadata
-- **Status:** Venter — omdøbning sker efter reformation er færdig
+- **Status:** Arkiveret — omdøbning gennemført (session 14). Repo hedder Yggdra.
 - **Oprettet:** 2026-03-12
 - **Sidst opdateret:** 2026-03-13 (session 13)
 - **Ejer:** Yttre

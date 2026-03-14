@@ -6,6 +6,8 @@
 // Usage:
 //   node projects/auto-chatlog/chatlog-engine.js           # with abstracts from abstracts.json
 //   node projects/auto-chatlog/chatlog-engine.js --digest   # only generate digest (for subagent)
+//   node projects/auto-chatlog/chatlog-engine.js --input-dir /path/to/sessions --output /path/to/chatlog.md
+//   node projects/auto-chatlog/chatlog-engine.js --input-dir /path --output /path --digest
 //
 // Timestamps: Danish time (Europe/Copenhagen)
 // Section breaks: 90+ minute gap between messages (across sessions)
@@ -14,9 +16,9 @@
 const fs = require("fs");
 const path = require("path");
 
-const PROJECT_DIR =
+const DEFAULT_PROJECT_DIR =
   "c:/Users/Krist/.claude/projects/c--Users-Krist-dev-projects-Yggdra";
-const OUTPUT_FILE = path.resolve(__dirname, "../../chatlog.md");
+const DEFAULT_OUTPUT_FILE = path.resolve(__dirname, "../../chatlog.md");
 const ABSTRACTS_FILE = path.resolve(__dirname, "abstracts.json");
 const DIGEST_FILE = path.resolve(__dirname, "sections-digest.json");
 const PATTERNS_FILE = path.resolve(__dirname, "redact-patterns.json");
@@ -129,11 +131,11 @@ function formatDanishDate(dateStr) {
 
 // --- Parse all sessions ---
 
-function parseSessionFiles() {
+function parseSessionFiles(inputDir) {
   const files = fs
-    .readdirSync(PROJECT_DIR)
+    .readdirSync(inputDir)
     .filter((f) => f.endsWith(".jsonl"))
-    .map((f) => path.join(PROJECT_DIR, f));
+    .map((f) => path.join(inputDir, f));
 
   if (files.length === 0) {
     console.error("No session files found.");
@@ -262,7 +264,8 @@ function generateChatlog(messages) {
   }
 
   // --- Main index ---
-  let md = `# Chatlog — Yggdra\n\n`;
+  const title = cliTitle || "Chatlog — Yggdra";
+  let md = `# ${title}\n\n`;
   md += `**Sidst opdateret:** ${now.date} ${now.time}  \n`;
   md += `**Sektioner:** ${sections.length} · **Beskeder:** ${messages.length}\n\n`;
   md += `## Hovedindeks\n\n`;
@@ -405,15 +408,30 @@ function generateDigest(messages) {
   };
 }
 
-// --- Main ---
+// --- CLI args ---
+
+function getArg(flag) {
+  const idx = process.argv.indexOf(flag);
+  return idx !== -1 && idx + 1 < process.argv.length ? process.argv[idx + 1] : null;
+}
 
 const args = process.argv.slice(2);
 const digestOnly = args.includes("--digest");
+const cliInputDir = getArg("--input-dir");
+const cliOutput = getArg("--output");
+const cliTitle = getArg("--title");
+
+// --- Main ---
+
+const inputDir = cliInputDir || DEFAULT_PROJECT_DIR;
+const outputFile = cliOutput ? path.resolve(cliOutput) : DEFAULT_OUTPUT_FILE;
 
 const now = danishNow();
 console.log(`Today (Danish): ${now.date} ${now.time}`);
+console.log(`Input: ${inputDir}`);
+console.log(`Output: ${outputFile}`);
 
-const messages = parseSessionFiles();
+const messages = parseSessionFiles(inputDir);
 console.log(`Parsed ${messages.length} messages total.`);
 
 const digest = generateDigest(messages);
@@ -429,8 +447,8 @@ if (digest.suspiciousTokens && digest.suspiciousTokens.length > 0) {
 
 if (!digestOnly) {
   const chatlog = generateChatlog(messages);
-  fs.writeFileSync(OUTPUT_FILE, chatlog);
-  console.log(`chatlog.md: ${messages.length} messages, ${digest.sections.length} sections → ${OUTPUT_FILE}`);
+  fs.writeFileSync(outputFile, chatlog);
+  console.log(`chatlog.md: ${messages.length} messages, ${digest.sections.length} sections → ${outputFile}`);
 }
 
 console.log("Done.");
