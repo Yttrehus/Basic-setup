@@ -1,15 +1,21 @@
 # Yggdra
 
 ## Metadata
-- **Status:** M5 næsten færdig (step 12+15 kræver fysisk adgang). Backlog er næste.
-- **Sidst opdateret:** 2026-03-14 (session 15)
+- **Status:** MCP/Skills kompendium-projekt startet. Adversarial research-proces designet.
+- **Sidst opdateret:** 2026-03-14 (session 17)
 
 ## Hvad er det
 Personligt udvikler-fundament. Startede som "Basic Setup" (Windows-opsætning), vokset til framework for hvordan Yttre arbejder med AI og kode.
 
 ## Hvor er vi
 
-### Seneste session (15 — 2026-03-14)
+### Seneste session (17 — 2026-03-14)
+Skills-synlighed i VS Code: global vs projekt `.claude/skills/` afklaret — alt allerede synkroniseret i projekt-mappen. MCP/Skills kompendium opgraderet fra brief til projekt. Adversarial research-proces designet: context scout → parallel research (MCP-landskab, skills-landskab, Yggdra-behov) → steelman → red team → steelman red team → neutral evaluator.
+
+### Session 16 (2026-03-15)
+Backlog-audit: 14→11 briefs. context-engineering + session-drift-pipeline merged. webscraping-audit + terminal-automatisering → raw/. 6 briefs opdateret/skærpet (visualisering, mcp, integrationer, notion, peer-review, voice). VPS Ydrasil-æra research + docs downloaded til projects/research/ydrasil/ (89+73 filer, ~9MB). GDrive-duplikat slettet. Research-kvalitet vurderet: høj substans, men iterativt klutter (~30% duplikater fra CH-kapitler). Diskussion om prioritering: research-arkitektur → agent teams → hukommelse. Vision-briefs parkeret (transport-app, politik, LLM-uafhængighed).
+
+### Session 15 (2026-03-14)
 M5 step 11/13/14/17 gennemført: Downloads ryddet (225→2 filer), .wslconfig oprettet (8GB/4CPU), JetBrains Mono + ligaturer, quick reference. Chatlog-engine token-scanning tilføjet (heuristisk + subagent-verifikation, redact-patterns.json). M6/M7/M8 flyttet fra plan til backlog-briefs. Parallel tasks absorberet i briefs. Backlog-briefs evalueret og opdateret. "Basic Setup" referencer fjernet. architecture.R&D CONTEXT.md oprettet. Google AI samtale flyttet til architecture.R&D. Archive ryddet. Lektie: `rm` i bash bypasser papirkurven.
 
 ### Session 14 (2026-03-13)
@@ -26,11 +32,11 @@ Yggdra/
 ├── CONTEXT.md, PROGRESS.md, CLAUDE.md, README.md
 ├── chatlog.md              ← genereret af auto-chatlog engine
 ├── projects/
-│   ├── 0_backlog/          ← 15 idé-briefs (inkl. M6/M7/M8)
+│   ├── 0_backlog/          ← 11 briefs + raw/ (2 umodne)
 │   ├── 1_archive/          ← afsluttede projekter (reformation, omdøbning, architecture.R&D)
 │   ├── auto-chatlog/       ← chatlog-engine + checkpoint + chatlog-search
 │   ├── manuals/            ← git, vscode, terminal, git-concepts
-│   └── research/           ← venter på research-arkitektur
+│   └── research/           ← ydrasil/ (downloaded VPS research+docs, ~160 filer)
 └── .claude/                ← skills, template, settings
 ```
 
@@ -80,6 +86,8 @@ Yggdra/
 ## Changelog
 Komprimeret overblik. Fuld detalje i PROGRESS.md.
 
+- **Session 17** (2026-03-14): Skills-synlighed afklaret, MCP/Skills kompendium brief→projekt, adversarial research-proces designet. → PROGRESS.md#session-17
+- **Session 16** (2026-03-15): Backlog-audit (14→11 briefs), VPS research downloaded, research-kvalitet vurderet, prioritering diskuteret. → PROGRESS.md#session-16
 - **Session 15** (2026-03-14): M5 step 11/13/14/17 done, M6-M8→backlog, token-scanning, parallel tasks absorberet, archive ryddet. → PROGRESS.md#session-15
 - **Session 14** (2026-03-13): Chatlog-engine v3, sessions samlet, checkpoint+chatlog-search integreret i auto-chatlog, archive ryddet, template opdateret, reformation fase 6 afsluttet. → PROGRESS.md#session-14
 - **Session 13** (2026-03-13): projects/ struktur, ADR→CONTEXT.md, chatlog v2 krav, hukommelsesarkitektur, Claude Memory i workspace. → PROGRESS.md#session-13
