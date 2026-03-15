@@ -23,3 +23,5 @@ Parkeret i PLAN.md idé-parkering. Yttre bruger allerede voice memos som input-m
 ## Rå input
 **Fra PLAN.md idé-parkering:**
 > Voice-integration
+
+tilføjelse fra Yttre: det handler ligeså meget hvis ikke mere at designe sin egen stemme, kadence m.m. grok gør der at mens brugerens tale bliver transkriberet læser grok løbende , det er mere virkeligheds nært og den svarer jo nærmest så snart man er færdig med at tale. mennesker tænker jo også mens den anden snakker. den kunne jo være en del af et større projekt. et dashboard hvor jeg kan læse downloade uploade filer, voice chat,. idealet ser vi en scene fra her hvor hun tegner hvordan  det ville se ud hvis folk sked ud af albuen. naturligt flow fra tale til generede billede har stærk effekt hos mennesker
